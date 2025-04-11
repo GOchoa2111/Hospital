@@ -1,0 +1,7 @@
+C:\Users\GOchoa\source\repos\HospitalApi\HospitalApi\obj\Debug\net8.0\HospitalApi.csproj.AssemblyReference.cache
+C:\Users\GOchoa\source\repos\HospitalApi\HospitalApi\obj\Debug\net8.0\HospitalApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\GOchoa\source\repos\HospitalApi\HospitalApi\obj\Debug\net8.0\HospitalApi.AssemblyInfoInputs.cache
+C:\Users\GOchoa\source\repos\HospitalApi\HospitalApi\obj\Debug\net8.0\HospitalApi.AssemblyInfo.cs
+C:\Users\GOchoa\source\repos\HospitalApi\HospitalApi\obj\Debug\net8.0\HospitalApi.csproj.CoreCompileInputs.cache
+C:\Users\GOchoa\source\repos\HospitalApi\HospitalApi\obj\Debug\net8.0\HospitalApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\GOchoa\source\repos\HospitalApi\HospitalApi\obj\Debug\net8.0\HospitalApi.MvcApplicationPartsAssemblyInfo.cache
