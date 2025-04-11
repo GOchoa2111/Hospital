@@ -1,0 +1,96 @@
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\appsettings.json
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\HospitalSistemaAPI.staticwebassets.endpoints.json
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\HospitalSistemaAPI.exe
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\HospitalSistemaAPI.deps.json
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\HospitalSistemaAPI.runtimeconfig.json
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\HospitalSistemaAPI.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\HospitalSistemaAPI.pdb
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\MySqlConnector.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.csproj.AssemblyReference.cache
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.AssemblyInfoInputs.cache
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.AssemblyInfo.cs
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.csproj.CoreCompileInputs.cache
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.sourcelink.json
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\scopedcss\bundle\HospitalSistemaAPI.styles.css
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets\msbuild.HospitalSistemaAPI.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets\msbuild.HospitalSistemaAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets\msbuild.build.HospitalSistemaAPI.props
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.HospitalSistemaAPI.props
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.HospitalSistemaAPI.props
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\Hospital.2C65E095.Up2Date
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\refint\HospitalSistemaAPI.dll
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.pdb
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.genruntimeconfig.cache
+C:\Users\C-Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\ref\HospitalSistemaAPI.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\appsettings.json
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\HospitalSistemaAPI.staticwebassets.endpoints.json
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\HospitalSistemaAPI.exe
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\HospitalSistemaAPI.deps.json
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\HospitalSistemaAPI.runtimeconfig.json
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\HospitalSistemaAPI.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\HospitalSistemaAPI.pdb
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\MySqlConnector.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.csproj.AssemblyReference.cache
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.AssemblyInfoInputs.cache
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.AssemblyInfo.cs
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.csproj.CoreCompileInputs.cache
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.sourcelink.json
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\scopedcss\bundle\HospitalSistemaAPI.styles.css
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets\msbuild.HospitalSistemaAPI.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets\msbuild.HospitalSistemaAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets\msbuild.build.HospitalSistemaAPI.props
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.HospitalSistemaAPI.props
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.HospitalSistemaAPI.props
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\Hospital.2C65E095.Up2Date
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\refint\HospitalSistemaAPI.dll
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.pdb
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\HospitalSistemaAPI.genruntimeconfig.cache
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Final\backend\HospitalSistemaAPI\HospitalSistemaAPI\obj\Debug\net8.0\ref\HospitalSistemaAPI.dll
