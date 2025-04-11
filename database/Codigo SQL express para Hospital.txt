@@ -1,0 +1,172 @@
+CREATE DATABASE HospitalSistema;
+GO
+
+USE HospitalSistema;
+GO
+
+CREATE TABLE Estado (
+  idEstado INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  Estadocol NVARCHAR(45) NOT NULL
+);
+GO
+
+CREATE TABLE Usuarios (
+  idUsuarios INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  Nombre NVARCHAR(45) NOT NULL,
+  Usuario NVARCHAR(45) NOT NULL,
+  Contraseña NVARCHAR(12) NOT NULL
+);
+GO
+
+CREATE TABLE Rol (
+  idRol INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  NombreRol NVARCHAR(45) NOT NULL,
+  Usuarios_idUsuarios INT NOT NULL,
+  FOREIGN KEY (Usuarios_idUsuarios) REFERENCES Usuarios(idUsuarios)
+);
+GO
+
+CREATE TABLE Paciente (
+  idPaciente INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  Nombre NVARCHAR(45) NOT NULL,
+  Apellido NVARCHAR(45) NOT NULL,
+  FechaNacimiento DATE NOT NULL,
+  TipoSangre NVARCHAR(3) NOT NULL,
+  Direccion NVARCHAR(120) NOT NULL,
+  Telefono NVARCHAR(45) NOT NULL,
+  CorreoElectronico NVARCHAR(120) NOT NULL UNIQUE
+);
+GO
+
+CREATE TABLE EmpleadosHospital (
+  idEmpleadosHospital INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  Nombre NVARCHAR(45),
+  Apellido NVARCHAR(45),
+  FechaDeIngreso NVARCHAR(45) NOT NULL,
+  Telefono NVARCHAR(45) NOT NULL,
+  Direccion NVARCHAR(120) NOT NULL,
+  Usuarios_idUsuarios INT NOT NULL,
+  FOREIGN KEY (Usuarios_idUsuarios) REFERENCES Usuarios(idUsuarios)
+);
+GO
+
+CREATE TABLE Especialidad (
+  idEspecialidad INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  NombreEspecialidad NVARCHAR(45) NOT NULL
+);
+GO
+
+CREATE TABLE Medico (
+  idMedico INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  Nombre NVARCHAR(45) NOT NULL,
+  Apellido NVARCHAR(45) NOT NULL,
+  Id_Especialidad NVARCHAR(45) NOT NULL,
+  Telefono NVARCHAR(45) NOT NULL,
+  CorreoElectronico NVARCHAR(45) NOT NULL,
+  Colegiado INT NOT NULL UNIQUE,
+  HorariosAtencion NVARCHAR(45)
+);
+GO
+
+CREATE TABLE MedicoEspecialidad (
+  Medico_idMedico INT NOT NULL,
+  Especialidad_idEspecialidad INT NOT NULL,
+  PRIMARY KEY (Medico_idMedico, Especialidad_idEspecialidad),
+  FOREIGN KEY (Medico_idMedico) REFERENCES Medico(idMedico),
+  FOREIGN KEY (Especialidad_idEspecialidad) REFERENCES Especialidad(idEspecialidad)
+);
+GO
+
+CREATE TABLE CitasProgramadas (
+  Id_Citas INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  Paciente_idPaciente INT NOT NULL,
+  Medico_idMedico INT NOT NULL,
+  FechaCita DATE NOT NULL,
+  HoraCita DATETIME NOT NULL,
+  Motivo NVARCHAR(45) NOT NULL,
+  Estado_id INT NOT NULL,
+  FOREIGN KEY (Paciente_idPaciente) REFERENCES Paciente(idPaciente),
+  FOREIGN KEY (Medico_idMedico) REFERENCES Medico(idMedico),
+  FOREIGN KEY (Estado_id) REFERENCES Estado(idEstado)
+);
+GO
+
+CREATE TABLE HistorialClinico (
+  idHistorialClinico INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  Paciente_idPaciente INT NOT NULL,
+  Medico_idMedico INT NOT NULL,
+  FechaHistorial DATETIME,
+  Diagnostico NVARCHAR(MAX),
+  Tratamiento NVARCHAR(MAX),
+  NotasMedico NVARCHAR(MAX),
+  FOREIGN KEY (Paciente_idPaciente) REFERENCES Paciente(idPaciente),
+  FOREIGN KEY (Medico_idMedico) REFERENCES Medico(idMedico)
+);
+GO
+
+CREATE TABLE RecetaMedica (
+  idRecetaMedica INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  HistorialClinico_idHistorialClinico INT NOT NULL,
+  RecetaMedicacol NVARCHAR(45) NOT NULL,
+  FrecuenciaMedicamento NVARCHAR(45) NOT NULL,
+  DuracionAplicacion NVARCHAR(45) NOT NULL,
+  FOREIGN KEY (HistorialClinico_idHistorialClinico) REFERENCES HistorialClinico(idHistorialClinico)
+);
+GO
+
+CREATE TABLE Medicamento (
+  NombreMedicamento NVARCHAR(45) NOT NULL,
+  DescripcionMedicamento NVARCHAR(MAX) NOT NULL,
+  RecetaMedica_idRecetaMedica INT NOT NULL,
+  FOREIGN KEY (RecetaMedica_idRecetaMedica) REFERENCES RecetaMedica(idRecetaMedica)
+);
+GO
+
+CREATE TABLE Servicios (
+  idServicios INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  NombreServicio NVARCHAR(45),
+  DescripcionServicio NVARCHAR(MAX) NOT NULL,
+  Precio FLOAT NOT NULL
+);
+GO
+
+CREATE TABLE Facturacion (
+  idFactura INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  Paciente_idPaciente INT NOT NULL,
+  FechaFacturacion DATETIME NOT NULL,
+  Total INT,
+  Estado_idEstado INT NOT NULL,
+  FOREIGN KEY (Paciente_idPaciente) REFERENCES Paciente(idPaciente),
+  FOREIGN KEY (Estado_idEstado) REFERENCES Estado(idEstado)
+);
+GO
+
+CREATE TABLE DetalleFactura (
+  idDetalleFactura INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  Facturacion_idFactura INT NOT NULL,
+  Servicios_idServicios INT NOT NULL,
+  PrecioServicio FLOAT NOT NULL,
+  SubtotalServicio FLOAT,
+  FOREIGN KEY (Facturacion_idFactura) REFERENCES Facturacion(idFactura),
+  FOREIGN KEY (Servicios_idServicios) REFERENCES Servicios(idServicios)
+);
+GO
+
+CREATE TABLE Modulo (
+  idPermisos INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  Modulo NVARCHAR(45) NOT NULL
+);
+GO
+
+CREATE TABLE Rol_has_Permisos (
+  Rol_idRol INT NOT NULL,
+  Permisos_idPermisos INT NOT NULL,
+  Ver NVARCHAR(45),
+  Escribir TINYINT,
+  Modificar TINYINT,
+  Eliminar TINYINT,
+  PRIMARY KEY (Rol_idRol, Permisos_idPermisos),
+  FOREIGN KEY (Rol_idRol) REFERENCES Rol(idRol),
+  FOREIGN KEY (Permisos_idPermisos) REFERENCES Modulo(idPermisos)
+);
+GO
