@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lLXT+wBR9AU=",
+  "dgSpecHash": "9fs8z5eK03U=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Final\\backend\\HospitalSistemaAPI\\HospitalSistemaAPI\\HospitalSistemaAPI.csproj",
+  "projectFilePath": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalSistemaAPI\\HospitalSistemaAPI\\HospitalSistemaAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Carlos Orozco\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.13\\microsoft.entityframeworkcore.8.0.13.nupkg.sha512",
     "C:\\Users\\Carlos Orozco\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.13\\microsoft.entityframeworkcore.abstractions.8.0.13.nupkg.sha512",

@@ -1,46 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\",
+  "WorkspaceRootPath": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\gochoa\\source\\repos\\hospitalapi\\hospitalapi\\controllers\\pacientecontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\controllers\\pacientecontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\gochoa\\source\\repos\\hospitalapi\\hospitalapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\gochoa\\source\\repos\\hospitalapi\\hospitalapi\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\gochoa\\source\\repos\\hospitalapi\\hospitalapi\\models\\estado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\models\\estado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\gochoa\\source\\repos\\hospitalapi\\hospitalapi\\models\\medico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\models\\medico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\gochoa\\source\\repos\\hospitalapi\\hospitalapi\\models\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\models\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\gochoa\\source\\repos\\hospitalapi\\hospitalapi\\hospitalapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\hospitalapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\gochoa\\source\\repos\\hospitalapi\\hospitalapi\\models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\gochoa\\source\\repos\\hospitalapi\\hospitalapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\carlos orozco\\onedrive\\documentos\\universidad\\proyecto-progra-grupo\\sistemahospital\\backend\\hospitalapi(modulosintegrados)\\hospitalapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\gochoa\\source\\repos\\hospitalapi\\hospitalapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\carlos orozco\\onedrive\\documentos\\universidad\\proyecto-progra-grupo\\sistemahospital\\backend\\hospitalapi(modulosintegrados)\\hospitalapi\\controllers\\pacientecontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\controllers\\pacientecontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\carlos orozco\\onedrive\\documentos\\universidad\\proyecto-progra-grupo\\sistemahospital\\backend\\hospitalapi(modulosintegrados)\\hospitalapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\carlos orozco\\onedrive\\documentos\\universidad\\proyecto-progra-grupo\\sistemahospital\\backend\\hospitalapi(modulosintegrados)\\hospitalapi\\models\\medico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\models\\medico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\carlos orozco\\onedrive\\documentos\\universidad\\proyecto-progra-grupo\\sistemahospital\\backend\\hospitalapi(modulosintegrados)\\hospitalapi\\models\\estado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\models\\estado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\carlos orozco\\onedrive\\documentos\\universidad\\proyecto-progra-grupo\\sistemahospital\\backend\\hospitalapi(modulosintegrados)\\hospitalapi\\models\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\models\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\carlos orozco\\onedrive\\documentos\\universidad\\proyecto-progra-grupo\\sistemahospital\\backend\\hospitalapi(modulosintegrados)\\hospitalapi\\models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\carlos orozco\\onedrive\\documentos\\universidad\\proyecto-progra-grupo\\sistemahospital\\backend\\hospitalapi(modulosintegrados)\\hospitalapi\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\carlos orozco\\onedrive\\documentos\\universidad\\proyecto-progra-grupo\\sistemahospital\\backend\\hospitalapi(modulosintegrados)\\hospitalapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|c:\\users\\carlos orozco\\onedrive\\documentos\\universidad\\proyecto-progra-grupo\\sistemahospital\\backend\\hospitalapi(modulosintegrados)\\hospitalapi\\hospitalapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E59095D3-074A-4D59-848E-2B246BC6E568}|HospitalApi\\HospitalApi.csproj|solutionrelative:hospitalapi\\hospitalapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,136 +50,128 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "PacienteControllers.cs",
-              "DocumentMoniker": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Controllers\\PacienteControllers.cs",
+              "DocumentMoniker": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Controllers\\PacienteControllers.cs",
               "RelativeDocumentMoniker": "HospitalApi\\Controllers\\PacienteControllers.cs",
-              "ToolTip": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Controllers\\PacienteControllers.cs",
+              "ToolTip": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Controllers\\PacienteControllers.cs",
               "RelativeToolTip": "HospitalApi\\Controllers\\PacienteControllers.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T22:09:38.966Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-10T22:09:38.966Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Medico.cs",
-              "DocumentMoniker": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Models\\Medico.cs",
+              "DocumentMoniker": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Models\\Medico.cs",
               "RelativeDocumentMoniker": "HospitalApi\\Models\\Medico.cs",
-              "ToolTip": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Models\\Medico.cs",
+              "ToolTip": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Models\\Medico.cs",
               "RelativeToolTip": "HospitalApi\\Models\\Medico.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAqwBAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T22:00:45.032Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-10T22:00:45.032Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Paciente.cs",
-              "DocumentMoniker": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Models\\Paciente.cs",
+              "DocumentMoniker": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Models\\Paciente.cs",
               "RelativeDocumentMoniker": "HospitalApi\\Models\\Paciente.cs",
-              "ToolTip": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Models\\Paciente.cs",
+              "ToolTip": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Models\\Paciente.cs",
               "RelativeToolTip": "HospitalApi\\Models\\Paciente.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T21:52:16.168Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Person.cs",
-              "DocumentMoniker": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Models\\Person.cs",
-              "RelativeDocumentMoniker": "HospitalApi\\Models\\Person.cs",
-              "ToolTip": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Models\\Person.cs",
-              "RelativeToolTip": "HospitalApi\\Models\\Person.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T21:46:51.28Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-10T21:52:16.168Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "HospitalApi.csproj",
-              "DocumentMoniker": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\HospitalApi.csproj",
-              "RelativeDocumentMoniker": "HospitalApi\\HospitalApi.csproj",
-              "ToolTip": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\HospitalApi.csproj",
-              "RelativeToolTip": "HospitalApi\\HospitalApi.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-04-10T17:43:00.413Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Models\\Usuario.cs",
-              "RelativeDocumentMoniker": "HospitalApi\\Models\\Usuario.cs",
-              "ToolTip": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Models\\Usuario.cs",
-              "RelativeToolTip": "HospitalApi\\Models\\Usuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Title": "Person.cs",
+              "DocumentMoniker": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Models\\Person.cs",
+              "RelativeDocumentMoniker": "HospitalApi\\Models\\Person.cs",
+              "ToolTip": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Models\\Person.cs",
+              "RelativeToolTip": "HospitalApi\\Models\\Person.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T22:02:30.818Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Estado.cs",
-              "DocumentMoniker": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Models\\Estado.cs",
-              "RelativeDocumentMoniker": "HospitalApi\\Models\\Estado.cs",
-              "ToolTip": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Models\\Estado.cs",
-              "RelativeToolTip": "HospitalApi\\Models\\Estado.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T22:03:27.721Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WeatherForecastController.cs",
-              "DocumentMoniker": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Controllers\\WeatherForecastController.cs",
-              "RelativeDocumentMoniker": "HospitalApi\\Controllers\\WeatherForecastController.cs",
-              "ToolTip": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Controllers\\WeatherForecastController.cs",
-              "RelativeToolTip": "HospitalApi\\Controllers\\WeatherForecastController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABTAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T21:53:46.618Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\appsettings.json",
-              "RelativeDocumentMoniker": "HospitalApi\\appsettings.json",
-              "ToolTip": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\appsettings.json",
-              "RelativeToolTip": "HospitalApi\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-10T21:48:20.77Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-10T21:46:51.28Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "HospitalApi.csproj",
+              "DocumentMoniker": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\HospitalApi.csproj",
+              "RelativeDocumentMoniker": "HospitalApi\\HospitalApi.csproj",
+              "ToolTip": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\HospitalApi.csproj",
+              "RelativeToolTip": "HospitalApi\\HospitalApi.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-10T17:43:00.413Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "HospitalApi\\Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Models\\Usuario.cs",
+              "RelativeToolTip": "HospitalApi\\Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T22:02:30.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Estado.cs",
+              "DocumentMoniker": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Models\\Estado.cs",
+              "RelativeDocumentMoniker": "HospitalApi\\Models\\Estado.cs",
+              "ToolTip": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Models\\Estado.cs",
+              "RelativeToolTip": "HospitalApi\\Models\\Estado.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T22:03:27.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Program.cs",
               "RelativeDocumentMoniker": "HospitalApi\\Program.cs",
-              "ToolTip": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\Program.cs",
+              "ToolTip": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Program.cs",
               "RelativeToolTip": "HospitalApi\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-10T18:24:42.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "HospitalApi\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "HospitalApi\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T21:53:46.618Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\appsettings.json",
+              "RelativeDocumentMoniker": "HospitalApi\\appsettings.json",
+              "ToolTip": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\appsettings.json",
+              "RelativeToolTip": "HospitalApi\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAACRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-10T21:48:20.77Z",
+              "EditorCaption": ""
             }
           ]
         }

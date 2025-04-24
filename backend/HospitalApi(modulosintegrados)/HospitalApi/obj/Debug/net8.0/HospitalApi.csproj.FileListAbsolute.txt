@@ -5,3 +5,11 @@ C:\Users\GOchoa\source\repos\HospitalApi\HospitalApi\obj\Debug\net8.0\HospitalAp
 C:\Users\GOchoa\source\repos\HospitalApi\HospitalApi\obj\Debug\net8.0\HospitalApi.csproj.CoreCompileInputs.cache
 C:\Users\GOchoa\source\repos\HospitalApi\HospitalApi\obj\Debug\net8.0\HospitalApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\GOchoa\source\repos\HospitalApi\HospitalApi\obj\Debug\net8.0\HospitalApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\backend\HospitalApi(modulosintegrados)\HospitalApi\obj\Debug\net8.0\HospitalApi.csproj.AssemblyReference.cache
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\backend\HospitalApi(modulosintegrados)\HospitalApi\obj\Debug\net8.0\HospitalApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\backend\HospitalApi(modulosintegrados)\HospitalApi\obj\Debug\net8.0\HospitalApi.AssemblyInfoInputs.cache
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\backend\HospitalApi(modulosintegrados)\HospitalApi\obj\Debug\net8.0\HospitalApi.AssemblyInfo.cs
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\backend\HospitalApi(modulosintegrados)\HospitalApi\obj\Debug\net8.0\HospitalApi.csproj.CoreCompileInputs.cache
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\backend\HospitalApi(modulosintegrados)\HospitalApi\obj\Debug\net8.0\HospitalApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\backend\HospitalApi(modulosintegrados)\HospitalApi\obj\Debug\net8.0\HospitalApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\backend\HospitalApi(modulosintegrados)\HospitalApi\obj\Debug\net8.0\HospitalApi.sourcelink.json

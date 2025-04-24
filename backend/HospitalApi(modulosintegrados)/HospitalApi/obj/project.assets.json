@@ -5136,23 +5136,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\GOchoa\\.nuget\\packages\\": {},
+    "C:\\Users\\Carlos Orozco\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\HospitalApi.csproj",
+      "projectUniqueName": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\HospitalApi.csproj",
       "projectName": "HospitalApi",
-      "projectPath": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\HospitalApi.csproj",
-      "packagesPath": "C:\\Users\\GOchoa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\GOchoa\\source\\repos\\HospitalApi\\HospitalApi\\obj\\",
+      "projectPath": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\HospitalApi.csproj",
+      "packagesPath": "C:\\Users\\Carlos Orozco\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalApi(modulosintegrados)\\HospitalApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\GOchoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Carlos Orozco\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Final\\backend\\HospitalSistemaAPI\\HospitalSistemaAPI\\HospitalSistemaAPI.csproj": {}
+    "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalSistemaAPI\\HospitalSistemaAPI\\HospitalSistemaAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Final\\backend\\HospitalSistemaAPI\\HospitalSistemaAPI\\HospitalSistemaAPI.csproj": {
+    "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalSistemaAPI\\HospitalSistemaAPI\\HospitalSistemaAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Final\\backend\\HospitalSistemaAPI\\HospitalSistemaAPI\\HospitalSistemaAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalSistemaAPI\\HospitalSistemaAPI\\HospitalSistemaAPI.csproj",
         "projectName": "HospitalSistemaAPI",
-        "projectPath": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Final\\backend\\HospitalSistemaAPI\\HospitalSistemaAPI\\HospitalSistemaAPI.csproj",
+        "projectPath": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalSistemaAPI\\HospitalSistemaAPI\\HospitalSistemaAPI.csproj",
         "packagesPath": "C:\\Users\\Carlos Orozco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Final\\backend\\HospitalSistemaAPI\\HospitalSistemaAPI\\obj\\",
+        "outputPath": "C:\\Users\\Carlos Orozco\\OneDrive\\Documentos\\Universidad\\Proyecto-Progra-Grupo\\SistemaHospital\\backend\\HospitalSistemaAPI\\HospitalSistemaAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -78,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
