@@ -56,3 +56,4 @@ SistemaVentasAPI/SistemaVentasAPI/bin/
 
 # Workspace de vscode
 *.code-workspace
+/frontend/FrontEndHosp/target/
