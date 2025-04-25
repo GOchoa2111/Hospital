@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using HospitalSistemaAPI.Models;
+using HospitalSistemaAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

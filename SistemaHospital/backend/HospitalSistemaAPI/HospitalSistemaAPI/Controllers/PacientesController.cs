@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HospitalSistemaAPI.Models;
+using HospitalSistemaAPI.Data;
 
 namespace HospitalSistemaAPI.Controllers
 {
