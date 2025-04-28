@@ -1,44 +1,53 @@
-
 package models;
 
-/**
- *
- * @author Carlos Orozco
- */
+import java.util.Date;
 
-public class Paciente {
-    private int idPaciente;
+
+public class Paciente { //encapsulamiento de datos
+    
+    
+    private int id_paciente;
+    private Date fecha_ingreso;
     private String nombre;
     private String apellido;
-    private String fechaNacimiento;
+    private Date fecha_nacimiento;
     private String genero;
+    private String tipo_sangre;
     private String direccion;
-    private String telefono;
+    private int telefono;
     private String correo;
+    
+       // Getters (obtener datos) y setters (modificar valores)
+    public int getid_paciente() { return id_paciente; }
+    public void setid_paciente(int id_paciente) { this.id_paciente = id_paciente; }
+    
+    public Date getfecha_ingreso(){return fecha_ingreso; }
+    public void setfecha_ingreso(Date fecha_ingreso) { this.fecha_ingreso = fecha_ingreso;}
+    
+    public String getnombre() { return nombre;}
+    public void setnombre( String nombre){ this.nombre = nombre;}
+    
+    public String getapellido() { return apellido;}
+    public void setapellido( String apellido) { this.apellido = apellido;}
+    
+    public Date getfecha_nacimiento() { return fecha_nacimiento;}
+    public void setfecha_nacimiento( Date fecha_nacimiento) { this.fecha_nacimiento = fecha_nacimiento;}
+    
+    public String getgenero() { return genero;}
+    public void setgenero( String genero) { this.genero = genero;}
+    
+    public String gettipo_sangre() { return tipo_sangre;}
+    public void settipo_sangre( String tipo_sangre) { this.tipo_sangre = tipo_sangre;}
+    
+    public String getdireccion() { return direccion;}
+    public void setdireccion( String direccion) { this.direccion = direccion;}
+    
+    public int gettelefon() { return telefono;}
+    public void settelefono( int telefono) { this.telefono = telefono;}
+    
+    public String getcorreo() { return correo;}
+    public void setcorreo( String correo) { this.correo = correo;}
 
-    // Getters y setters
-    public int getIdPaciente() { return idPaciente; }
-    public void setIdPaciente(int idPaciente) { this.idPaciente = idPaciente; }
-
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-
-    public String getApellido() { return apellido; }
-    public void setApellido(String apellido) { this.apellido = apellido; }
-
-    public String getFechaNacimiento() { return fechaNacimiento; }
-    public void setFechaNacimiento(String fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
-
-    public String getGenero() { return genero; }
-    public void setGenero(String genero) { this.genero = genero; }
-
-    public String getDireccion() { return direccion; }
-    public void setDireccion(String direccion) { this.direccion = direccion; }
-
-    public String getTelefono() { return telefono; }
-    public void setTelefono(String telefono) { this.telefono = telefono; }
-
-    public String getCorreo() { return correo; }
-    public void setCorreo(String correo) { this.correo = correo; }
+    
 }
 

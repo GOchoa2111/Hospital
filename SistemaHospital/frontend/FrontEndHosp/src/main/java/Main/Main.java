@@ -5,7 +5,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 import javax.management.remote.JMXConnectorFactory;
-import views.Paciente;
+import views.ViewPaciente;
 
 /**
  *
@@ -18,14 +18,15 @@ public class Main {
         try{
         //solicitar petición 
         
-        URL url = new URL("http://localhost:5132/api/Pacientes");
+        URL paciente = new URL("http://localhost:5132/api/Pacientes");
         
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        HttpURLConnection conn = (HttpURLConnection) paciente.openConnection();
         
         conn.setRequestMethod("GET");
         conn.connect();
         
         //validar petición
+        
         int responseCode = conn.getResponseCode();
         
             if (responseCode != 200) {
@@ -35,9 +36,10 @@ public class Main {
             } else {
                     
         //abrir un escaner que lea el flujo de datos
+        
                     StringBuilder infoStringBuilder = new StringBuilder();
                     
-                    Scanner scanner = new Scanner(url.openStream());
+                    Scanner scanner = new Scanner(paciente.openStream());
                     
                     while (scanner.hasNext()){
                     
@@ -61,7 +63,7 @@ public class Main {
 
        /* System.out.println("Prueba de texto");
         
-        Paciente paciente = new Paciente();
+        ViewPaciente paciente = new ViewPaciente();
         
         paciente.setVisible(true);*/
     }
