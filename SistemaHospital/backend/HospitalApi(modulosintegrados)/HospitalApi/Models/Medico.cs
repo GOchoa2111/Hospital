@@ -11,7 +11,7 @@
         public int Colegiado { get; set; }
         public string HorariosAtencion { get; set; }
 
-        public ICollection<CitasProgramadas> CitasProgramadas { get; set; }
-        public ICollection<HistorialClinico> HistorialClinico { get; set; }
+       // public ICollection<CitasProgramadas> CitasProgramadas { get; set; }
+        //public ICollection<HistorialClinico> HistorialClinico { get; set; }
     }
 }

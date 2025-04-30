@@ -10,6 +10,8 @@ namespace HospitalSistemaAPI.Models
         [Key]
         [Column("id_servicio")]
         public int IdServicio { get; set; }
+        [Column("id_usuario")]
+        public int IdUsuario { get; set; }  
 
         [Column("nombre")]
         public string Nombre { get; set; } = string.Empty;
@@ -19,5 +21,7 @@ namespace HospitalSistemaAPI.Models
 
         [Column("precio")]
         public decimal Precio { get; set; }
+
+        
     }
 }
