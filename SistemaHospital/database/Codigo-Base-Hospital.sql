@@ -32,6 +32,8 @@ CREATE TABLE paciente (
     correo VARCHAR(100),
     creado_por INT NOT NULL,
     fecha_creacion DATETIME NOT NULL DEFAULT GETDATE(),
+	estado BIT DEFAULT 1,
+	
     FOREIGN KEY (creado_por) REFERENCES usuario(id_usuario)
 );
 
@@ -54,6 +56,9 @@ CREATE TABLE doctor (
     id_usuario INT UNIQUE,
     creado_por INT NOT NULL,
     fecha_creacion DATETIME NOT NULL DEFAULT GETDATE(),
+	estado BIT DEFAULT 1,
+	
+	-- LLaves foraneas
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
     FOREIGN KEY (creado_por) REFERENCES usuario(id_usuario)
 );
@@ -67,6 +72,8 @@ CREATE TABLE horario_doctor (
     hora_fin TIME NOT NULL,
     creado_por INT NOT NULL,
     fecha_creacion DATETIME NOT NULL DEFAULT GETDATE(),
+	
+	-- LLaves foraneas
     FOREIGN KEY (id_doctor) REFERENCES doctor(id_doctor),
     FOREIGN KEY (creado_por) REFERENCES usuario(id_usuario)
 );
@@ -107,9 +114,9 @@ CREATE TABLE historial_medico (
 CREATE TABLE factura (
     id_factura INT PRIMARY KEY IDENTITY(1,1),
     fecha DATE NOT NULL,
-    total DECIMAL(10,2) NOT NULL CHECK (total >= 0),
-    id_paciente INT NOT NULL,
-    id_usuario INT,
+	id_paciente INT NOT NULL,
+    id_usuario INT NOT NULL,
+    total DECIMAL(10,2) NOT NULL CHECK (total >= 0), -- validación de datos para que no sean nulos
     FOREIGN KEY (id_paciente) REFERENCES paciente(id_paciente),
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );

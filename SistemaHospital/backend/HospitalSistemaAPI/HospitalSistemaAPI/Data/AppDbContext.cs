@@ -8,7 +8,8 @@ namespace HospitalSistemaAPI.Data
         public AppDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Paciente> pacientes { get; set; }
-        public DbSet<Servicio> Servicios { get; set; }  
+        public DbSet<Servicio> Servicios { get; set; }
+        public DbSet<Factura> Facturas { get; set; }
 
     }
 }
