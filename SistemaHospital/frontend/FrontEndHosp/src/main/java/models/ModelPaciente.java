@@ -3,7 +3,7 @@ package models;
 import java.util.Date;
 
 
-public class Paciente { //encapsulamiento de datos
+public class ModelPaciente { //encapsulamiento de datos
     
     
     private int id_paciente;

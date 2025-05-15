@@ -6,20 +6,34 @@ GO
 USE hospital_salud;
 GO
 
--- Tabla de usuarios
+-- Tabla de roles
+CREATE TABLE rol (
+    id_rol INT PRIMARY KEY,
+    nombre_rol VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- Insertar roles predeterminados
+INSERT INTO rol (id_rol, nombre_rol) VALUES
+(1, 'administrador'),
+(2, 'medico'),
+(3, 'recepcionista');
+
+-- Tabla de usuarios (modificada)
 CREATE TABLE usuario (
     id_usuario INT PRIMARY KEY IDENTITY(1,1),
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
     nombre_usuario VARCHAR(50) UNIQUE NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
-    rol VARCHAR(50) NOT NULL CHECK (rol IN ('administrador', 'doctor', 'recepcionista')),
+    id_rol INT NOT NULL, -- Relación con la tabla rol
     correo VARCHAR(100) UNIQUE NOT NULL,
     token_recuperacion VARCHAR(100),
-    fecha_expiracion_token DATETIME
+    fecha_expiracion_token DATETIME,
+
+    FOREIGN KEY (id_rol) REFERENCES rol(id_rol)
 );
 
--- Tabla de pacientes (con auditoría simple)
+-- Tabla de pacientes
 CREATE TABLE paciente (
     id_paciente INT PRIMARY KEY IDENTITY(1,1),
     nombre VARCHAR(100) NOT NULL,
@@ -32,8 +46,8 @@ CREATE TABLE paciente (
     correo VARCHAR(100),
     creado_por INT NOT NULL,
     fecha_creacion DATETIME NOT NULL DEFAULT GETDATE(),
-	estado BIT DEFAULT 1,
-	
+    estado BIT DEFAULT 1,
+
     FOREIGN KEY (creado_por) REFERENCES usuario(id_usuario)
 );
 
@@ -45,7 +59,7 @@ CREATE TABLE servicio (
     precio DECIMAL(10,2) NOT NULL CHECK (precio >= 0)
 );
 
--- Tabla de doctores (con auditoría simple)
+-- Tabla de doctores
 CREATE TABLE doctor (
     id_doctor INT PRIMARY KEY IDENTITY(1,1),
     nombre VARCHAR(100) NOT NULL,
@@ -56,14 +70,13 @@ CREATE TABLE doctor (
     id_usuario INT UNIQUE,
     creado_por INT NOT NULL,
     fecha_creacion DATETIME NOT NULL DEFAULT GETDATE(),
-	estado BIT DEFAULT 1,
-	
-	-- LLaves foraneas
+    estado BIT DEFAULT 1,
+
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
     FOREIGN KEY (creado_por) REFERENCES usuario(id_usuario)
 );
 
--- Tabla de horarios de doctores (con auditoría simple)
+-- Tabla de horarios de doctores
 CREATE TABLE horario_doctor (
     id_horario INT PRIMARY KEY IDENTITY(1,1),
     id_doctor INT NOT NULL,
@@ -72,19 +85,19 @@ CREATE TABLE horario_doctor (
     hora_fin TIME NOT NULL,
     creado_por INT NOT NULL,
     fecha_creacion DATETIME NOT NULL DEFAULT GETDATE(),
-	
-	-- LLaves foraneas
+
     FOREIGN KEY (id_doctor) REFERENCES doctor(id_doctor),
     FOREIGN KEY (creado_por) REFERENCES usuario(id_usuario)
 );
 
--- Tabla de citas médicas (ya modificada con id_servicio)
+-- Tabla de citas médicas
 CREATE TABLE cita (
     id_cita INT PRIMARY KEY IDENTITY(1,1),
     fecha_hora DATETIME NOT NULL,
     id_servicio INT NOT NULL,
     id_paciente INT NOT NULL,
     id_doctor INT NOT NULL,
+
     FOREIGN KEY (id_paciente) REFERENCES paciente(id_paciente),
     FOREIGN KEY (id_doctor) REFERENCES doctor(id_doctor),
     FOREIGN KEY (id_servicio) REFERENCES servicio(id_servicio)
@@ -97,6 +110,7 @@ CREATE TABLE consulta (
     tratamiento VARCHAR(500),
     id_cita INT NOT NULL UNIQUE,
     id_usuario INT,
+
     FOREIGN KEY (id_cita) REFERENCES cita(id_cita) ON DELETE CASCADE,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
@@ -107,6 +121,7 @@ CREATE TABLE historial_medico (
     id_paciente INT NOT NULL,
     descripcion VARCHAR(500),
     fecha DATE NOT NULL,
+
     FOREIGN KEY (id_paciente) REFERENCES paciente(id_paciente) ON DELETE CASCADE
 );
 
@@ -114,9 +129,10 @@ CREATE TABLE historial_medico (
 CREATE TABLE factura (
     id_factura INT PRIMARY KEY IDENTITY(1,1),
     fecha DATE NOT NULL,
-	id_paciente INT NOT NULL,
+    id_paciente INT NOT NULL,
     id_usuario INT NOT NULL,
-    total DECIMAL(10,2) NOT NULL CHECK (total >= 0), -- validación de datos para que no sean nulos
+    total DECIMAL(10,2) NOT NULL CHECK (total >= 0),
+
     FOREIGN KEY (id_paciente) REFERENCES paciente(id_paciente),
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
@@ -128,6 +144,7 @@ CREATE TABLE detalle_factura (
     id_servicio INT NOT NULL,
     cantidad INT NOT NULL CHECK (cantidad > 0),
     subtotal DECIMAL(10,2) NOT NULL CHECK (subtotal >= 0),
+
     FOREIGN KEY (id_factura) REFERENCES factura(id_factura) ON DELETE CASCADE,
     FOREIGN KEY (id_servicio) REFERENCES servicio(id_servicio)
 );

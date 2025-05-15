@@ -7,13 +7,18 @@ namespace HospitalSistemaAPI.Models
     [Table("factura")]
     public class Factura
     {
+        public Factura()
+        {
+            Fecha = DateTime.Now.Date; // Asigna la fecha actual sin la hora,
+                                       // para evitar icompatibilidad en el formato
+        }
 
         [Key]
         [Column("id_factura")]
         public int IdFactura { get; set; }
 
         [Column("fecha")]
-        public DateOnly Fecha { get; private set; }
+        public DateTime Fecha { get; private set; }
 
         [Required]
         [Column("id_usuario")]
@@ -34,11 +39,6 @@ namespace HospitalSistemaAPI.Models
 
         //[ForeignKey("IdPaciente")]
         //public Paciente paciente { get; set; } = new Paciente();
-
-        public Factura()
-        {
-           Fecha = DateOnly.FromDateTime(DateTime.Now); //enviar fecha actual
-        }
 
     }
 }

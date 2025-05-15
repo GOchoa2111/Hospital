@@ -28,7 +28,14 @@ namespace HospitalSistemaAPI.Models
         [Column("telefono")]
         public string Telefono { get; set; } = string.Empty;
         [Column("correo")]
+        [EmailAddress]
         public string CorreoElectronico { get; set; } = string.Empty;
+
+        // Relaciones de navegación (comentadas)
+        // public virtual Usuario UsuarioCreador { get; set; }
+        // public virtual ICollection<Cita> Citas { get; set; }
+        // public virtual ICollection<HistorialMedico> Historiales { get; set; }
+        // public virtual ICollection<Factura> Facturas { get; set; }
 
     }
 
