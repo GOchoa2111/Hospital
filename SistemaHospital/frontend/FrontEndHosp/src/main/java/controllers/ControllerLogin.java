@@ -45,7 +45,7 @@ public class ControllerLogin {
 
         // Obtener los valores ingresados por el usuario en los campos de texto
         String usuario = view.getTxtUsuario().getText().trim();
-        String pass = String.valueOf(view.getTxtPassword().getPassword()).trim();
+        String pass = String.valueOf(view.getTxtPassword().getPassword()).trim();//convertir el dato obtenido a string
 
         // Validación simple para asegurarse que no estén vacíos
         if (usuario.isEmpty() || pass.isEmpty()) {
@@ -61,7 +61,7 @@ public class ControllerLogin {
 
         // Mostramos mensaje según el resultado de la autenticación
         if (exito) {
-            JOptionPane.showMessageDialog(view, "Login exitoso");
+            JOptionPane.showMessageDialog(view, "Bienvenido!!   "+ usuario);
             // Abrir ventana principal del sistema
             ViewMenu menu = new ViewMenu();
             menu.setLocationRelativeTo(null);

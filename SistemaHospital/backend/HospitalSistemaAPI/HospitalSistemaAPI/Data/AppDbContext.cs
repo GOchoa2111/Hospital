@@ -18,6 +18,7 @@ namespace HospitalSistemaAPI.Data
         public DbSet<DetalleFactura> DetallesFactura { get; set; }
         public DbSet<HorarioDoctor> HorariosDoctor { get; set; }
         public DbSet<Doctor> Doctores { get; set; }
+
        //public DbSet<Login> Logins { get; set; }
 
     }

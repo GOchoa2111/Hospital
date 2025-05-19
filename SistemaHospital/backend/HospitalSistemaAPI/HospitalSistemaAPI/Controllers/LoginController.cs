@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using HospitalSistemaAPI.DTOs;
+using HospitalSistemaAPI.Models;
+using HospitalSistemaAPI.Data;
 
 namespace HospitalSistemaAPI.Controllers
 {
@@ -7,6 +9,13 @@ namespace HospitalSistemaAPI.Controllers
     [Route("api/[controller]")]
     public class LoginController : ControllerBase
     {
+        private readonly AppDbContext _context;
+
+        public LoginController(AppDbContext context)
+        {
+            _context = context;
+        }
+
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginDTO loginDto)
         {
@@ -15,11 +24,17 @@ namespace HospitalSistemaAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            // Aquí iría la lógica para validar usuario y contraseña
-            // Por ejemplo, buscar usuario en base de datos, verificar contraseña, etc.
+            var usuario = _context.Usuarios
+                .FirstOrDefault(u => u.NombreUsuario == loginDto.NombreUsuario && u.Contrasena == loginDto.Contrasena);
 
-            // Por ahora retornamos OK para pruebas
-            return Ok(new { message = "Login exitoso" });
+            if (usuario != null)
+            {
+                return Ok(new { message = "Login exitoso" });
+            }
+            else
+            {
+                return Unauthorized(new { message = "Usuario o contraseña incorrectos" });
+            }
         }
     }
 }

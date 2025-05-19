@@ -32,10 +32,10 @@ namespace HospitalSistemaAPI.Models
         public string Contrasena { get; set; } = string.Empty;  
 
         [Required]
-        [Column("rol")]
+        [Column("id_rol")]
         [StringLength(50)]
         [RegularExpression("^(administrador|medico|recepcionista)$", ErrorMessage = "Rol inválido")]
-        public string Rol { get; set; } = string.Empty;
+        public int Rol { get; set; }
 
         [Required]
         [Column("correo")]

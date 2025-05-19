@@ -10,9 +10,6 @@ namespace HospitalSistemaAPI.Models
         [Key]
         [Column("id_paciente")]
         public int IdPaciente { get; set; }
-        [Column("fecha_ingreso")]
-        public DateOnly FechaIngreso { get; set; }
-        [Column("nombre")]
         public string Nombre { get; set; } = string.Empty;
         [Column("apellido")]
         public string Apellido {  get; set; } = string.Empty;
@@ -29,7 +26,15 @@ namespace HospitalSistemaAPI.Models
         public string Telefono { get; set; } = string.Empty;
         [Column("correo")]
         [EmailAddress]
-        public string CorreoElectronico { get; set; } = string.Empty;
+        public string Correo { get; set; } = string.Empty;
+        [Column("creado_por")]
+        public int CreadoPor { get; set; }
+        [Column("fecha_creacion")]
+        public DateOnly FechaCreacion { get; set; }
+        [Column("estado")]
+        public bool Estado { get; set; } = true;
+
+
 
         // Relaciones de navegación (comentadas)
         // public virtual Usuario UsuarioCreador { get; set; }
