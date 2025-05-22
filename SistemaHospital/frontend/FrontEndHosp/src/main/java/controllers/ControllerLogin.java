@@ -62,8 +62,10 @@ public class ControllerLogin {
         // Mostramos mensaje según el resultado de la autenticación
         if (exito) {
             JOptionPane.showMessageDialog(view, "Bienvenido!!   "+ usuario);
+            
+            
             // Abrir ventana principal del sistema
-            ViewMenu menu = new ViewMenu();
+            ViewMenu menu = new ViewMenu(login);
             menu.setLocationRelativeTo(null);
             menu.setVisible(true);
             

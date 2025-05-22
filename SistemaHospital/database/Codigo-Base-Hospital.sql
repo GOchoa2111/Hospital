@@ -67,7 +67,6 @@ CREATE TABLE doctor (
     especialidad VARCHAR(100) NOT NULL,
     telefono VARCHAR(20),
     correo VARCHAR(100),
-    id_usuario INT UNIQUE,
     creado_por INT NOT NULL,
     fecha_creacion DATETIME NOT NULL DEFAULT GETDATE(),
     estado BIT DEFAULT 1,

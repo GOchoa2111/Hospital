@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HospitalSistemaAPI.Models
@@ -21,7 +20,7 @@ namespace HospitalSistemaAPI.Models
         [StringLength(100)]
         public string Apellido { get; set; } = string.Empty;
 
-        [Required]
+
         [Column("especialidad")]
         [StringLength(100)]
         public string Especialidad { get; set; } = string.Empty;
@@ -35,14 +34,11 @@ namespace HospitalSistemaAPI.Models
         [EmailAddress]
         public string? Correo { get; set; }
 
-        [Column("id_usuario")]
-        public int? IdUsuario { get; set; }
 
-        [Required]
         [Column("creado_por")]
         public int CreadoPor { get; set; }
 
-        [Required]
+
         [Column("fecha_creacion")]
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 

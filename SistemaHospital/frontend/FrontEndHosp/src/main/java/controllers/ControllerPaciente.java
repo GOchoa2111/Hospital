@@ -65,6 +65,9 @@ public class ControllerPaciente {
             modelo.addRow(fila);
         }
         vista.getTabla().setModel(modelo);//asignar el modelo a la tabla en la vista
+        vista.ocultarColumnas(); //cargar metodo para ocultar columnas según su ubicación
+        
+        
     }
 
     //Agregar Paciente
@@ -108,7 +111,7 @@ public class ControllerPaciente {
                 JOptionPane.showMessageDialog(null, "Error al registrar paciente.");
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "La formato de la fecha ingresada es incorrecta: " + ex.getMessage());
         }
     }
 

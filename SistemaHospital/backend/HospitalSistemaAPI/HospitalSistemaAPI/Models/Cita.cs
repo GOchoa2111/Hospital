@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HospitalSistemaAPI.Models
@@ -27,10 +26,14 @@ namespace HospitalSistemaAPI.Models
         [Column("id_doctor")]
         public int IdDoctor { get; set; }
 
-        // Relaciones de navegación (comentadas)
-        // public virtual Servicio Servicio { get; set; }
-        // public virtual Paciente Paciente { get; set; }
-        // public virtual Doctor Doctor { get; set; }
-        // public virtual Consulta Consulta { get; set; } // relación uno a uno con consulta
+        // Propiedades de navegación (Relaciones de las tablas)
+        [ForeignKey("IdServicio")]
+        public virtual Servicio? Servicio { get; set; }
+        [ForeignKey("IdPaciente")]
+        public virtual Paciente? Paciente { get; set; }
+        [ForeignKey("IdDoctor")]
+        public virtual Doctor? Doctor { get; set; }
+
+        // public virtual Consulta? Consulta { get; set; } // relación uno a uno con consulta
     }
 }

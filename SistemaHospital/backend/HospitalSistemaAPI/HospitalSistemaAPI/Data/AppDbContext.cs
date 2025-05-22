@@ -1,4 +1,5 @@
-﻿using HospitalSistemaAPI.Models;
+﻿using HospitalSistemaAPI.DTO.TecnoSolucionesAPI.DTOs;
+using HospitalSistemaAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 
@@ -18,8 +19,9 @@ namespace HospitalSistemaAPI.Data
         public DbSet<DetalleFactura> DetallesFactura { get; set; }
         public DbSet<HorarioDoctor> HorariosDoctor { get; set; }
         public DbSet<Doctor> Doctores { get; set; }
+        //public DbSet<CitaDetalleDTO> CitaDetalleDTO { get; set; } // DTO para la cita con detalles
 
-       //public DbSet<Login> Logins { get; set; }
+        //public DbSet<Login> Logins { get; set; }
 
     }
 }

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import controllers.ControllerPaciente;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class ViewPacientes extends JInternalFrame {
 
@@ -28,7 +29,7 @@ public class ViewPacientes extends JInternalFrame {
         setSize(800, 600);
         setLayout(new BorderLayout(10, 10));
 
-        this.controlador = new ControllerPaciente(this);
+        this.controlador = new ControllerPaciente(this);//instancia para el controlador de pacientes
 
         // Panel de formulario
         JPanel panelForm = new JPanel(new GridLayout(6, 4, 10, 10));
@@ -168,8 +169,31 @@ public class ViewPacientes extends JInternalFrame {
         // Integración del controlador con la vista
         controllers.ControllerPaciente controller = new controllers.ControllerPaciente(this);
         controller.cargarPacientesEnTabla();
+        
+        //Validar pacientes activos e inactivos
+        tabla.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+    @Override
+    public Component getTableCellRendererComponent(JTable table, Object value,
+            boolean isSelected, boolean hasFocus, int row, int column) {
+
+        Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+        // 
+        String estado = table.getValueAt(row, 11).toString(); // columna 11 = estado en el json
+
+        if (estado.equalsIgnoreCase("Inactivo") || estado.equals("0")) {
+            c.setBackground(Color.PINK); // se puede pintar con RED (color fuerte)
+        } else {
+            c.setBackground(isSelected ? table.getSelectionBackground() : Color.WHITE);
+        }
+
+        return c;
+    }
+});
+
 
     }
+    
 
     public boolean validarCampos() {
 
@@ -276,4 +300,20 @@ public class ViewPacientes extends JInternalFrame {
     public DefaultTableModel getModelo() {
         return modelo;
     }
+
+    
+    //Metodo para ocultar columnas 
+    
+    public void ocultarColumnas() {
+    // ID (columna 0), CreadoPor (columna 10), FechaCreacion (columna 9)
+    int[] columnasAOcultar = {0, 9, 10};
+
+    for (int col : columnasAOcultar) {
+        
+        tabla.getColumnModel().getColumn(col).setMinWidth(0);
+        tabla.getColumnModel().getColumn(col).setMaxWidth(0);
+        tabla.getColumnModel().getColumn(col).setWidth(0);
+    }
+}
+
 }

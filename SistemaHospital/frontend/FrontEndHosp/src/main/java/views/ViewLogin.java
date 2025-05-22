@@ -4,10 +4,15 @@
  */
 package views;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -15,11 +20,7 @@ import javax.swing.JTextField;
  */
 public class ViewLogin extends javax.swing.JFrame {
 
-    /*Hacer publicos los campos
-    public JTextField txtUsuario;
-    public JPasswordField txtPassword;
-    public JButton btnIniciarSesion;*/
-    // Getters para acceder a los componentes desde el controlador
+    //getters
     public JButton getBtnIniciarSesion() {
         return btnIniciarSesion;
     }
@@ -270,7 +271,7 @@ public class ViewLogin extends javax.swing.JFrame {
 
     private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
         // TODO add your handling code here:
-        
+
         //limpiar el campo cuando el usuario haga clic
         txtPassword.setText("");
     }//GEN-LAST:event_txtPasswordMouseClicked
@@ -287,7 +288,7 @@ public class ViewLogin extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws UnsupportedLookAndFeelException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -310,7 +311,7 @@ public class ViewLogin extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
+        UIManager.setLookAndFeel(new FlatLightLaf());
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

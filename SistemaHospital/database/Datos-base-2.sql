@@ -22,8 +22,8 @@ VALUES
 ('José', 'Martínez', '1985-09-20', 'Masculino', 'A-', 'Av. Central', '555-9876', 'jose.martinez@email.com', 3);
 
 -- Doctor
-INSERT INTO doctor (nombre, apellido, especialidad, telefono, correo, id_usuario, creado_por)
-VALUES ('Carlos', 'Ríos', 'Pediatría', '555-1234', 'carlos.rios@hospital.com', 2, 1);
+INSERT INTO doctor (nombre, apellido, especialidad, telefono, correo, creado_por)
+VALUES ('Carlos', 'Ríos', 'Pediatría', '555-1234', 'carlos.rios@hospital.com',1);
 
 -- Horario del doctor
 INSERT INTO horario_doctor (id_doctor, dia_semana, hora_inicio, hora_fin, creado_por)

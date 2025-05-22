@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HospitalSistemaAPI.Models
@@ -10,8 +9,6 @@ namespace HospitalSistemaAPI.Models
         [Key]
         [Column("id_servicio")]
         public int IdServicio { get; set; }
-        [Column("id_usuario")]
-        public int IdUsuario { get; set; }  
 
         [Column("nombre")]
         public string Nombre { get; set; } = string.Empty;
@@ -21,7 +18,7 @@ namespace HospitalSistemaAPI.Models
         public string Descripcion { get; set; } = string.Empty;
 
         [Column("precio")]
-        [Range(0, double.MaxValue, ErrorMessage ="El precio debe ser mayor o igual a cero")]
+        [Range(0, double.MaxValue, ErrorMessage = "El precio debe ser mayor o igual a cero")]
         public decimal Precio { get; set; }
 
         // Relaciones de navegación (comentadas)
