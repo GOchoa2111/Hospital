@@ -1,6 +1,9 @@
 package controllers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -12,10 +15,31 @@ public class ControllerServicios {
 
     private ViewServicios vista; // Referencia a la vista
     private ServiceServicios servicio; // Referencia al servicio
+    
+    
 
     public ControllerServicios(ViewServicios vista) {
         this.vista = vista;
         this.servicio = new ServiceServicios();
+        
+        //Agregar el listener para los botones
+        // Boton para agregar registro
+        this.vista.getBtnAgregar().addActionListener(new ActionListener() {  
+            @Override  
+            public void actionPerformed(ActionEvent e) {  
+                agregarServicio();  
+            }  
+        });
+        
+        //Boton para limpiar campos
+            this.vista.getBtnLimpiar().addActionListener(new ActionListener() {  
+            @Override  
+            public void actionPerformed(ActionEvent e) {  
+                limpiarCampos();  
+            }  
+        });
+        
+        
 
         // Agregar listener para detectar selección de fila en la tabla
         
@@ -70,6 +94,7 @@ public class ControllerServicios {
     }
 
     // Método para cargar datos en los campos para CRUD
+    
     private void cargarDatosFilaSeleccionada() {
         
         int fila = vista.getTblServicios().getSelectedRow();
@@ -85,4 +110,84 @@ public class ControllerServicios {
             vista.getTxtPrecio().setText(precio.toString());
         }
     }
+    
+    //Metodo para agregar servicio
+    
+    public void agregarServicio() {
+    try {
+        // Leer valores del formulario
+        String idServicioStr = vista.getTxtIdServicio().getText().trim();
+        String nombre = vista.getTxtNombre().getText().trim();
+        String descripcion = vista.getTxtDescripcion().getText().trim();
+        String precioStr = vista.getTxtPrecio().getText().trim();
+
+        // Validar campos obligatorios
+        if (nombre.isEmpty() || descripcion.isEmpty() || precioStr.isEmpty()) {
+            JOptionPane.showMessageDialog(vista, "Por favor, complete todos los campos obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Convertir idServicio (opcional, si es autogenerado puede omitirse)
+        int idServicio = 0;
+        if (!idServicioStr.isEmpty()) {
+            try {
+                idServicio = Integer.parseInt(idServicioStr);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(vista, "El ID del servicio debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+
+        // Convertir precio
+        double precio;
+        try {
+            precio = Double.parseDouble(precioStr);
+            if (precio <= 0) {
+                JOptionPane.showMessageDialog(vista, "El precio debe ser un número positivo.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(vista, "El precio debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Crear objeto servicio
+        ModelServicios nuevoServicio = new ModelServicios();
+        nuevoServicio.setIdServicio(idServicio); // Si el ID es autogenerado, puedes omitir esta línea
+        nuevoServicio.setNombre(nombre);
+        nuevoServicio.setDescripcion(descripcion);
+        nuevoServicio.setPrecio(precio);
+
+        // Llamar al servicio para agregar
+        
+        boolean registrado = servicio.agregarPaciente(nuevoServicio);
+
+        if (registrado) {
+            JOptionPane.showMessageDialog(vista, "Servicio registrado correctamente.");
+            limpiarCampos();
+            obtenerServicios();
+        } else {
+            JOptionPane.showMessageDialog(vista, "Error al registrar el servicio.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(vista, "Error inesperado: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
+}
+  
+    private void limpiarCampos() {  
+        vista.getTxtIdServicio().setText("");  
+        vista.getTxtNombre().setText("");  
+        vista.getTxtDescripcion().setText("");  
+        vista.getTxtPrecio().setText("");  
+  
+        // Ajustar botones  
+        vista.getBtnAgregar().setEnabled(true);  
+        vista.getBtnActualizar().setEnabled(false);  
+        vista.getBtnEliminar().setEnabled(false);  
+        vista.getBtnLimpiar().setEnabled(false);  
+  
+        vista.getTxtNombre().requestFocus();  
+    }  
 }

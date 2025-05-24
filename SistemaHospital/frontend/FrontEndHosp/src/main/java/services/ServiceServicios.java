@@ -1,10 +1,16 @@
  
 package services;
 
+import Main.LocalDateAdapter;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import models.ModelServicios;
@@ -52,6 +58,69 @@ public class ServiceServicios {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+    
+    // registrar paciente
+    
+    public boolean agregarPaciente(ModelServicios servicio) {
+    try {
+        URL url = new URL(SERVICIOS); // Endpoint
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Content-Type", "application/json; utf-8");
+        conn.setDoOutput(true);
+
+        // Gson con adaptador para LocalDate
+        Gson gson = new GsonBuilder()
+            .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+            .create();
+
+        String json = gson.toJson(servicio);
+
+        try (OutputStream os = conn.getOutputStream()) {
+            byte[] input = json.getBytes(StandardCharsets.UTF_8);
+            os.write(input, 0, input.length);
+        }
+
+        int responseCode = conn.getResponseCode();
+        return responseCode == 201 || responseCode == 200;
+
+    } catch (Exception e) {
+        System.out.println("Error en registrarPaciente: " + e.getMessage());
+        return false;
+    }
+}
+
+   
+    //actualizar Servicio
+    
+    public boolean actualizarServicio(ModelServicios servicio) {
+        try {
+            URL url = new URL(SERVICIOS + "/" + servicio.getIdServicio()); // EndPoint
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("PUT");
+            conn.setRequestProperty("Content-Type", "application/json; utf-8");
+            conn.setDoOutput(true);
+
+            // Gson con adaptador para fechas
+            Gson gson = new GsonBuilder()
+                    .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+                    .create();
+
+            String json = gson.toJson(servicio);
+
+            try (OutputStream os = conn.getOutputStream()) {
+                byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
+            }
+
+            int responseCode = conn.getResponseCode();
+            return responseCode == 200 || responseCode == 204;
+
+        } catch (Exception e) {
+            System.out.println("Error al actualizar Servicio: " + e.getMessage());
+            return false;
         }
     }
 }
