@@ -40,6 +40,7 @@ controllers\ControllerLogin$1.class
 services\ServiceRepoCitas.class
 views\ViewLogin$2.class
 controllers\ControllerLogin.class
+controllers\ControllerServicios$1.class
 views\ViewMenu.class
 controllers\ControllerServicios.class
 views\ViewUsuarios.class

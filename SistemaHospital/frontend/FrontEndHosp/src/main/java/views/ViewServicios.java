@@ -13,10 +13,8 @@ import javax.swing.JTextField;
  *
  * @author Carlos Orozco
  */
+public class ViewServicios extends JInternalFrame {
 
-public class ViewServicios extends JInternalFrame{
-
-    
     // Getters para los componentes  
     public JTextField getTxtIdServicio() {
         return txtIdServicio;
@@ -38,7 +36,7 @@ public class ViewServicios extends JInternalFrame{
         return btnRegistrar;
     }
 
-    public JButton getBtnEditar() {
+    public JButton getBtnActualizar() {
         return btnActualizar;
     }
 
@@ -53,19 +51,19 @@ public class ViewServicios extends JInternalFrame{
     public JTable getTblServicios() {
         return tblServicios;
     }
-
+    
 
     /**
      * Creates new form View
      */
     public ViewServicios() {
         initComponents();
+        
+        //deshabilitar botones al inciarl el form
+        btnActualizar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        btnLimpiar.setEnabled(false);
     }
-       
-    
-
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
