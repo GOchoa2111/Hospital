@@ -4,18 +4,15 @@
  */
 package util;
 
-
-
 /**
  *
  * @author C-Orozco
  */
-
 import Main.LocalDateTimeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import Models.ModelServicios;
+import models.ModelServicios;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,10 +24,11 @@ public class MapperServicios {
             .create();
 
     public static List<ModelServicios> fromJsonToList(String json) {
-        return gson.fromJson(json, new TypeToken<List<ModelServicios>>(){}.getType());
+        return gson.fromJson(json, new TypeToken<List<ModelServicios>>() {
+        }.getType());
     }
-    
-    public static Gson getGson(){
-    return gson;
+
+    public static Gson getGson() {
+        return gson;
     }
 }

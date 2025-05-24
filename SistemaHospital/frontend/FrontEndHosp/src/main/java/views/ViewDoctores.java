@@ -111,6 +111,7 @@ public class ViewDoctores extends JInternalFrame {
     }
     
     private void configurarTabla() {
+        
         // Configurar las columnas de la tabla
         modeloTabla.addColumn("ID");
         modeloTabla.addColumn("Nombre");

@@ -1,8 +1,8 @@
 package views;
 
+import controllers.ControllerRepoCitas;
 import java.awt.Color;
 import java.awt.Font;
-import javax.security.auth.login.LoginContext;
 import javax.swing.*;
 import models.ModelLogin;//proceso para mostrar usuario logueado importar en este caso
 // importar la clase donde se obtiene el dato a mostrar
@@ -58,17 +58,20 @@ public class ViewMenu extends JFrame {
 
         menuPacientes.add(menuItemGestionPacientes);
 
-        // Menú Citas
+        // Menú RepoCitas
         JMenu menuCitas = new JMenu("Citas");
         JMenuItem menuItemGestionCitas = new JMenuItem("Gestión de Citas");
+
         menuItemGestionCitas.addActionListener(e -> {
-            boolean formularioAbierto = false; //boolean para vericar (true o false)
-            //Recorrer y validar si el formulario esta abierto
+            boolean formularioAbierto = false;
+
+            // Recorrer los frames abiertos para verificar si el formulario ya está abierto
             for (JInternalFrame frame : desktopPane.getAllFrames()) {
                 if (frame instanceof ViewRepoCitas) {
                     formularioAbierto = true;
                     try {
                         frame.setSelected(true); // Llevar al frente
+                        frame.toFront();
                     } catch (java.beans.PropertyVetoException ex) {
                         ex.printStackTrace();
                     }
@@ -77,12 +80,23 @@ public class ViewMenu extends JFrame {
             }
 
             if (!formularioAbierto) {
+                // Crear instancia del formulario
                 ViewRepoCitas formularioRepoCitas = new ViewRepoCitas();
+
+                // Agregar al desktopPane
                 desktopPane.add(formularioRepoCitas);
+
+                // Crear el controlador y pasar la vista
+                ControllerRepoCitas controlador = new ControllerRepoCitas(formularioRepoCitas);
+
+                // Mostrar el formulario
                 formularioRepoCitas.setVisible(true);
+
+                // Cargar los datos en la tabla
+                controlador.cargarCitasEnTabla();
             }
         });
-       
+
         menuCitas.add(menuItemGestionCitas);
 
         // Menú Doctores
@@ -112,18 +126,20 @@ public class ViewMenu extends JFrame {
         });
         menuDoctores.add(menuItemGestionDoctores); //añadir el boton al panel para abrir el form
 
-         //Menú Servicios
+        // Menú Servicios
         JMenu menuServicios = new JMenu("Servicios");
         JMenuItem menuItemGestionServicios = new JMenuItem("Gestión de Servicios");
 
-         menuItemGestionServicios.addActionListener(e -> {
-            boolean formularioAbierto = false; //boolean para vericar (true o false)
-            //Recorrer y validar si el formulario esta abierto
+        menuItemGestionServicios.addActionListener(e -> {
+            boolean formularioAbierto = false;
+
+            // Recorrer los frames abiertos para verificar si el formulario ya está abierto
             for (JInternalFrame frame : desktopPane.getAllFrames()) {
-                if (frame instanceof ViewConsulta) {
+                if (frame instanceof views.ViewServicios) {
                     formularioAbierto = true;
                     try {
                         frame.setSelected(true); // Llevar al frente
+                        frame.toFront();
                     } catch (java.beans.PropertyVetoException ex) {
                         ex.printStackTrace();
                     }
@@ -132,25 +148,48 @@ public class ViewMenu extends JFrame {
             }
 
             if (!formularioAbierto) {
-                ViewConsulta formularioServicios = new ViewConsulta();
-                desktopPane.add(formularioServicios);
-                formularioServicios.setVisible(true);
+                try {
+                    // Crear instancia del formulario
+                    views.ViewServicios formularioServicios = new views.ViewServicios();
+
+                    // Agregar al desktopPane
+                    desktopPane.add(formularioServicios);
+
+                    // Crear el controlador y pasar la vista
+                    controllers.ControllerServicios controlador = new controllers.ControllerServicios(formularioServicios);
+
+                    // Mostrar el formulario
+                    formularioServicios.setVisible(true);
+
+                    // Cargar los datos en la tabla
+                    controlador.obtenerServicios();
+
+                    // Seleccionar y llevar al frente el formulario
+                    formularioServicios.setSelected(true);
+                    formularioServicios.toFront();
+
+                } catch (Exception ex) {
+                    System.err.println("Error al abrir el formulario de servicios: " + ex.getMessage());
+                    ex.printStackTrace();
+                }
             }
         });
-        menuServicios.add(menuItemGestionServicios); //añadir el boton al panel para abrir el form
+
+        menuServicios.add(menuItemGestionServicios);
+
+        menuServicios.add(menuItemGestionServicios);
 
         // Menú Reportes
         JMenu menuReportes = new JMenu("Reportes");
         JMenuItem menuItemReportes = new JMenuItem("Generar Reportes");
         menuItemReportes.addActionListener(e -> JOptionPane.showMessageDialog(this, "Abrir módulo Reportes"));
         menuReportes.add(menuItemReportes);
-        
+
         //Menú Roles
-         
         JMenu menuRoles = new JMenu("Roles");
         JMenuItem menuItemRoles = new JMenuItem("Gestión de Roles");
 
-         menuItemRoles.addActionListener(e -> {
+        menuItemRoles.addActionListener(e -> {
             boolean formularioAbierto = false; //boolean para vericar (true o false)
             //Recorrer y validar si el formulario esta abierto
             for (JInternalFrame frame : desktopPane.getAllFrames()) {
@@ -173,7 +212,6 @@ public class ViewMenu extends JFrame {
         });
         menuRoles.add(menuItemRoles); //añadir el boton al panel para abrir el form
 
-
         // Menú Salir
         JMenu menuSalir = new JMenu("Salir");
         JMenuItem menuItemSalir = new JMenuItem("Cerrar sesión");
@@ -193,9 +231,6 @@ public class ViewMenu extends JFrame {
         menuBar.add(menuReportes);
         menuBar.add(menuRoles);
         menuBar.add(menuSalir);
-        
-        
-        
 
         // Establecer barra de menú
         setJMenuBar(menuBar);
@@ -203,7 +238,7 @@ public class ViewMenu extends JFrame {
         // Etiqueta de bienvenida 
         JLabel lblBienvenida = new JLabel("Bienvenido al Sistema Hospitalario");
         lblBienvenida.setBounds(30, 30, 300, 30);
-        lblBienvenida.setFont(new  Font("Arial", Font.BOLD,16));
+        lblBienvenida.setFont(new Font("Arial", Font.BOLD, 16));
         desktopPane.add(lblBienvenida);
 
         //Etiqueta de usuario que se loguea
@@ -222,5 +257,4 @@ public class ViewMenu extends JFrame {
 
         });
     }*/
-
 }

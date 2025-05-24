@@ -13,44 +13,47 @@ import javax.swing.JTextField;
  *
  * @author Carlos Orozco
  */
-public class ViewServicios extends JInternalFrame {
+
+public class ViewServicios extends JInternalFrame{
+
     
-  // Getters para los componentes  
-    public JTextField getTxtIdServicio() {  
-        return txtIdServicio;  
-    }  
-      
-    public JTextField getTxtNombre() {  
-        return txtNombre;  
-    }  
-      
-    public javax.swing.JTextArea getTxtDescripcion() {  
-        return txtDescripcion;  
-    }  
-      
-    public JTextField getTxtPrecio() {  
-        return txtPrecio;  
-    }  
-      
-    public JButton getBtnAgregar() {  
-        return btnRegistrar;  
-    }  
-      
-    public JButton getBtnEditar() {  
-        return btnActualizar;  
-    }  
-      
-    public JButton getBtnEliminar() {  
-        return btnEliminar;  
-    }  
-      
-    public JButton getBtnLimpiar() {  
-        return btnLimpiar;  
-    }  
-      
-    public JTable getTblServicios() {  
-        return tblServicios;  
+    // Getters para los componentes  
+    public JTextField getTxtIdServicio() {
+        return txtIdServicio;
     }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public javax.swing.JTextArea getTxtDescripcion() {
+        return txtDescripcion;
+    }
+
+    public JTextField getTxtPrecio() {
+        return txtPrecio;
+    }
+
+    public JButton getBtnAgregar() {
+        return btnRegistrar;
+    }
+
+    public JButton getBtnEditar() {
+        return btnActualizar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public JButton getBtnLimpiar() {
+        return btnLimpiar;
+    }
+
+    public JTable getTblServicios() {
+        return tblServicios;
+    }
+
 
     /**
      * Creates new form View
@@ -58,6 +61,11 @@ public class ViewServicios extends JInternalFrame {
     public ViewServicios() {
         initComponents();
     }
+       
+    
+
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,7 +96,7 @@ public class ViewServicios extends JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setResizable(true);
+        setMaximizable(true);
         setTitle("Gestion de Servicios");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

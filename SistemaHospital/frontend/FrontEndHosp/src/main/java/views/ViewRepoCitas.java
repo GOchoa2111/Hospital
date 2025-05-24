@@ -5,14 +5,7 @@
 package views;
 
 
-import com.formdev.flatlaf.util.ColorFunctions;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JTable;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import controllers.ControllerRepoCitas;
-import javax.swing.JTextField;
+
 
 /**
  *
@@ -20,6 +13,8 @@ import javax.swing.JTextField;
  */
 
 public class ViewRepoCitas extends javax.swing.JInternalFrame {
+    
+   
     
     private javax.swing.JButton btnbuscar;
     
@@ -39,14 +34,12 @@ public class ViewRepoCitas extends javax.swing.JInternalFrame {
      * Creates new form ViewRepoCitas
      */
     public ViewRepoCitas() {
+        
         initComponents();
-        this.setClosable(true);
-        this.setIconifiable(true);
-        
-        
+      
         
     }
-    
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,7 +57,9 @@ public class ViewRepoCitas extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setIconifiable(true);
+        setResizable(true);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -134,6 +129,8 @@ public class ViewRepoCitas extends javax.swing.JInternalFrame {
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarMouseClicked
+
+    
 
     /**
      * @param args the command line arguments
