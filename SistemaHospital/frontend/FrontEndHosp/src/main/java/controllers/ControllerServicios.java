@@ -48,7 +48,7 @@ public class ControllerServicios {
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
                     cargarDatosFilaSeleccionada();
-                    //habilitar los botones despues de seleccionar una fila y deshabilitar el boton agregar
+                    //Acción de botones despues de seleccionar una fila y deshabilitar el boton agregar
                     
                     vista.getBtnAgregar().setEnabled(false);
                     vista.getBtnEliminar().setEnabled(true);

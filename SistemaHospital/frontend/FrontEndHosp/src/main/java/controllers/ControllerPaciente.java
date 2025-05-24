@@ -218,6 +218,14 @@ public class ControllerPaciente {
         vista.getTxtTelefono().setText("");
         vista.getTxtCorreo().setText("");
         vista.getComboEstado().setSelectedIndex(0); // valor predeterminado Activo
+        
+        // Ajustar botones  
+        vista.getBtnRegistrar().setEnabled(true);  
+        vista.getBtnActualizar().setEnabled(false);  
+        vista.getBtnEliminar().setEnabled(false);  
+        vista.getBtnLimpiar().setEnabled(false);  
+  
+        vista.getTxtNombre().requestFocus();  
     }
 
 }

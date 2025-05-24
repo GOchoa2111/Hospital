@@ -19,6 +19,7 @@ public class ViewPacientes extends JInternalFrame {
     private JTable tabla;
     private DefaultTableModel modelo;
     private ControllerPaciente controlador;
+   
 
     public ViewPacientes() { //constructor del formulario pacientes
         setTitle("Gestión de Pacientes");
@@ -30,6 +31,7 @@ public class ViewPacientes extends JInternalFrame {
         setLayout(new BorderLayout(10, 10));
 
         this.controlador = new ControllerPaciente(this);//instancia para el controlador de pacientes
+        
 
         // Panel de formulario
         JPanel panelForm = new JPanel(new GridLayout(6, 4, 10, 10));
@@ -118,7 +120,7 @@ public class ViewPacientes extends JInternalFrame {
         btnLimpiar = new JButton("Limpiar"); //botones de prueba (no se utilizaran)
         btnLimpiar.setPreferredSize(btnSize);
         panelBotones.add(btnLimpiar);
-        
+
         //llamar metodo para limpiar campos desde controller
         btnLimpiar.addActionListener(new ActionListener() {
             @Override
@@ -138,6 +140,8 @@ public class ViewPacientes extends JInternalFrame {
         tabla.setPreferredScrollableViewportSize(new Dimension(700, 100));
         JScrollPane scrollPane = new JScrollPane(tabla);
         add(scrollPane, BorderLayout.CENTER);
+        
+        btnRegistrar.setEnabled(false); //desabilitar el boton al inciar el form
 
         //Metodo para seleccionar fila
         tabla.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -162,6 +166,12 @@ public class ViewPacientes extends JInternalFrame {
                     txtCorreo.setText(tabla.getValueAt(fila, 8).toString());
                     comboEstado.setSelectedItem(tabla.getValueAt(fila, 9).toString());
 
+                    //habilitar los botones despues de seleccionar una fila y deshabilitar el boton agregar
+                    btnRegistrar.setEnabled(false);
+                    btnEliminar.setEnabled(true);
+                    btnActualizar.setEnabled(true);
+                    btnLimpiar.setEnabled(true);
+
                 }
             }
         });
@@ -169,31 +179,29 @@ public class ViewPacientes extends JInternalFrame {
         // Integración del controlador con la vista
         controllers.ControllerPaciente controller = new controllers.ControllerPaciente(this);
         controller.cargarPacientesEnTabla();
-        
+
         //Validar pacientes activos e inactivos
         tabla.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-    @Override
-    public Component getTableCellRendererComponent(JTable table, Object value,
-            boolean isSelected, boolean hasFocus, int row, int column) {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                    boolean isSelected, boolean hasFocus, int row, int column) {
 
-        Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-        // 
-        String estado = table.getValueAt(row, 11).toString(); // columna 11 = estado en el json
+                // 
+                String estado = table.getValueAt(row, 11).toString(); // columna 11 = estado en el json
 
-        if (estado.equalsIgnoreCase("Inactivo") || estado.equals("0")) {
-            c.setBackground(Color.PINK); // se puede pintar con RED (color fuerte)
-        } else {
-            c.setBackground(isSelected ? table.getSelectionBackground() : Color.WHITE);
-        }
+                if (estado.equalsIgnoreCase("Inactivo") || estado.equals("0")) {
+                    c.setBackground(Color.PINK); // se puede pintar con RED (color fuerte)
+                } else {
+                    c.setBackground(isSelected ? table.getSelectionBackground() : Color.WHITE);
+                }
 
-        return c;
+                return c;
+            }
+        });
+
     }
-});
-
-
-    }
-    
 
     public boolean validarCampos() {
 
@@ -301,19 +309,17 @@ public class ViewPacientes extends JInternalFrame {
         return modelo;
     }
 
-    
     //Metodo para ocultar columnas 
-    
     public void ocultarColumnas() {
-    // ID (columna 0), CreadoPor (columna 10), FechaCreacion (columna 9)
-    int[] columnasAOcultar = {0, 9, 10};
+        // ID (columna 0), CreadoPor (columna 10), FechaCreacion (columna 9)
+        int[] columnasAOcultar = {0, 9, 10};
 
-    for (int col : columnasAOcultar) {
-        
-        tabla.getColumnModel().getColumn(col).setMinWidth(0);
-        tabla.getColumnModel().getColumn(col).setMaxWidth(0);
-        tabla.getColumnModel().getColumn(col).setWidth(0);
+        for (int col : columnasAOcultar) {
+
+            tabla.getColumnModel().getColumn(col).setMinWidth(0);
+            tabla.getColumnModel().getColumn(col).setMaxWidth(0);
+            tabla.getColumnModel().getColumn(col).setWidth(0);
+        }
     }
-}
 
 }
