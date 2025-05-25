@@ -50,6 +50,7 @@ views\ViewConsulta.class
 controllers\RolesController.class
 views\ViewUsuarios$3.class
 views\ViewPacientes$6.class
+controllers\ControllerServicios$4.class
 util\MapperServicios$1.class
 views\ViewCitas.class
 views\ViewDoctores$2.class
