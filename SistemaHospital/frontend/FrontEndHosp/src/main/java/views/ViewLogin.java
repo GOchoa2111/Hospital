@@ -7,6 +7,7 @@ package views;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -58,24 +59,31 @@ public class ViewLogin extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this,
                 "La Salud de nuestros pacientes es nuestra prioridad",
                 "¡Bienvenido al Sistema Hospitalario!",
-                
                 JOptionPane.INFORMATION_MESSAGE);
 
         initComponents();
-        
-        
+
         this.setLocationRelativeTo(null); //centrar formulario
+
+        //cargar iconos para efecto del ojo
+        ImageIcon iconoOjoAbierto = new ImageIcon(getClass().getResource("/Images/vista.png"));
+        ImageIcon iconoOjoCerrado = new ImageIcon(getClass().getResource("/Images/ojo-cerrado.png"));
+        
+        //icono por default
+        jbtnVerPass.setIcon(iconoOjoCerrado);
 
         //Acciones para el boton ("visualizar password")
         jbtnVerPass.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 mostrarPassword(true); // Mostrar mientras está presionado
+                jbtnVerPass.setIcon(iconoOjoAbierto);
             }
 
             @Override
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 mostrarPassword(false); // Ocultar cuando se suelta
+                jbtnVerPass.setIcon(iconoOjoCerrado);
             }
         });
 
