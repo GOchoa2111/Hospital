@@ -1,4 +1,3 @@
- 
 package services;
 
 import Main.LocalDateAdapter;
@@ -21,12 +20,13 @@ import util.MapperServicios;
  * @author C-Orozco
  */
 public class ServiceServicios {
+
     private static final String SERVICIOS = "http://localhost:5132/api/Servicios";
 
     public List<ModelServicios> obtenerServicios() {
         String json = obtenerDoctoresJson();
         if (json != null && !json.isEmpty()) {
-            
+
             return MapperServicios.fromJsonToList(json);//implementación del convertidor a gson
         }
         return new ArrayList<>(); // Retorna una lista vacía si no hay datos
@@ -60,41 +60,38 @@ public class ServiceServicios {
             return null;
         }
     }
-    
+
     // registrar paciente
-    
-    public boolean agregarPaciente(ModelServicios servicio) {
-    try {
-        URL url = new URL(SERVICIOS); // Endpoint
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("POST");
-        conn.setRequestProperty("Content-Type", "application/json; utf-8");
-        conn.setDoOutput(true);
+    public boolean agregarServicio(ModelServicios servicio) {
+        try {
+            URL url = new URL(SERVICIOS); // Endpoint
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json; utf-8");
+            conn.setDoOutput(true);
 
-        // Gson con adaptador para LocalDate
-        Gson gson = new GsonBuilder()
-            .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
-            .create();
+            // Gson con adaptador para LocalDate
+            Gson gson = new GsonBuilder()
+                    .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+                    .create();
 
-        String json = gson.toJson(servicio);
+            String json = gson.toJson(servicio);
 
-        try (OutputStream os = conn.getOutputStream()) {
-            byte[] input = json.getBytes(StandardCharsets.UTF_8);
-            os.write(input, 0, input.length);
+            try (OutputStream os = conn.getOutputStream()) {
+                byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
+            }
+
+            int responseCode = conn.getResponseCode();
+            return responseCode == 201 || responseCode == 200;
+
+        } catch (Exception e) {
+            System.out.println("Error en registrarPaciente: " + e.getMessage());
+            return false;
         }
-
-        int responseCode = conn.getResponseCode();
-        return responseCode == 201 || responseCode == 200;
-
-    } catch (Exception e) {
-        System.out.println("Error en registrarPaciente: " + e.getMessage());
-        return false;
     }
-}
 
-   
     //actualizar Servicio
-    
     public boolean actualizarServicio(ModelServicios servicio) {
         try {
             URL url = new URL(SERVICIOS + "/" + servicio.getIdServicio()); // EndPoint
@@ -122,5 +119,21 @@ public class ServiceServicios {
             System.out.println("Error al actualizar Servicio: " + e.getMessage());
             return false;
         }
+    }
+
+    //Eliminar un servicio
+    public boolean eliminarServicio(int idServicio) {
+        try {
+            URL url = new URL(SERVICIOS + "/" + idServicio);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("DELETE");
+
+            int responseCode = conn.getResponseCode();
+            return responseCode == HttpURLConnection.HTTP_OK || responseCode == HttpURLConnection.HTTP_NO_CONTENT;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
     }
 }

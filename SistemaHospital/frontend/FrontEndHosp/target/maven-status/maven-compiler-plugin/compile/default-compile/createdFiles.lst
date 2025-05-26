@@ -66,6 +66,7 @@ views\ViewDoctores.class
 models\ModelPaciente.class
 util\MapperServicios.class
 views\ViewLogin$6.class
+controllers\ControllerServicios$5.class
 controllers\ControllerRepoCitas.class
 util\MapperDoctor.class
 views\ViewLogin$3.class

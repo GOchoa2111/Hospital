@@ -53,7 +53,17 @@ public class ViewLogin extends javax.swing.JFrame {
     }
 
     public ViewLogin() {
+
+        // Mostrar mensaje de bienvenida  
+        JOptionPane.showMessageDialog(this,
+                "La Salud de nuestros pacientes es nuestra prioridad",
+                "¡Bienvenido al Sistema Hospitalario!",
+                
+                JOptionPane.INFORMATION_MESSAGE);
+
         initComponents();
+        
+        
         this.setLocationRelativeTo(null); //centrar formulario
 
         //Acciones para el boton ("visualizar password")
@@ -94,6 +104,7 @@ public class ViewLogin extends javax.swing.JFrame {
         jbtnVerPass = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Hospitalario");
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/auth_bg.jpg"))); // NOI18N
 
@@ -110,27 +121,25 @@ public class ViewLogin extends javax.swing.JFrame {
             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
         );
 
-        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Hospital Salud");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Usuario");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Contraseña");
 
         txtUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(0, 0, 153));
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         txtPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtPassword.setForeground(new java.awt.Color(0, 0, 153));
         txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPassword.setText("password");
         txtPassword.setPreferredSize(new java.awt.Dimension(64, 22));
@@ -155,14 +164,15 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel5.setText("Olvidaste tu contraseña?");
 
         btnRecuperar.setBackground(new java.awt.Color(242, 242, 242));
-        btnRecuperar.setForeground(new java.awt.Color(51, 51, 255));
+        btnRecuperar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRecuperar.setForeground(new java.awt.Color(102, 204, 255));
         btnRecuperar.setText("Recuperar");
         btnRecuperar.setBorder(null);
         btnRecuperar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnIniciarSesion.setBackground(new java.awt.Color(242, 242, 242));
         btnIniciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnIniciarSesion.setForeground(new java.awt.Color(51, 51, 255));
+        btnIniciarSesion.setForeground(new java.awt.Color(102, 204, 255));
         btnIniciarSesion.setText("Iniciar Sesión");
         btnIniciarSesion.setBorder(null);
         btnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -223,11 +233,9 @@ public class ViewLogin extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(46, 46, 46)
-                        .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jbtnVerPass, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbtnVerPass, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRecuperar, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))

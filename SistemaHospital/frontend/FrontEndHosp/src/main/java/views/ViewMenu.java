@@ -248,6 +248,48 @@ public class ViewMenu extends JFrame {
         usuarioLogin.setBounds(60, 60, 300, 60);
         desktopPane.add(usuarioLogin);
 
+        //Pie de formulario
+        JLabel descripcionHospital = new JLabel("<html><center>Hospital General - "
+                + "Cuidando tu salud con compromiso y excelencia.<br>Dirección: Calle Principal #123, "
+                + "Ciudad<br>Teléfono: (502) 1234-5678</center></html>");
+        descripcionHospital.setFont(new Font("Arial", Font.ITALIC, 18));
+        descripcionHospital.setForeground(Color.DARK_GRAY);
+        descripcionHospital.setBounds(30, 600, 600, 30);
+        desktopPane.add(descripcionHospital);
+
+        // Decripción del hospital
+        JLabel descripcionLabel = new JLabel("<html><p style='width:400px;'>Hospital La Salud tiene como objetivo el desarrollo "
+                + "de un centro de atención médica integral que brinde servicios de salud de alta calidad, accesibles"
+                + " y humanizados a la comunidad. Diseñado para responder a las necesidades actuales del sistema sanitario,"
+                + " el hospital combinará tecnología de vanguardia, un equipo médico altamente calificado y una infraestructura"
+                + " moderna orientada al bienestar del paciente.</p></html>");
+        descripcionLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        descripcionLabel.setForeground(Color.DARK_GRAY);
+        descripcionLabel.setBounds(700, 30, 500, 150);
+        desktopPane.add(descripcionLabel);
+
+        //misión y visión
+        // Misión y Visión con formato HTML
+        String textoMisionVision = "<html>"
+                + "<div style='width:400px; text-align: justify; margin: 0 auto;'>"
+                + "<h2 style='text-align: center;'>Misión</h2>"
+                + "<p>Brindar atención médica integral, humana y de calidad, basada en la excelencia profesional, la innovación "
+                + "tecnológica y el compromiso con el bienestar de nuestros pacientes, promoviendo una cultura de prevención, "
+                + "respeto y mejora continua en todos nuestros servicios de salud.</p>"
+                + "<h2 style='text-align: center;'>Visión</h2>"
+                + "<p>Ser un hospital de referencia a nivel regional y nacional, reconocido por su liderazgo en atención sanitaria, "
+                + "su modelo centrado en el paciente y su contribución al desarrollo de la medicina a través de la investigación,"
+                + " la formación y la implementación de soluciones innovadoras y sostenibles.</p>"
+                + "</div>"
+                + "</html>";
+
+        JLabel labelMisionVision = new JLabel(textoMisionVision);
+        labelMisionVision.setFont(new Font("Arial", Font.PLAIN, 14));
+        labelMisionVision.setForeground(Color.DARK_GRAY);
+        labelMisionVision.setBounds(700, 200, 450, 250); // Ajusta posición y tamaño según tu diseño
+
+        desktopPane.add(labelMisionVision);
+
     }
 
     /*public static void main(String[] args) {
