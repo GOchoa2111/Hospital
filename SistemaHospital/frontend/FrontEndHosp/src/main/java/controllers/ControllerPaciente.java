@@ -139,7 +139,7 @@ public class ControllerPaciente {
             String estadoStr = vista.getComboEstado().getSelectedItem().toString();
             boolean estado = estadoStr.equalsIgnoreCase("Activo") || estadoStr.equalsIgnoreCase("true");
 
-            // Crear objeto paciente
+            // Crear objeto paciente setear los datos
             ModelPaciente paciente = new ModelPaciente();
             paciente.setIdPaciente(id);
             paciente.setNombre(nombre);

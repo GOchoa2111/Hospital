@@ -1,3 +1,5 @@
+package util;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,7 +12,7 @@ public class Loading extends JWindow {
         content.setBackground(Color.WHITE);
 
         // Logo del hospital
-        ImageIcon logo = new ImageIcon(getClass().getResource("/Images/logo.png"));
+        ImageIcon logo = new ImageIcon(getClass().getResource("/Images/logo-hospital-250-250.png"));
         JLabel logoLabel = new JLabel(logo, JLabel.CENTER);
         content.add(logoLabel, BorderLayout.CENTER);
 
@@ -29,6 +31,9 @@ public class Loading extends JWindow {
         setContentPane(content);
         setSize(500, 300);
         setLocationRelativeTo(null); // Centrado
+        
+        mostrar();//llamar modulo para actualizar la barra de estado.
+        
     }
 
     public void mostrar() {
@@ -37,7 +42,7 @@ public class Loading extends JWindow {
         for (int i = 0; i <= 100; i++) {
             progressBar.setValue(i);
             try {
-                Thread.sleep(40); // 40ms * 100 = 4 segundos total
+                Thread.sleep(50); // 40ms * 100 = 4 segundos total
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -46,7 +51,7 @@ public class Loading extends JWindow {
         dispose(); // Cerrar splash al terminar
     }
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         Loading splash = new Loading();
         splash.mostrar();
 
@@ -56,5 +61,5 @@ public class Loading extends JWindow {
         menuPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         menuPrincipal.setLocationRelativeTo(null);
         menuPrincipal.setVisible(true);
-    }
+    }*/
 }

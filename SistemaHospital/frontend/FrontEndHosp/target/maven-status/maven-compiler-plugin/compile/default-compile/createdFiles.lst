@@ -27,6 +27,7 @@ controllers\ControllerServicios$1.class
 controllers\ControllerServicios.class
 services\ServiceRoles.class
 views\ViewConsulta.class
+util\Loading.class
 views\ViewUsuarios$3.class
 views\ViewPacientes$6.class
 views\ViewCitas.class
@@ -69,7 +70,6 @@ views\ViewPacientes$3.class
 models\ModelRepoCitas.class
 views\ViewConsulta$1.class
 controllers\ControllerServicios$5.class
-Loading.class
 controllers\ControllerRepoCitas.class
 views\ViewLogin$3.class
 models\ModelDoctores.class

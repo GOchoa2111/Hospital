@@ -19,7 +19,6 @@ public class ViewPacientes extends JInternalFrame {
     private JTable tabla;
     private DefaultTableModel modelo;
     private ControllerPaciente controlador;
-   
 
     public ViewPacientes() { //constructor del formulario pacientes
         setTitle("Gestión de Pacientes");
@@ -31,7 +30,6 @@ public class ViewPacientes extends JInternalFrame {
         setLayout(new BorderLayout(10, 10));
 
         this.controlador = new ControllerPaciente(this);//instancia para el controlador de pacientes
-        
 
         // Panel de formulario
         JPanel panelForm = new JPanel(new GridLayout(6, 4, 10, 10));
@@ -117,7 +115,7 @@ public class ViewPacientes extends JInternalFrame {
             }
         });
 
-        btnLimpiar = new JButton("Limpiar"); //botones de prueba (no se utilizaran)
+        btnLimpiar = new JButton("Limpiar");
         btnLimpiar.setPreferredSize(btnSize);
         panelBotones.add(btnLimpiar);
 
@@ -140,11 +138,15 @@ public class ViewPacientes extends JInternalFrame {
         tabla.setPreferredScrollableViewportSize(new Dimension(700, 100));
         JScrollPane scrollPane = new JScrollPane(tabla);
         add(scrollPane, BorderLayout.CENTER);
-        
-        btnRegistrar.setEnabled(false); //desabilitar el boton al inciar el form
 
-        //Metodo para seleccionar fila
-        tabla.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+        //habilitar boton registrar y deshabilitar actualizar,limpiar,eliminar
+        btnRegistrar.setEnabled(true);
+        btnActualizar.setEnabled(false);
+        btnLimpiar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+
+        //Metodo para seleccionar fila versión 1
+        /*tabla.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting() && tabla.getSelectedRow() != -1) {
@@ -155,7 +157,7 @@ public class ViewPacientes extends JInternalFrame {
                     System.out.println("Nombre seleccionado: " + nombre);
 
                     // Pasar los valores a los campos del formulario
-                    //int fila = tabla.getSelectedRow();
+                    txtId.setText(tabla.getValueAt(fila, 0).toString());
                     txtNombre.setText(tabla.getValueAt(fila, 1).toString());
                     txtApellido.setText(tabla.getValueAt(fila, 2).toString());
                     txtFechaNacimiento.setText(tabla.getValueAt(fila, 3).toString());
@@ -164,7 +166,9 @@ public class ViewPacientes extends JInternalFrame {
                     txtDireccion.setText(tabla.getValueAt(fila, 6).toString());
                     txtTelefono.setText(tabla.getValueAt(fila, 7).toString());
                     txtCorreo.setText(tabla.getValueAt(fila, 8).toString());
-                    comboEstado.setSelectedItem(tabla.getValueAt(fila, 9).toString());
+                    //comboEstado.setSelectedItem(tabla.getValueAt(fila, 9).toString());
+                    boolean estado = Boolean.parseBoolean(tabla.getValueAt(fila, 9).toString());
+                    comboEstado.setSelectedItem(estado ? "Activo" : "Inactivo");
 
                     //habilitar los botones despues de seleccionar una fila y deshabilitar el boton agregar
                     btnRegistrar.setEnabled(false);
@@ -172,6 +176,48 @@ public class ViewPacientes extends JInternalFrame {
                     btnActualizar.setEnabled(true);
                     btnLimpiar.setEnabled(true);
 
+                }
+            }
+        });*/
+        //metodo para seleccionar versión 2
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int fila = tabla.getSelectedRow();
+                if (fila != -1) {
+                    try {
+                        txtId.setText(tabla.getValueAt(fila, 0).toString());
+                        txtNombre.setText(tabla.getValueAt(fila, 1).toString());
+                        txtApellido.setText(tabla.getValueAt(fila, 2).toString());
+                        txtFechaNacimiento.setText(tabla.getValueAt(fila, 3).toString());
+                        comboGenero.setSelectedItem(tabla.getValueAt(fila, 4).toString().trim());
+                        comboTipoSangre.setSelectedItem(tabla.getValueAt(fila, 5).toString().trim());
+                        txtDireccion.setText(tabla.getValueAt(fila, 6).toString());
+                        txtTelefono.setText(tabla.getValueAt(fila, 7).toString());
+                        txtCorreo.setText(tabla.getValueAt(fila, 8).toString());
+
+                        // Manejo robusto del estado
+                        Object estadoObj = tabla.getValueAt(fila, 9);
+                        boolean estado = false;
+                        if (estadoObj instanceof Boolean) {
+                            estado = (Boolean) estadoObj;
+                        } else if (estadoObj instanceof String) {
+                            String estadoStr = ((String) estadoObj).trim().toLowerCase();
+                            estado = estadoStr.equals("true") || estadoStr.equals("1") || estadoStr.equals("activo");
+                        } else if (estadoObj instanceof Integer) {
+                            estado = ((Integer) estadoObj) == 1;
+                        }
+
+                        comboEstado.setSelectedItem(estado ? "Activo" : "Inactivo");
+
+                        btnRegistrar.setEnabled(false);
+                        btnEliminar.setEnabled(true);
+                        btnActualizar.setEnabled(true);
+                        btnLimpiar.setEnabled(true);
+
+                    } catch (Exception ex) {
+                        System.err.println("Error al seleccionar fila: " + ex.getMessage());
+                    }
                 }
             }
         });

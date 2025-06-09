@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HospitalSistemaAPI.Data;
 using HospitalSistemaAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HospitalSistemaAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ConsultasController : ControllerBase
     {
         private readonly AppDbContext _context;

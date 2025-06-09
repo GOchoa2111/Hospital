@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using HospitalSistemaAPI.Models;
 
 namespace HospitalSistemaAPI.Models
 {
@@ -29,13 +30,16 @@ namespace HospitalSistemaAPI.Models
         [Required]
         [Column("contrasena")]
         [StringLength(255)]
-        public string Contrasena { get; set; } = string.Empty;  
+        public string Contrasena { get; set; } = string.Empty;
 
+        // Clave foránea al rol
         [Required]
         [Column("id_rol")]
-        [StringLength(50)]
-        [RegularExpression("^(administrador|medico|recepcionista)$", ErrorMessage = "Rol inválido")]
-        public int Rol { get; set; }
+        public int RolId { get; set; }
+
+        // Propiedad de navegación para EF
+        [ForeignKey("RolId")]
+        public virtual Rol Rol { get; set; } = null!;
 
         [Required]
         [Column("correo")]
