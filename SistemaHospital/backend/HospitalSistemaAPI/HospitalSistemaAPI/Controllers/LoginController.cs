@@ -9,6 +9,7 @@ using System.Security.Claims;
 using System.Text;
 using System;
 using Microsoft.EntityFrameworkCore;
+using HospitalSistemaAPI.Helpers; // Asegúrate de tener este using si PasswordHelper está en una carpeta Helpers
 
 namespace HospitalSistemaAPI.Controllers
 {
@@ -35,48 +36,54 @@ namespace HospitalSistemaAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            // Buscar usuario por nombre y contraseña (ojo: en producción usar hash y salting)
+            // Buscar usuario solo por nombre de usuario
             var usuario = _context.Usuarios
-                .Include(u => u.Rol) // Incluir el rol del usuario para autorización
-                .FirstOrDefault(u => u.NombreUsuario == loginDto.NombreUsuario && u.Contrasena == loginDto.Contrasena);
+                .Include(u => u.Rol)
+                .FirstOrDefault(u => u.NombreUsuario == loginDto.NombreUsuario);
 
-            if (usuario != null)
+            // Si no se encuentra el usuario
+            if (usuario == null)
             {
-                // Crear claims para el token (incluyendo rol)
-                var claims = new[]
-                {
-                    new Claim(JwtRegisteredClaimNames.Sub, usuario.NombreUsuario),
-                    new Claim("role", usuario.Rol.NombreRol), // rol del usuario para autorización
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-                };
-
-                // Crear clave y credenciales para firmar el token
-                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-                // Crear token con configuraciones de issuer, audience, expiración, claims y firma
-                var token = new JwtSecurityToken(
-                    issuer: _jwtSettings.Issuer,
-                    audience: _jwtSettings.Audience,
-                    claims: claims,
-                    expires: DateTime.UtcNow.AddMinutes(_jwtSettings.ExpireMinutes),
-                    signingCredentials: creds
-                );
-
-                // Retornar token serializado, tiempo de expiración, usuario y rol
-                return Ok(new
-                {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo,
-                    username = usuario.NombreUsuario,
-                    role = usuario.Rol
-                });
-            }
-            else
-            {
-                // Usuario o contraseña incorrectos
                 return Unauthorized(new { message = "Usuario o contraseña incorrectos" });
             }
+
+            // Validar la contraseña con hash
+            bool contraseñaValida = PasswordHelper.VerifyPassword(usuario.Contrasena, loginDto.Contrasena);
+
+            if (!contraseñaValida)
+            {
+                return Unauthorized(new { message = "Usuario o contraseña incorrectos" });
+            }
+
+            // Crear claims para el token
+            var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, usuario.NombreUsuario),
+                new Claim("role", usuario.Rol.NombreRol),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            };
+
+            // Crear clave y credenciales
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            // Crear el token JWT
+            var token = new JwtSecurityToken(
+                issuer: _jwtSettings.Issuer,
+                audience: _jwtSettings.Audience,
+                claims: claims,
+                expires: DateTime.UtcNow.AddMinutes(_jwtSettings.ExpireMinutes),
+                signingCredentials: creds
+            );
+
+            // Retornar el token
+            return Ok(new
+            {
+                token = new JwtSecurityTokenHandler().WriteToken(token),
+                expiration = token.ValidTo,
+                username = usuario.NombreUsuario,
+                role = usuario.Rol
+            });
         }
     }
 }
