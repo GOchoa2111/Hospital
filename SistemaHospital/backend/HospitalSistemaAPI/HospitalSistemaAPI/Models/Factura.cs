@@ -18,7 +18,7 @@ namespace HospitalSistemaAPI.Models
         public int IdFactura { get; set; }
 
         [Column("fecha")]
-        public DateTime Fecha { get; private set; }
+        public DateTime Fecha { get;  set; }
 
         [Required]
         [Column("id_usuario")]

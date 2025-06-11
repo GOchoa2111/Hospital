@@ -17,28 +17,30 @@ public class ModelPaciente {
     private int creadoPor;
     private LocalDate fechaCreacion;
     private boolean estado;
-    
+
     //constructor vacio
-    public ModelPaciente(){};
+    public ModelPaciente() {
+    }
+
+    ;
     
     //Constructor con atributos
     public ModelPaciente(int idPaciente, String nombre, String apellido, LocalDate fechaNacimiento,
-                     String genero, String tipoSangre, String direccion, String telefono,
-                     String correo, int creadoPor, LocalDate fechaCreacion, boolean estado) {
-    this.idPaciente = idPaciente;
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.fechaNacimiento = fechaNacimiento;
-    this.genero = genero;
-    this.tipoSangre = tipoSangre;
-    this.direccion = direccion;
-    this.telefono = telefono;
-    this.correo = correo;
-    this.creadoPor = creadoPor;
-    this.fechaCreacion = fechaCreacion;
-    this.estado = estado;
-}
-
+            String genero, String tipoSangre, String direccion, String telefono,
+            String correo, int creadoPor, LocalDate fechaCreacion, boolean estado) {
+        this.idPaciente = idPaciente;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.genero = genero;
+        this.tipoSangre = tipoSangre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.creadoPor = creadoPor;
+        this.fechaCreacion = fechaCreacion;
+        this.estado = estado;
+    }
 
     // Getters y Setters
     public int getIdPaciente() {
@@ -140,4 +142,10 @@ public class ModelPaciente {
     public String getEstadoComoTexto() {
         return estado ? "Activo" : "Inactivo";
     }
+
+    @Override
+    public String toString() {
+        return nombre + " " + getApellido();
+    }
+
 }

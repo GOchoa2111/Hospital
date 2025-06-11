@@ -197,7 +197,7 @@ public class ViewPacientes extends JInternalFrame {
                         txtCorreo.setText(tabla.getValueAt(fila, 8).toString());
 
                         // Manejo robusto del estado
-                        Object estadoObj = tabla.getValueAt(fila, 9);
+                        Object estadoObj = tabla.getValueAt(fila, 11);
                         boolean estado = false;
                         if (estadoObj instanceof Boolean) {
                             estado = (Boolean) estadoObj;

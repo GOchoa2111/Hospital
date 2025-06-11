@@ -12,7 +12,7 @@ namespace HospitalSistemaAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class detalleCitaController : ControllerBase
     {
         private readonly AppDbContext _context;

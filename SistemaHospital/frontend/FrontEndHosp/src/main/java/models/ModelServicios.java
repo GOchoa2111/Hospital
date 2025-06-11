@@ -52,7 +52,8 @@ public class ModelServicios {
         this.precio = precio;
     }
 
-    @Override
+    //toString para mostrar todos los campos de la tabla servicios
+    /*@Override
     public String toString() {
         return "ModeloServicio{" +
                 "idServicio=" + idServicio +
@@ -60,5 +61,12 @@ public class ModelServicios {
                 ", descripcion='" + descripcion + '\'' +
                 ", precio=" + precio +
                 '}';
+    }*/
+    
+    //toString para mostrar nombre de servicio
+    @Override
+    public String toString() {
+        return nombre; // así solo muestra el nombre en el combo
     }
+
 }

@@ -14,7 +14,7 @@ namespace HospitalSistemaAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize] // Requiere autenticación para acceder a los endpoints
+    //[Authorize] // Requiere autenticación para acceder a los endpoints
     public class UsuariosController : ControllerBase
     {
         private readonly AppDbContext _context;
