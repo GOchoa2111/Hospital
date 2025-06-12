@@ -1,6 +1,7 @@
 views\ViewRoles$1.class
 views\ViewPacientes.class
 controllers\ControllerFacturaDetalle$3.class
+models\ModeloGestionFactura.class
 services\ServiceDoctores.class
 controllers\ControllerRepoCitas$1.class
 views\ViewCitas$2.class
@@ -17,6 +18,7 @@ models\ModelDetalleFactura.class
 controllers\ControllerDoctores.class
 util\MapperRoles.class
 views\ViewLogin$5.class
+models\ModeloGestionFactura$Detalle.class
 models\ModelServicios.class
 util\MapperDoctor$1.class
 controllers\ControllerServicios$3.class
@@ -29,6 +31,7 @@ controllers\ControllerLogin.class
 controllers\ControllerServicios$1.class
 controllers\ControllerServicios.class
 services\ServiceRoles.class
+ViewFacturaGestion$1.class
 views\ViewConsulta.class
 views\ViewFactura$4.class
 util\Loading.class
@@ -38,6 +41,7 @@ controllers\ControllerFacturaDetalle$1.class
 views\ViewFactura$5.class
 views\ViewCitas.class
 views\ViewDoctores$2.class
+ViewFacturaGestion$2.class
 Main\LocalDateAdapter.class
 controllers\ControllerServicios$2.class
 views\ViewRoles.class
@@ -53,6 +57,7 @@ views\ViewDoctores$1.class
 services\ServiceFacturaDetalle.class
 views\components\PanelInfoInstitucional.class
 views\ViewLogin$4.class
+ViewFacturaGestion.class
 services\ServiceLogin.class
 services\ServicePaciente$1.class
 views\ViewDoctores$DoctorTableRenderer.class
@@ -65,10 +70,12 @@ views\ViewCitas$1.class
 views\ViewRepoCitas.class
 views\ViewServicios$1.class
 views\ViewFactura$3.class
+services\ServiceFacturaGestion$1.class
 views\ViewUsuarios$1.class
 views\ViewUsuarios$4.class
 views\ViewPacientes$2.class
 Main\Main.class
+services\ServiceFacturaGestion.class
 controllers\ControllerLogin$1.class
 views\ViewLogin$2.class
 views\ViewMenu.class

@@ -3,9 +3,6 @@ using HospitalSistemaAPI.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HospitalSistemaAPI.Controllers
 {
@@ -20,6 +17,35 @@ namespace HospitalSistemaAPI.Controllers
         {
             _context = context;
         }
+
+
+
+        // GET: api/FacturasGestion
+        [HttpGet]
+        public async Task<ActionResult<List<FacturaGestionDto>>> GetAllFacturas()
+        {
+            var facturas = await (from f in _context.Facturas
+                                  join p in _context.pacientes on f.IdPaciente equals p.IdPaciente
+                                  join u in _context.Usuarios on f.IdUsuario equals u.IdUsuario
+                                  select new FacturaGestionDto
+                                  {
+                                      IdFactura = f.IdFactura,
+                                      Fecha = f.Fecha,
+                                      IdUsuario = f.IdUsuario,
+                                      IdPaciente = f.IdPaciente,
+                                      Total = f.Total,
+                                      NombrePaciente = p.Nombre,
+                                      ApellidoPaciente = p.Apellido,
+                                      NombreUsuario = u.Nombre,
+                                      ApellidoUsuario = u.Apellido,
+                                      Estado = f.Estado ? "Activo" : "Inactivo"
+                                  }).ToListAsync();
+
+            return Ok(facturas);
+        }
+
+
+
 
         // GET: api/FacturasGestion/5
         [HttpGet("{id}")]

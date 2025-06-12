@@ -9,6 +9,7 @@ C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\Sis
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\Main\LocalDateTimeAdapter.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\services\ServiceRoles.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\controllers\ControllerFacturaDetalle.java
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\services\ServiceFacturaGestion.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\controllers\ControllerPaciente.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\util\MapperRepoCitas.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\Main\LocalDateAdapter.java
@@ -18,6 +19,7 @@ C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\Sis
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\views\ViewConsulta.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\views\ViewRepoCitas.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\models\ModelFactura.java
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\views\ViewFacturaGestion.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\views\ViewUsuarios.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\models\ModelLogin.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\models\ModelUsuario.java
@@ -31,6 +33,7 @@ C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\Sis
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\util\Loading.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\services\ServiceDoctores.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\views\ViewFactura.java
+C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\models\ModeloGestionFactura.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\services\ServiceLogin.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\controllers\ControllerRepoCitas.java
 C:\Users\Carlos Orozco\OneDrive\Documentos\Universidad\Proyecto-Progra-Grupo\SistemaHospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\views\ViewCitas.java
