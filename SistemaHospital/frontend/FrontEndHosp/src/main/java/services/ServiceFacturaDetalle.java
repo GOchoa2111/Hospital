@@ -18,10 +18,10 @@ import java.util.ArrayList;
 
 public class ServiceFacturaDetalle {
 
-    private final String FACTURA_API = "http://localhost:5132/api/Facturas"; // Cambia la URL si es necesario
+    private final String FACTURA_API = "http://localhost:5132/api/Facturas"; // Endpoint
 
     // Obtener lista de facturas
-    public ArrayList<ModelFactura> obtenerFacturas() {
+    public ArrayList<ModelFactura> obtenerFacturas(String token) {
         ArrayList<ModelFactura> listaFacturas = new ArrayList<>();
 
         try {
@@ -29,6 +29,8 @@ public class ServiceFacturaDetalle {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
+            // Agregar token en el header Authorization  
+            conn.setRequestProperty("Authorization", "Bearer " + token);
 
             if (conn.getResponseCode() == 200) {
                 BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -46,7 +48,8 @@ public class ServiceFacturaDetalle {
                         .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
                         .create();
 
-                Type listType = new TypeToken<ArrayList<ModelFactura>>() {}.getType();
+                Type listType = new TypeToken<ArrayList<ModelFactura>>() {
+                }.getType();
                 listaFacturas = gson.fromJson(response.toString(), listType);
 
             } else {
@@ -60,12 +63,15 @@ public class ServiceFacturaDetalle {
     }
 
     // Registrar factura (con detalles)
-    public boolean registrarFactura(ModelFactura factura) {
+    public boolean registrarFactura(ModelFactura factura, String token) {
         try {
             URL url = new URL(FACTURA_API);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json; utf-8");
+            // Agregar token en el header Authorization  
+            conn.setRequestProperty("Authorization", "Bearer " + token);
+
             conn.setDoOutput(true);
 
             Gson gson = new GsonBuilder()
@@ -73,7 +79,9 @@ public class ServiceFacturaDetalle {
                     .create();
 
             String json = gson.toJson(factura);
-
+            // Imprimir JSON para depuración  
+            System.out.println("JSON a enviar:");
+            System.out.println(json);
             try (OutputStream os = conn.getOutputStream()) {
                 byte[] input = json.getBytes(StandardCharsets.UTF_8);
                 os.write(input, 0, input.length);
@@ -89,12 +97,15 @@ public class ServiceFacturaDetalle {
     }
 
     // Actualizar factura
-    public boolean actualizarFactura(ModelFactura factura) {
+    public boolean actualizarFactura(ModelFactura factura, String token) {
         try {
             URL url = new URL(FACTURA_API + "/" + factura.getIdFactura());
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("PUT");
             conn.setRequestProperty("Content-Type", "application/json; utf-8");
+            // Agregar token en el header Authorization  
+            conn.setRequestProperty("Authorization", "Bearer " + token);
+
             conn.setDoOutput(true);
 
             Gson gson = new GsonBuilder()
@@ -118,12 +129,13 @@ public class ServiceFacturaDetalle {
     }
 
     // Eliminar factura
-    public boolean eliminarFactura(int idFactura) {
+    public boolean eliminarFactura(int idFactura, String token) {
         try {
             URL url = new URL(FACTURA_API + "/" + idFactura);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("DELETE");
-
+            // Agregar token en el header Authorization  
+            conn.setRequestProperty("Authorization", "Bearer " + token);
             int responseCode = conn.getResponseCode();
             System.out.println("Código de respuesta: " + responseCode);
 
@@ -135,4 +147,3 @@ public class ServiceFacturaDetalle {
         }
     }
 }
-

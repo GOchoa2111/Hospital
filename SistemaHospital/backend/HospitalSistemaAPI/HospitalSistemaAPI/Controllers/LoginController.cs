@@ -81,6 +81,7 @@ namespace HospitalSistemaAPI.Controllers
             {
                 token = new JwtSecurityTokenHandler().WriteToken(token),
                 expiration = token.ValidTo,
+                idUsuario = usuario.IdUsuario,
                 username = usuario.NombreUsuario,
                 role = usuario.Rol
             });

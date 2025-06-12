@@ -1,18 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+// ControllerDoctores.java
 package controllers;
 
-/**
- *
- * @author Carlos Orozco
- */
 import java.time.LocalDateTime;
+import java.util.List;
 import models.ModelDoctores;
 import services.ServiceDoctores;
-
-import java.util.List;
 
 public class ControllerDoctores {
 
@@ -22,31 +14,13 @@ public class ControllerDoctores {
         this.serviceDoctores = new ServiceDoctores();
     }
 
-    /**
-     * Obtiene la lista de todos los doctores
-     *
-     * @return Lista de doctores
-     */
-    public List<ModelDoctores> obtenerDoctores() {
-        return serviceDoctores.obtenerDoctores();
+    public List<ModelDoctores> obtenerDoctores(String token) {
+        return serviceDoctores.obtenerDoctores(token);
     }
 
-    /**
-     * Agrega un nuevo doctor
-     *
-     * @param nombre Nombre del doctor
-     * @param apellido Apellido del doctor
-     * @param especialidad Especialidad del doctor
-     * @param telefono Teléfono del doctor
-     * @param correo Correo electrónico del doctor
-     * @param idUsuario ID del usuario asociado
-     * @param creadoPor ID del usuario que crea el registro
-     * @return true si se agregó correctamente, false en caso contrario
-     */
     public boolean agregarDoctor(String nombre, String apellido, String especialidad,
-            String telefono, String correo, int idUsuario, int creadoPor) {
+            String telefono, String correo, int creadoPor, String token) {
 
-        // Validaciones básicas
         if (nombre == null || nombre.trim().isEmpty()) {
             throw new IllegalArgumentException("El nombre no puede estar vacío");
         }
@@ -63,38 +37,23 @@ public class ControllerDoctores {
             throw new IllegalArgumentException("El correo no puede estar vacío");
         }
 
-        // Crear objeto doctor
         ModelDoctores doctor = new ModelDoctores();
         doctor.setNombre(nombre);
         doctor.setApellido(apellido);
         doctor.setEspecialidad(especialidad);
         doctor.setTelefono(telefono);
         doctor.setCorreo(correo);
-        //doctor.setIdUsuario(idUsuario);
         doctor.setCreadoPor(creadoPor);
         doctor.setEstado(true);
         doctor.setFechaCreacion(LocalDateTime.now());
 
-        // Llamar al servicio para agregar el doctor
-        return serviceDoctores.agregarDoctor(doctor);
+        return serviceDoctores.agregarDoctor(doctor, token);
     }
 
-    /**
-     * Actualiza un doctor existente
-     *
-     * @param idDoctor ID del doctor a actualizar
-     * @param nombre Nombre del doctor
-     * @param apellido Apellido del doctor
-     * @param especialidad Especialidad del doctor
-     * @param telefono Teléfono del doctor
-     * @param correo Correo electrónico del doctor
-     * @param creadoPor ID del usuario asociado
-     * @return true si se actualizó correctamente, false en caso contrario
-     */
+    // Actualizar doctor con estado incluido
     public boolean actualizarDoctor(int idDoctor, String nombre, String apellido, String especialidad,
-            String telefono, String correo, int creadoPor) {
+            String telefono, String correo, boolean estado, int creadoPor, String token) {
 
-        // Validaciones básicas
         if (idDoctor <= 0) {
             throw new IllegalArgumentException("ID de doctor inválido");
         }
@@ -114,7 +73,6 @@ public class ControllerDoctores {
             throw new IllegalArgumentException("El correo no puede estar vacío");
         }
 
-        // Crear objeto doctor con los datos actualizados
         ModelDoctores doctor = new ModelDoctores();
         doctor.setIdDoctor(idDoctor);
         doctor.setNombre(nombre);
@@ -123,46 +81,31 @@ public class ControllerDoctores {
         doctor.setTelefono(telefono);
         doctor.setCorreo(correo);
         doctor.setCreadoPor(creadoPor);
-        doctor.setEstado(true);
+        doctor.setEstado(estado);  // Asignar estado aquí
         doctor.setFechaCreacion(LocalDateTime.now());
 
-        // Llamar al servicio para actualizar el doctor
-        return serviceDoctores.actualizarDoctor(doctor);
+        return serviceDoctores.actualizarDoctor(doctor, token);
     }
 
-    /**
-     * Elimina un doctor (desactivación lógica)
-     *
-     * @param idDoctor ID del doctor a eliminar
-     * @return true si se eliminó correctamente, false en caso contrario
-     */
-    public boolean eliminarDoctor(int idDoctor) {
+    public boolean eliminarDoctor(int idDoctor, String token) {
         if (idDoctor <= 0) {
             throw new IllegalArgumentException("ID de doctor inválido");
         }
-
-        return serviceDoctores.eliminarDoctor(idDoctor);
+        return serviceDoctores.eliminarDoctor(idDoctor, token);
     }
 
-    /**
-     * Busca un doctor por su ID
-     *
-     * @param idDoctor ID del doctor a buscar
-     * @return El doctor encontrado o null si no existe
-     */
-    public ModelDoctores buscarDoctorPorId(int idDoctor) {
+    public ModelDoctores buscarDoctorPorId(int idDoctor, String token) {
         if (idDoctor <= 0) {
             throw new IllegalArgumentException("ID de doctor inválido");
         }
-
-        List<ModelDoctores> doctores = obtenerDoctores();
+        List<ModelDoctores> doctores = obtenerDoctores(token);
         for (ModelDoctores doctor : doctores) {
             if (doctor.getIdDoctor() == idDoctor) {
                 return doctor;
             }
         }
-
         return null;
     }
-}
 
+    // Eliminar método cambiarEstadoDoctor para evitar confusión
+}

@@ -12,6 +12,9 @@ public class ModelLogin {
 
     private String nombreUsuario;
     private String contrasena;
+    private int idUsuario;
+    private String role;
+    private String token;
 
     public ModelLogin(String nombreUsuario, String contrasena) {
 
@@ -37,5 +40,29 @@ public class ModelLogin {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

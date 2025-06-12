@@ -5,11 +5,13 @@ using HospitalSistemaAPI.DTOs;
 using System.Net.Mail;
 using System.Net;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 
 
 [ApiController]
 [Route("api/[controller]")]
+//[Authorize]
 public class EmailController : ControllerBase
 {
     private readonly AppDbContext _context;

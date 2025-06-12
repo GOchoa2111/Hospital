@@ -1,6 +1,8 @@
 package services;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -8,38 +10,32 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import models.ModelLogin;
 
-/**
- *
- * @author Carlos Orozco
- */
 public class ServiceLogin {
 
     private static final String LOGIN = "http://localhost:5132/api/Login/login";
 
     private final Gson gson = new Gson();
 
-    public boolean autenticar(ModelLogin modelLogin) {
-
-        try {//Try principal encierra todo el proceso
-            // Crear conexión
+    /**
+     * Método que autentica y devuelve el usuario logueado con sus datos y
+     * token. Retorna null si falla la autenticación.
+     */
+    public ModelLogin autenticar(ModelLogin modelLogin) {
+        try {
             URL url = new URL(LOGIN);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            // Configurar la solicitud
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setDoOutput(true);
 
-            // Convertir el objeto LoginDTO a JSON
             String jsonInput = gson.toJson(modelLogin);
 
-            // Enviar datos al endpoint
-            try (OutputStream os = connection.getOutputStream()) {//captura cualquier error  que genere el envio de dato
+            try (OutputStream os = connection.getOutputStream()) {
                 byte[] input = jsonInput.getBytes("utf-8");
                 os.write(input, 0, input.length);
             }
 
-            // Leer la respuesta
             int responseCode = connection.getResponseCode();
 
             if (responseCode == HttpURLConnection.HTTP_OK) {
@@ -51,18 +47,33 @@ public class ServiceLogin {
                         response.append(responseLine.trim());
                     }
 
-                    // Procesos adicionales como token (validar despues de probar usuario y contraseña quemada)
-                    System.out.println("Respuesta: " + response.toString());
-                    return true;
+                    System.out.println("Respuesta login: " + response.toString());
+
+                    // Parsear JSON para extraer idUsuario, username y token
+                    JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
+
+                    int idUsuario = jsonObject.get("idUsuario").getAsInt();
+                    String username = jsonObject.get("username").getAsString();
+                    String token = jsonObject.get("token").getAsString(); // Extraer el token
+
+                    // Crear y devolver objeto ModelLogin con datos completos
+                    ModelLogin usuario = new ModelLogin();
+                    usuario.setIdUsuario(idUsuario);
+                    usuario.setNombreUsuario(username);
+                    usuario.setToken(token); // Asignar el token al usuario
+                    // Puedes asignar más campos si los tienes en la respuesta
+
+                    return usuario;
                 }
             } else {
                 System.out.println("Error en login, código HTTP: " + responseCode);
-                return false;
+                return null;
             }
 
         } catch (Exception e) {
             System.out.println("Excepción en login: " + e.getMessage());
-            return false;
+            e.printStackTrace();
+            return null;
         }
     }
 }

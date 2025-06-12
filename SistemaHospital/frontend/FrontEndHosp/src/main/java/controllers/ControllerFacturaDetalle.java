@@ -31,7 +31,7 @@ public class ControllerFacturaDetalle {
         URL url = new URL(API_BASE + "/Pacientes");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
-
+        //conn.setRequestProperty("Authorization", "Bearer " + token);
         if (conn.getResponseCode() != 200) {
             throw new RuntimeException("Error al obtener pacientes: " + conn.getResponseCode());
         }
@@ -47,7 +47,7 @@ public class ControllerFacturaDetalle {
         URL url = new URL(API_BASE + "/Servicios");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
-
+        //conn.setRequestProperty("Authorization", "Bearer " + token);
         if (conn.getResponseCode() != 200) {
             throw new RuntimeException("Error al obtener servicios: " + conn.getResponseCode());
         }

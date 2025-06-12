@@ -1,35 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+// ControllerPaciente.java
 package controllers;
 
-import java.time.LocalDate;
 import models.ModelPaciente;
 import services.ServicePaciente;
 import views.ViewPacientes;
 
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 public class ControllerPaciente {
 
-    private ViewPacientes vista; // Referencia a la vista
-    private ServicePaciente servicio; // Referencia al servicio
+    private ViewPacientes vista;
+    private ServicePaciente servicio;
+    private String token;
+    private int idUsuario;
 
-    // Constructor de la clase ControllerPaciente
-    // Este constructor recibe como parámetro la vista (formulario de pacientes)
-    public ControllerPaciente(ViewPacientes vista) {
+    public ControllerPaciente(ViewPacientes vista, String token, int idUsuario) {
         this.vista = vista;
+        this.token = token;
+        this.idUsuario = idUsuario;
         this.servicio = new ServicePaciente();
     }
 
-    // Método para llenar la tabla de pacientes
     public void cargarPacientesEnTabla() {
-
-        ArrayList<ModelPaciente> pacientes = servicio.obtenerPacientes();
-        //DefaultTableModel modeloTabla = (DefaultTableModel) vista.getTabla().getModel();//codigo para cargar desde el model de ViewPaciente(no fucniono)
+        ArrayList<ModelPaciente> pacientes = servicio.obtenerPacientes(token);
         DefaultTableModel modelo = new DefaultTableModel();
 
         modelo.addColumn("ID");
@@ -45,7 +41,7 @@ public class ControllerPaciente {
         modelo.addColumn("fechaCreacion");
         modelo.addColumn("estado");
 
-        modelo.setRowCount(0); // Limpiar la tabla antes de cargar
+        modelo.setRowCount(0);
 
         for (ModelPaciente p : pacientes) {
             Object[] fila = {
@@ -60,49 +56,40 @@ public class ControllerPaciente {
                 p.getCorreo(),
                 p.getCreadoPor(),
                 p.getFechaCreacion(),
-                p.getEstadoComoTexto()//este campo es tipo bit en la base
+                p.getEstadoComoTexto()
             };
             modelo.addRow(fila);
         }
-        vista.getTabla().setModel(modelo);//asignar el modelo a la tabla en la vista
-        vista.ocultarColumnas(); //cargar metodo para ocultar columnas según su ubicación
-        
-        
+        vista.getTabla().setModel(modelo);
+        vista.ocultarColumnas();
     }
 
-    //Agregar Paciente
     public void registrarPaciente() {
-
         try {
+            if (!vista.validarCampos()) {
+                return;
+            }
 
-            // Leer valores del formulario
             String nombre = vista.getTxtNombre().getText();
             String apellido = vista.getTxtApellido().getText();
-            String fechaNacimientoStr = vista.getTxtFechaNacimiento().getText(); // Formato: yyyy-MM-dd
+            String fechaNacimientoStr = vista.getTxtFechaNacimiento().getText();
             String genero = vista.getComboGenero().getSelectedItem().toString();
             String tipoSangre = vista.getComboTipoSangre().getSelectedItem().toString();
             String direccion = vista.getTxtDireccion().getText();
             String telefono = vista.getTxtTelefono().getText();
             String correo = vista.getTxtCorreo().getText();
-            String estadoStr = vista.getComboEstado().getSelectedItem().toString();//se obtiene el dato en string
-            boolean estado = estadoStr.equalsIgnoreCase("Activo") || estadoStr.equalsIgnoreCase("true");//se convierte a boolean
+            String estadoStr = vista.getComboEstado().getSelectedItem().toString();
+            boolean estado = estadoStr.equalsIgnoreCase("Activo") || estadoStr.equalsIgnoreCase("true");
 
-            // Conversión de fecha
             LocalDate fechaNacimiento = LocalDate.parse(fechaNacimientoStr);
 
-            // Simular valores automáticos (puedes adaptar según tu lógica)
-            int creadoPor = 1; // Por ejemplo, ID del usuario que crea
-            LocalDate fechaCreacion = LocalDate.now();
-
-            // Crear objeto paciente
             ModelPaciente paciente = new ModelPaciente(
                     0, nombre, apellido, fechaNacimiento, genero,
                     tipoSangre, direccion, telefono, correo,
-                    creadoPor, fechaCreacion, estado
+                    idUsuario, LocalDate.now(), estado
             );
 
-            // Llamar al servicio
-            boolean registrado = servicio.registrarPaciente(paciente);
+            boolean registrado = servicio.registrarPaciente(paciente, token);
             if (registrado) {
                 JOptionPane.showMessageDialog(null, "Paciente registrado correctamente.");
                 limpiarFormulario();
@@ -115,7 +102,6 @@ public class ControllerPaciente {
         }
     }
 
-    //Actualizar Paciente
     public void actualizarPaciente() {
         int fila = vista.getTabla().getSelectedRow();
         if (fila == -1) {
@@ -124,13 +110,11 @@ public class ControllerPaciente {
         }
 
         try {
-            // Obtener ID del paciente desde la tabla
             int id = Integer.parseInt(vista.getTabla().getValueAt(fila, 0).toString());
 
-            // Leer valores del formulario
             String nombre = vista.getTxtNombre().getText();
             String apellido = vista.getTxtApellido().getText();
-            String fechaNacimiento = vista.getTxtFechaNacimiento().getText(); // O usa DatePicker si aplica
+            String fechaNacimiento = vista.getTxtFechaNacimiento().getText();
             String genero = vista.getComboGenero().getSelectedItem().toString();
             String tipoSangre = vista.getComboTipoSangre().getSelectedItem().toString();
             String direccion = vista.getTxtDireccion().getText();
@@ -139,7 +123,6 @@ public class ControllerPaciente {
             String estadoStr = vista.getComboEstado().getSelectedItem().toString();
             boolean estado = estadoStr.equalsIgnoreCase("Activo") || estadoStr.equalsIgnoreCase("true");
 
-            // Crear objeto paciente setear los datos
             ModelPaciente paciente = new ModelPaciente();
             paciente.setIdPaciente(id);
             paciente.setNombre(nombre);
@@ -151,81 +134,67 @@ public class ControllerPaciente {
             paciente.setTelefono(telefono);
             paciente.setCorreo(correo);
             paciente.setEstado(estado);
-            paciente.setCreadoPor(id);
-            paciente.setEstado(estado);
+            paciente.setCreadoPor(idUsuario);
 
-            // Enviar al servicio
-            boolean actualizado = servicio.actualizarPaciente(paciente);
+            boolean actualizado = servicio.actualizarPaciente(paciente, token);
             if (actualizado) {
                 JOptionPane.showMessageDialog(null, "Paciente actualizado correctamente.");
-                cargarPacientesEnTabla(); // Recarga la tabla
+                cargarPacientesEnTabla();
                 limpiarFormulario();
             } else {
                 JOptionPane.showMessageDialog(null, "Error al actualizar paciente.");
-
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
         }
     }
 
-    //Eliminar paciente
-    
     public void eliminarPaciente() {
-        
-    int fila = vista.getTabla().getSelectedRow();
-    if (fila == -1) {
-        JOptionPane.showMessageDialog(null, "Seleccione un paciente de la tabla para eliminar.");
-        return;
-    }
-
-    int confirmacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este paciente?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
-    if (confirmacion != JOptionPane.YES_OPTION) {
-        return;
-    }
-
-    try {
-        // Obtener el ID del paciente de la tabla
-        int id = Integer.parseInt(vista.getTabla().getValueAt(fila, 0).toString());
-        System.out.println("Id para eliminar " + id);
-        // Llamar al servicio para eliminar
-        
-        boolean eliminado = servicio.eliminarPaciente(id);
-
-        if (eliminado) {
-            JOptionPane.showMessageDialog(null, "Paciente eliminado correctamente.");
-            cargarPacientesEnTabla(); // refresca la tabla
-            limpiarFormulario();
-        } else {
-            JOptionPane.showMessageDialog(null, "No se pudo eliminar el paciente. ", "Error", JOptionPane.ERROR_MESSAGE );
+        int fila = vista.getTabla().getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione un paciente de la tabla para eliminar.");
+            return;
         }
-    } catch (Exception ex) {
-        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+
+        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este paciente?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        if (confirmacion != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        try {
+            int id = Integer.parseInt(vista.getTabla().getValueAt(fila, 0).toString());
+
+            boolean eliminado = servicio.eliminarPaciente(id, token);
+
+            if (eliminado) {
+                JOptionPane.showMessageDialog(null, "Paciente eliminado correctamente.");
+                cargarPacientesEnTabla();
+                limpiarFormulario();
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo eliminar el paciente.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+        }
     }
-}
 
-    
-    
-    //limpiar campos despues de agregar
     public void limpiarFormulario() {
-
+        vista.getTxtId().setText("");
         vista.getTxtNombre().setText("");
         vista.getTxtApellido().setText("");
         vista.getTxtFechaNacimiento().setText("");
-        vista.getComboGenero().setSelectedIndex(0); // O el índice correspondiente a "Seleccione"
+        vista.getComboGenero().setSelectedIndex(0);
         vista.getComboTipoSangre().setSelectedIndex(0);
         vista.getTxtDireccion().setText("");
         vista.getTxtTelefono().setText("");
         vista.getTxtCorreo().setText("");
-        vista.getComboEstado().setSelectedIndex(0); // valor predeterminado Activo
-        
-        // Ajustar botones  
-        vista.getBtnRegistrar().setEnabled(true);  
-        vista.getBtnActualizar().setEnabled(false);  
-        vista.getBtnEliminar().setEnabled(false);  
-        vista.getBtnLimpiar().setEnabled(false);  
-  
-        vista.getTxtNombre().requestFocus();  
-    }
+        vista.getComboEstado().setSelectedIndex(0);
 
+        vista.getBtnRegistrar().setEnabled(true);
+        vista.getBtnActualizar().setEnabled(false);
+        vista.getBtnEliminar().setEnabled(false);
+        vista.getBtnLimpiar().setEnabled(false);
+
+        vista.getTxtNombre().requestFocus();
+    }
 }

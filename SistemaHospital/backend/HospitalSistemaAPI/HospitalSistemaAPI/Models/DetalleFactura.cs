@@ -28,6 +28,8 @@ namespace HospitalSistemaAPI.Models
         [Range(0, double.MaxValue, ErrorMessage = "El subtotal debe ser un valor positivo.")]
         public decimal Subtotal { get; set; }  // subtotal validar en front end para evitar errores de contenido
 
+        
+
         // Relaciones de navegación (comentadas)
         // public virtual Factura Factura { get; set; }
         // public virtual Servicio Servicio { get; set; }

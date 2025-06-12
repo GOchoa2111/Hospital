@@ -3,6 +3,10 @@ package views;
 import controllers.ControllerFacturaDetalle;
 import models.ModelPaciente;
 import models.ModelServicios;
+import models.ModelDetalleFactura;
+import models.ModelFactura;
+import models.ModelLogin;
+import services.ServiceFacturaDetalle;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -14,16 +18,14 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import models.ModelDetalleFactura;
-import models.ModelFactura;
-import services.ServiceFacturaDetalle;
 
 public class ViewFactura extends JInternalFrame {
 
+    // Componentes de la interfaz
     public JTextField txtBuscarPaciente;
     public JTextField txtBuscarServicio;
     public JComboBox<ModelPaciente> comboPaciente;
-    public JComboBox<String> comboUsuario;
+    public JTextField txtUsuario; // Mostrar usuario logueado
     public JComboBox<ModelServicios> comboServicio;
     public JTextField txtCantidad;
     public JTextField txtSubtotal;
@@ -36,13 +38,30 @@ public class ViewFactura extends JInternalFrame {
     public JLabel lblTotalConIVA;
     public JButton btnEliminar;
 
+    // Modelos para combos
     private DefaultComboBoxModel<ModelPaciente> modeloPacientes = new DefaultComboBoxModel<>();
     private DefaultComboBoxModel<ModelServicios> modeloServicios = new DefaultComboBoxModel<>();
+
+    // Listas para almacenar datos cargados
     private final List<ModelPaciente> listaPacientes = new ArrayList<>();
     private final List<ModelServicios> listaServicios = new ArrayList<>();
 
-    public ViewFactura() {
+    // Usuario logueado (se recibe en el constructor)
+    private final ModelLogin usuario;
 
+    /**
+     * Constructor principal que recibe el usuario logueado. Inicializa la
+     * interfaz y carga los datos.
+     */
+    public ViewFactura(ModelLogin usuario) {
+        this.usuario = usuario;
+        initUI();
+    }
+
+    /**
+     * Método que inicializa toda la interfaz gráfica.
+     */
+    private void initUI() {
         setTitle("Registro de Factura");
         setSize(800, 600);
         setClosable(true);
@@ -55,24 +74,27 @@ public class ViewFactura extends JInternalFrame {
         JPanel panelTop = new JPanel();
         panelTop.setLayout(new BoxLayout(panelTop, BoxLayout.X_AXIS));
 
+        // Panel con información del usuario y paciente
         JPanel panelInfo = new JPanel(new GridBagLayout());
         panelInfo.setBorder(BorderFactory.createTitledBorder("Información"));
         GridBagConstraints gbcInfo = new GridBagConstraints();
         gbcInfo.insets = new Insets(5, 5, 5, 5);
         gbcInfo.fill = GridBagConstraints.HORIZONTAL;
 
-        comboUsuario = new JComboBox<>();
-        comboUsuario.setEnabled(false);
-        comboUsuario.addItem("admin");
+        // Campo para mostrar el usuario logueado (no editable)
+        txtUsuario = new JTextField(usuario.getNombreUsuario());
+        txtUsuario.setEditable(false);
 
+        // Campo para buscar paciente y combo para seleccionar paciente
         txtBuscarPaciente = new JTextField(15);
         comboPaciente = new JComboBox<>(modeloPacientes);
 
+        // Agregar etiquetas y componentes al panelInfo con GridBagLayout
         gbcInfo.gridx = 0;
         gbcInfo.gridy = 0;
         panelInfo.add(new JLabel("Usuario:"), gbcInfo);
         gbcInfo.gridx = 1;
-        panelInfo.add(comboUsuario, gbcInfo);
+        panelInfo.add(txtUsuario, gbcInfo);
 
         gbcInfo.gridx = 0;
         gbcInfo.gridy = 1;
@@ -86,6 +108,7 @@ public class ViewFactura extends JInternalFrame {
         gbcInfo.gridx = 1;
         panelInfo.add(comboPaciente, gbcInfo);
 
+        // Listener para filtrar pacientes mientras se escribe
         txtBuscarPaciente.getDocument().addDocumentListener(new DocumentListener() {
             public void insertUpdate(DocumentEvent e) {
                 filtrarPacientes();
@@ -107,21 +130,25 @@ public class ViewFactura extends JInternalFrame {
         gbcServicio.insets = new Insets(5, 5, 5, 5);
         gbcServicio.fill = GridBagConstraints.HORIZONTAL;
 
+        // Campo para buscar servicio y combo para seleccionar servicio
         txtBuscarServicio = new JTextField(15);
         comboServicio = new JComboBox<>(modeloServicios);
 
+        // Campos para cantidad y subtotal
         txtCantidad = new JTextField(5);
         txtSubtotal = new JTextField(10);
-        btnAgregar = new JButton("Agregar");
+        txtSubtotal.setEditable(false); // Subtotal se calcula automáticamente
 
-        //Boton para agregar servicio, 
+        // Botón para agregar servicio a la tabla
+        btnAgregar = new JButton("Agregar");
         btnAgregar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                agregarServicioATabla(); // Llama al método que maneja la lógica del botón
+                agregarServicioATabla();
             }
         });
 
+        // Agregar componentes al panelServicio
         gbcServicio.gridx = 0;
         gbcServicio.gridy = 0;
         panelServicio.add(new JLabel("Buscar Servicio:"), gbcServicio);
@@ -151,21 +178,23 @@ public class ViewFactura extends JInternalFrame {
         gbcServicio.anchor = GridBagConstraints.WEST;
         panelServicio.add(btnAgregar, gbcServicio);
 
+        // Añadir paneles al panel superior
         panelTop.add(panelInfo);
         panelTop.add(Box.createHorizontalGlue());
         panelTop.add(panelServicio);
         add(panelTop, BorderLayout.NORTH);
 
-        // === TABLA SERVICIOS ===
+        // === TABLA DE SERVICIOS AGREGADOS ===
         tablaServicios = new JTable(new DefaultTableModel(
                 new Object[][]{},
                 new String[]{"Servicio", "Cantidad", "Subtotal"}
         ));
         add(new JScrollPane(tablaServicios), BorderLayout.CENTER);
 
-        // === PANEL INFERIOR ===
+        // === PANEL INFERIOR CON TOTALES Y BOTONES ===
         JPanel panelBottom = new JPanel(new BorderLayout());
 
+        // Panel con resumen de totales
         JPanel panelTotales = new JPanel(new GridLayout(3, 2));
         panelTotales.setBorder(BorderFactory.createTitledBorder("Resumen de Pago"));
 
@@ -180,9 +209,9 @@ public class ViewFactura extends JInternalFrame {
         panelTotales.add(new JLabel("Total con IVA:"));
         panelTotales.add(lblTotalConIVA);
 
+        // Panel con botones
         JPanel panelBotones = new JPanel();
         btnGenerar = new JButton("Generar Factura");
-        //Configuración de boton y carga del metodo para guardar factura
         btnGenerar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -191,21 +220,19 @@ public class ViewFactura extends JInternalFrame {
         });
 
         btnLimpiar = new JButton("Limpiar");
-        //Configuracion de boton y carga de metodo para limpiar
         btnLimpiar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 limpiarFormulario();
             }
         });
+
         btnEliminar = new JButton("Eliminar");
-        //Configuración de boton y carga del metodo para eliminar un registro
         btnEliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 eliminarFilaSeleccionada();
             }
-
         });
 
         panelBotones.add(btnGenerar);
@@ -217,9 +244,10 @@ public class ViewFactura extends JInternalFrame {
 
         add(panelBottom, BorderLayout.SOUTH);
 
-        // === Cargar pacientes y servicios desde API ===
-        cargarDatosIniciales();
+        // Cargar datos iniciales de pacientes y servicios
+        cargarDatosIniciales(usuario.getToken());
 
+        // Listener para filtrar servicios mientras se escribe
         txtBuscarServicio.getDocument().addDocumentListener(new DocumentListener() {
             public void insertUpdate(DocumentEvent e) {
                 filtrarServicios();
@@ -233,13 +261,24 @@ public class ViewFactura extends JInternalFrame {
                 filtrarServicios();
             }
         });
+
+        // Listener para actualizar subtotal automáticamente al seleccionar un servicio
+        comboServicio.addActionListener(e -> {
+            ModelServicios seleccionado = (ModelServicios) comboServicio.getSelectedItem();
+            if (seleccionado != null) {
+                txtSubtotal.setText(String.format("%.2f", seleccionado.getPrecio()));
+            }
+        });
     }
 
-    //cargar datos
-    private void cargarDatosIniciales() {
+    /**
+     * Carga los datos iniciales de pacientes y servicios desde el controlador.
+     */
+    private void cargarDatosIniciales(String token) {
         try {
             ControllerFacturaDetalle controller = new ControllerFacturaDetalle();
 
+            // Cargar pacientes
             listaPacientes.clear();
             listaPacientes.addAll(controller.obtenerPacientes());
             modeloPacientes.removeAllElements();
@@ -247,6 +286,7 @@ public class ViewFactura extends JInternalFrame {
                 modeloPacientes.addElement(p);
             }
 
+            // Cargar servicios
             listaServicios.clear();
             listaServicios.addAll(controller.obtenerServicios());
             modeloServicios.removeAllElements();
@@ -254,20 +294,15 @@ public class ViewFactura extends JInternalFrame {
                 modeloServicios.addElement(s);
             }
 
-            // === Listener para mostrar subtotal automáticamente al seleccionar servicio ===
-            comboServicio.addActionListener(e -> {
-                ModelServicios seleccionado = (ModelServicios) comboServicio.getSelectedItem();
-                if (seleccionado != null) {
-                    txtSubtotal.setText(String.valueOf(seleccionado.getPrecio()));
-                }
-            });
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al cargar datos: " + e.getMessage());
         }
     }
 
-    //filtrar Pacientes
+    /**
+     * Filtra la lista de pacientes según el texto ingresado en
+     * txtBuscarPaciente.
+     */
     private void filtrarPacientes() {
         String filtro = txtBuscarPaciente.getText().toLowerCase();
         modeloPacientes.removeAllElements();
@@ -278,7 +313,10 @@ public class ViewFactura extends JInternalFrame {
         }
     }
 
-    //filtrar servicios, 
+    /**
+     * Filtra la lista de servicios según el texto ingresado en
+     * txtBuscarServicio.
+     */
     private void filtrarServicios() {
         String filtro = txtBuscarServicio.getText().toLowerCase();
         modeloServicios.removeAllElements();
@@ -290,20 +328,17 @@ public class ViewFactura extends JInternalFrame {
     }
 
     /**
-     * Método que agrega el servicio seleccionado a la tabla con su cantidad y
-     * subtotal. También actualiza los totales (sin IVA, IVA, con IVA).
+     * Agrega el servicio seleccionado a la tabla con cantidad y subtotal.
+     * También actualiza los totales.
      */
     private void agregarServicioATabla() {
-        // Obtener el servicio seleccionado
         ModelServicios servicioSeleccionado = (ModelServicios) comboServicio.getSelectedItem();
 
-        // Validar que se haya seleccionado un servicio
         if (servicioSeleccionado == null) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un servicio.");
             return;
         }
 
-        // Validar que se haya ingresado una cantidad válida
         String cantidadTexto = txtCantidad.getText().trim();
         if (cantidadTexto.isEmpty() || !cantidadTexto.matches("\\d+")) {
             JOptionPane.showMessageDialog(this, "Debe ingresar una cantidad válida.");
@@ -316,14 +351,11 @@ public class ViewFactura extends JInternalFrame {
             return;
         }
 
-        // Calcular subtotal (precio * cantidad)
         double precio = servicioSeleccionado.getPrecio();
         double subtotal = precio * cantidad;
 
-        // Mostrar el subtotal en el campo correspondiente
         txtSubtotal.setText(String.format("%.2f", subtotal));
 
-        // Agregar el servicio a la tabla
         DefaultTableModel model = (DefaultTableModel) tablaServicios.getModel();
         model.addRow(new Object[]{
             servicioSeleccionado.getNombre(),
@@ -331,26 +363,25 @@ public class ViewFactura extends JInternalFrame {
             String.format("%.2f", subtotal)
         });
 
-        // Actualizar totales (sin IVA, IVA, con IVA)
-        this.txtCantidad.setText(""); //Limpiar el campo total
+        txtCantidad.setText(""); // Limpiar campo cantidad
         actualizarTotales();
     }
 
     /**
-     * Método auxiliar que recalcula los totales de la factura.
+     * Actualiza los totales (sin IVA, IVA y con IVA) en las etiquetas
+     * correspondientes.
      */
     private void actualizarTotales() {
         DefaultTableModel model = (DefaultTableModel) tablaServicios.getModel();
         double totalSinIVA = 0.0;
 
-        // Recorrer la tabla y sumar los subtotales
         for (int i = 0; i < model.getRowCount(); i++) {
-            Object valor = model.getValueAt(i, 2); // Columna del subtotal
+            Object valor = model.getValueAt(i, 2);
             if (valor != null) {
                 try {
                     totalSinIVA += Double.parseDouble(valor.toString());
                 } catch (NumberFormatException e) {
-                    // Ignorar errores de conversión
+                    // Ignorar error
                 }
             }
         }
@@ -358,13 +389,14 @@ public class ViewFactura extends JInternalFrame {
         double iva = totalSinIVA * 0.12;
         double totalConIVA = totalSinIVA + iva;
 
-        // Actualizar las etiquetas de resumen
         lblTotalSinIVA.setText(String.format("%.2f", totalSinIVA));
         lblIVA.setText(String.format("%.2f", iva));
         lblTotalConIVA.setText(String.format("%.2f", totalConIVA));
     }
 
-    //Eliminar un registro seleccionado de la tabla
+    /**
+     * Elimina la fila seleccionada de la tabla de servicios.
+     */
     private void eliminarFilaSeleccionada() {
         int filaSeleccionada = tablaServicios.getSelectedRow();
 
@@ -373,7 +405,6 @@ public class ViewFactura extends JInternalFrame {
             return;
         }
 
-        // Confirmar la eliminación
         int confirmacion = JOptionPane.showConfirmDialog(this,
                 "¿Está seguro de que desea eliminar el servicio seleccionado?",
                 "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
@@ -381,11 +412,13 @@ public class ViewFactura extends JInternalFrame {
         if (confirmacion == JOptionPane.YES_OPTION) {
             DefaultTableModel model = (DefaultTableModel) tablaServicios.getModel();
             model.removeRow(filaSeleccionada);
-            actualizarTotales(); // Recalcula los totales después de eliminar
+            actualizarTotales();
         }
     }
 
-    //Registra una factura
+    /**
+     * Guarda la factura con los datos ingresados y el usuario logueado.
+     */
     private void guardarFactura() {
         if (tablaServicios.getRowCount() == 0) {
             JOptionPane.showMessageDialog(this, "Debe agregar al menos un servicio para guardar la factura.");
@@ -398,7 +431,6 @@ public class ViewFactura extends JInternalFrame {
             return;
         }
 
-        // Crear lista de detalles desde la tabla
         DefaultTableModel model = (DefaultTableModel) tablaServicios.getModel();
         List<ModelDetalleFactura> detalles = new ArrayList<>();
 
@@ -407,7 +439,6 @@ public class ViewFactura extends JInternalFrame {
             int cantidad = Integer.parseInt(model.getValueAt(i, 1).toString());
             double subtotal = Double.parseDouble(model.getValueAt(i, 2).toString());
 
-            // Buscar el servicio por nombre
             int idServicio = -1;
             for (ModelServicios s : listaServicios) {
                 if (s.getNombre().equals(nombreServicio)) {
@@ -429,35 +460,44 @@ public class ViewFactura extends JInternalFrame {
             detalles.add(detalle);
         }
 
-        // Crear factura
         ModelFactura factura = new ModelFactura();
-        factura.setFecha(LocalDate.now()); //revisar posible problema de fecha
+        factura.setFecha(LocalDate.now());
         factura.setIdPaciente(pacienteSeleccionado.getIdPaciente());
-        factura.setIdUsuario(1); // Puedes cambiar esto si tienes usuarios reales
+
+        // Aquí asignamos el usuario logueado correctamente  
+        if (usuario == null) {
+            JOptionPane.showMessageDialog(this, "Error: Usuario no está definido.");
+            return;
+        }
+
+        // Imprimir el ID del usuario para verificar  
+        System.out.println("ID del usuario logueado: " + usuario.getIdUsuario());
+
+        factura.setIdUsuario(usuario.getIdUsuario());
         factura.setTotal(Double.parseDouble(lblTotalConIVA.getText()));
         factura.setDetalles(detalles);
 
-        // Llamar al servicio
         ServiceFacturaDetalle servicio = new ServiceFacturaDetalle();
-        boolean exito = servicio.registrarFactura(factura);
+        String token = usuario.getToken();
+        boolean exito = servicio.registrarFactura(factura, token);
 
         if (exito) {
             JOptionPane.showMessageDialog(this, "Factura registrada correctamente.");
-            limpiarFormulario(); // Reutiliza tu método existente
+            limpiarFormulario();
         } else {
             JOptionPane.showMessageDialog(this, "Error al registrar la factura.");
         }
     }
 
-    //limpiar todo los registros
+    /**
+     * Limpia todos los campos y la tabla para un nuevo registro.
+     */
     private void limpiarFormulario() {
-        // Limpiar campos de texto
         txtBuscarPaciente.setText("");
         txtBuscarServicio.setText("");
         txtCantidad.setText("");
         txtSubtotal.setText("");
 
-        // Resetear combos a la primera opción si hay elementos
         if (comboPaciente.getItemCount() > 0) {
             comboPaciente.setSelectedIndex(0);
         }
@@ -466,29 +506,11 @@ public class ViewFactura extends JInternalFrame {
             comboServicio.setSelectedIndex(0);
         }
 
-        // Limpiar tabla
         DefaultTableModel model = (DefaultTableModel) tablaServicios.getModel();
         model.setRowCount(0);
 
-        // Reiniciar totales
         lblTotalSinIVA.setText("0.00");
         lblIVA.setText("0.00");
         lblTotalConIVA.setText("0.00");
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Test Factura Form");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(900, 700);
-
-            JDesktopPane desktop = new JDesktopPane();
-            ViewFactura facturaForm = new ViewFactura();
-            desktop.add(facturaForm);
-            facturaForm.setVisible(true);
-
-            frame.add(desktop);
-            frame.setVisible(true);
-        });
     }
 }

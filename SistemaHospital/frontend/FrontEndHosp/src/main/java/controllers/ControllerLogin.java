@@ -45,34 +45,32 @@ public class ControllerLogin {
 
         // Obtener los valores ingresados por el usuario en los campos de texto
         String usuario = view.getTxtUsuario().getText().trim();
-        String pass = String.valueOf(view.getTxtPassword().getPassword()).trim();//convertir el dato obtenido a string
+        String pass = String.valueOf(view.getTxtPassword().getPassword()).trim();
 
         // Validación simple para asegurarse que no estén vacíos
         if (usuario.isEmpty() || pass.isEmpty()) {
             JOptionPane.showMessageDialog(view, "Debe ingresar usuario y contraseña", "Error", JOptionPane.ERROR_MESSAGE);
-            return; // Salimos si faltan datos
+            return;
         }
 
         // Creamos el modelo con los datos ingresados para enviarlo al servicio
         ModelLogin login = new ModelLogin(usuario, pass);
 
         // Llamamos al método que consume el API para verificar el login
-        boolean exito = service.autenticar(login);
+        ModelLogin usuarioLogueado = service.autenticar(login);
 
-        // Mostramos mensaje según el resultado de la autenticación
-        if (exito) {
-            JOptionPane.showMessageDialog(view, "Bienvenido!!   "+ usuario);
-            
-            
-            // Abrir ventana principal del sistema
-            ViewMenu menu = new ViewMenu(login);
+        // Verificamos si el login fue exitoso
+        if (usuarioLogueado != null) {
+            JOptionPane.showMessageDialog(view, "Bienvenido!!   " + usuarioLogueado.getNombreUsuario());
+
+            // Abrir ventana principal del sistema pasando el usuario logueado con token e id
+            ViewMenu menu = new ViewMenu(usuarioLogueado);
             menu.setLocationRelativeTo(null);
             menu.setVisible(true);
-            
-            //cerrar formulario login
+
+            // Cerrar formulario login
             view.dispose();
-            
-            
+
         } else {
             JOptionPane.showMessageDialog(view, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
         }

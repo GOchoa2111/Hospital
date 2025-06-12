@@ -1,14 +1,13 @@
+// ViewPacientes.java
 package views;
 
+import controllers.ControllerPaciente;
+import models.ModelLogin;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import controllers.ControllerPaciente;
-import javax.swing.table.DefaultTableCellRenderer;
 
 public class ViewPacientes extends JInternalFrame {
 
@@ -20,7 +19,13 @@ public class ViewPacientes extends JInternalFrame {
     private DefaultTableModel modelo;
     private ControllerPaciente controlador;
 
-    public ViewPacientes() { //constructor del formulario pacientes
+    private ModelLogin usuarioLogueado;
+    private String token;
+
+    public ViewPacientes(ModelLogin usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
+        this.token = usuarioLogueado.getToken();
+
         setTitle("Gestión de Pacientes");
         setClosable(true);
         setIconifiable(true);
@@ -29,7 +34,7 @@ public class ViewPacientes extends JInternalFrame {
         setSize(800, 600);
         setLayout(new BorderLayout(10, 10));
 
-        this.controlador = new ControllerPaciente(this);//instancia para el controlador de pacientes
+        this.controlador = new ControllerPaciente(this, token, usuarioLogueado.getIdUsuario());
 
         // Panel de formulario
         JPanel panelForm = new JPanel(new GridLayout(6, 4, 10, 10));
@@ -85,101 +90,39 @@ public class ViewPacientes extends JInternalFrame {
         btnRegistrar = new JButton("Registrar");
         btnRegistrar.setPreferredSize(btnSize);
         panelBotones.add(btnRegistrar);
-        //hacer la magia al presionar el boton
-        btnRegistrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controlador.registrarPaciente();
-            }
-        });
+        btnRegistrar.addActionListener(e -> controlador.registrarPaciente());
 
         btnActualizar = new JButton("Actualizar");
         btnActualizar.setPreferredSize(btnSize);
         panelBotones.add(btnActualizar);
-
-        btnActualizar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controlador.actualizarPaciente();
-            }
-        });
+        btnActualizar.addActionListener(e -> controlador.actualizarPaciente());
 
         btnEliminar = new JButton("Eliminar");
         btnEliminar.setPreferredSize(btnSize);
         panelBotones.add(btnEliminar);
-
-        btnEliminar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controlador.eliminarPaciente();
-            }
-        });
+        btnEliminar.addActionListener(e -> controlador.eliminarPaciente());
 
         btnLimpiar = new JButton("Limpiar");
         btnLimpiar.setPreferredSize(btnSize);
         panelBotones.add(btnLimpiar);
-
-        //llamar metodo para limpiar campos desde controller
-        btnLimpiar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controlador.limpiarFormulario();
-            }
-        });
+        btnLimpiar.addActionListener(e -> controlador.limpiarFormulario());
 
         add(panelBotones, BorderLayout.SOUTH);
 
         // Tabla de pacientes
-        /*modelo = new DefaultTableModel(new String[]{ //modelo con campos previamente definidos (no funciono correctamente)
-            "ID", "Nombre", "Apellido", "Fecha Nacimiento", "Género", "Tipo Sangre", "Dirección", "Teléfono", "Correo", "Estado"
-        }, 0);*/
         modelo = new DefaultTableModel();
         tabla = new JTable(modelo);
         tabla.setPreferredScrollableViewportSize(new Dimension(700, 100));
         JScrollPane scrollPane = new JScrollPane(tabla);
         add(scrollPane, BorderLayout.CENTER);
 
-        //habilitar boton registrar y deshabilitar actualizar,limpiar,eliminar
+        // Inicializar botones
         btnRegistrar.setEnabled(true);
         btnActualizar.setEnabled(false);
         btnLimpiar.setEnabled(false);
         btnEliminar.setEnabled(false);
 
-        //Metodo para seleccionar fila versión 1
-        /*tabla.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting() && tabla.getSelectedRow() != -1) {
-                    int fila = tabla.getSelectedRow();
-
-                    // mostrar el valor de la fila seleccionada
-                    String nombre = tabla.getValueAt(fila, 1).toString();
-                    System.out.println("Nombre seleccionado: " + nombre);
-
-                    // Pasar los valores a los campos del formulario
-                    txtId.setText(tabla.getValueAt(fila, 0).toString());
-                    txtNombre.setText(tabla.getValueAt(fila, 1).toString());
-                    txtApellido.setText(tabla.getValueAt(fila, 2).toString());
-                    txtFechaNacimiento.setText(tabla.getValueAt(fila, 3).toString());
-                    comboGenero.setSelectedItem(tabla.getValueAt(fila, 4).toString());
-                    comboTipoSangre.setSelectedItem(tabla.getValueAt(fila, 5).toString());
-                    txtDireccion.setText(tabla.getValueAt(fila, 6).toString());
-                    txtTelefono.setText(tabla.getValueAt(fila, 7).toString());
-                    txtCorreo.setText(tabla.getValueAt(fila, 8).toString());
-                    //comboEstado.setSelectedItem(tabla.getValueAt(fila, 9).toString());
-                    boolean estado = Boolean.parseBoolean(tabla.getValueAt(fila, 9).toString());
-                    comboEstado.setSelectedItem(estado ? "Activo" : "Inactivo");
-
-                    //habilitar los botones despues de seleccionar una fila y deshabilitar el boton agregar
-                    btnRegistrar.setEnabled(false);
-                    btnEliminar.setEnabled(true);
-                    btnActualizar.setEnabled(true);
-                    btnLimpiar.setEnabled(true);
-
-                }
-            }
-        });*/
-        //metodo para seleccionar versión 2
+        // Selección de fila en tabla
         tabla.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -196,7 +139,6 @@ public class ViewPacientes extends JInternalFrame {
                         txtTelefono.setText(tabla.getValueAt(fila, 7).toString());
                         txtCorreo.setText(tabla.getValueAt(fila, 8).toString());
 
-                        // Manejo robusto del estado
                         Object estadoObj = tabla.getValueAt(fila, 11);
                         boolean estado = false;
                         if (estadoObj instanceof Boolean) {
@@ -222,23 +164,19 @@ public class ViewPacientes extends JInternalFrame {
             }
         });
 
-        // Integración del controlador con la vista
-        controllers.ControllerPaciente controller = new controllers.ControllerPaciente(this);
-        controller.cargarPacientesEnTabla();
-
-        //Validar pacientes activos e inactivos
+        // Renderer para pintar filas inactivas
         tabla.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
-                    boolean isSelected, boolean hasFocus, int row, int column) {
+                    boolean isSelected, boolean hasFocus,
+                    int row, int column) {
 
                 Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-                // 
-                String estado = table.getValueAt(row, 11).toString(); // columna 11 = estado en el json
+                String estado = table.getValueAt(row, 11).toString();
 
                 if (estado.equalsIgnoreCase("Inactivo") || estado.equals("0")) {
-                    c.setBackground(Color.PINK); // se puede pintar con RED (color fuerte)
+                    c.setBackground(Color.PINK);
                 } else {
                     c.setBackground(isSelected ? table.getSelectionBackground() : Color.WHITE);
                 }
@@ -247,50 +185,10 @@ public class ViewPacientes extends JInternalFrame {
             }
         });
 
+        controlador.cargarPacientesEnTabla();
     }
 
-    public boolean validarCampos() {
-
-        if (txtNombre.getText().trim().isEmpty()) {
-            showError("El campo Nombre es obligatorio.");
-            return false;
-        }
-        if (txtApellido.getText().trim().isEmpty()) {
-            showError("El campo Apellido es obligatorio.");
-            return false;
-        }
-        if (txtFechaNacimiento.getText().trim().isEmpty()) {
-            showError("El campo Fecha de Nacimiento es obligatorio.");
-            return false;
-        }
-        if (comboGenero.getSelectedIndex() == 0) {
-            showError("Debe seleccionar un Género.");
-            return false;
-        }
-        if (comboTipoSangre.getSelectedIndex() == 0) {
-            showError("Debe seleccionar un Tipo de Sangre.");
-            return false;
-        }
-        if (txtDireccion.getText().trim().isEmpty()) {
-            showError("El campo Dirección es obligatorio.");
-            return false;
-        }
-        if (txtTelefono.getText().trim().isEmpty()) {
-            showError("El campo Teléfono es obligatorio.");
-            return false;
-        }
-        if (txtCorreo.getText().trim().isEmpty()) {
-            showError("El campo Correo es obligatorio.");
-            return false;
-        }
-        return true;
-    }
-
-    private void showError(String mensaje) {
-        JOptionPane.showMessageDialog(this, mensaje, "Validación", JOptionPane.WARNING_MESSAGE);
-    }
-
-    // Getters
+    // Getters para campos y botones (igual que antes)...
     public JTextField getTxtId() {
         return txtId;
     }
@@ -355,17 +253,54 @@ public class ViewPacientes extends JInternalFrame {
         return modelo;
     }
 
-    //Metodo para ocultar columnas 
     public void ocultarColumnas() {
-        // ID (columna 0), CreadoPor (columna 10), FechaCreacion (columna 9)
         int[] columnasAOcultar = {0, 9, 10};
-
         for (int col : columnasAOcultar) {
-
             tabla.getColumnModel().getColumn(col).setMinWidth(0);
             tabla.getColumnModel().getColumn(col).setMaxWidth(0);
             tabla.getColumnModel().getColumn(col).setWidth(0);
         }
     }
 
+    //Validar campos que esten todos completos
+    public boolean validarCampos() {
+
+        if (txtNombre.getText().trim().isEmpty()) {
+            showError("El campo Nombre es obligatorio.");
+            return false;
+        }
+        if (txtApellido.getText().trim().isEmpty()) {
+            showError("El campo Apellido es obligatorio.");
+            return false;
+        }
+        if (txtFechaNacimiento.getText().trim().isEmpty()) {
+            showError("El campo Fecha de Nacimiento es obligatorio.");
+            return false;
+        }
+        if (comboGenero.getSelectedIndex() == 0) {
+            showError("Debe seleccionar un Género.");
+            return false;
+        }
+        if (comboTipoSangre.getSelectedIndex() == 0) {
+            showError("Debe seleccionar un Tipo de Sangre.");
+            return false;
+        }
+        if (txtDireccion.getText().trim().isEmpty()) {
+            showError("El campo Dirección es obligatorio.");
+            return false;
+        }
+        if (txtTelefono.getText().trim().isEmpty()) {
+            showError("El campo Teléfono es obligatorio.");
+            return false;
+        }
+        if (txtCorreo.getText().trim().isEmpty()) {
+            showError("El campo Correo es obligatorio.");
+            return false;
+        }
+        return true;
+    }
+
+    private void showError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Validación", JOptionPane.WARNING_MESSAGE);
+    }
 }
