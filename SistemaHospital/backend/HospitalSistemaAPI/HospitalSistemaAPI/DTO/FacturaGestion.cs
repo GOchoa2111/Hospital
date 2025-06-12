@@ -1,7 +1,7 @@
-﻿// FacturaDetalleDto.cs
+﻿// FacturaGestionDto.cs
 namespace HospitalSistemaAPI.DTOs
 {
-    public class FacturaDetalleDto
+    public class FacturaGestionDto
     {
         public int IdFactura { get; set; }
         public DateTime Fecha { get; set; }
@@ -12,6 +12,17 @@ namespace HospitalSistemaAPI.DTOs
         // Datos del paciente
         public string NombrePaciente { get; set; }
         public string ApellidoPaciente { get; set; }
+
+        // Datos del usuario
+        public string NombreUsuario { get; set; }
+        public string ApellidoUsuario { get; set; }
+
+        // Nuevas propiedades
+        public decimal Subtotal { get; set; }
+        public decimal Iva { get; set; }
+
+        // Estado de la factura (Activo/Inactivo)
+        public String Estado { get; set; }
 
         // Lista de detalles
         public List<DetalleDto> Detalles { get; set; } = new List<DetalleDto>();

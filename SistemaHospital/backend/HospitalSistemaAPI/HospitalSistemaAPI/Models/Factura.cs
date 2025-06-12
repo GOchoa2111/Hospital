@@ -31,6 +31,8 @@ namespace HospitalSistemaAPI.Models
         [Range(0, double.MaxValue, ErrorMessage = "El total del valor debe ser positio. ")] //validar que el valor del total sea positivo
         [Column("total")]
         public decimal Total { get; set; }
+        [Column("estado")]
+        public bool Estado { get; set; } = true; // Estado de la factura (Activo/Inactivo), por defecto activo
 
         //relaciones con usuario y paciente
 
