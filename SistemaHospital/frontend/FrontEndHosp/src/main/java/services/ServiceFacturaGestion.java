@@ -46,6 +46,7 @@ public class ServiceFacturaGestion {
                 while ((line = in.readLine()) != null) {
                     response.append(line);
                 }
+                System.out.println("JSON Response" + response);
 
                 // Convertir JSON a objeto FacturaGestion
                 return objectMapper.readValue(response.toString(), ModeloGestionFactura.class);
@@ -75,7 +76,7 @@ public class ServiceFacturaGestion {
                 while ((line = in.readLine()) != null) {
                     response.append(line);
                 }
-
+                System.out.println("JSON Response" + response);
                 // Convertir JSON a lista de FacturaGestion
                 return objectMapper.readValue(response.toString(), new TypeReference<List<ModeloGestionFactura>>() {});
             }

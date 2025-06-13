@@ -50,7 +50,7 @@ public class EmailController : ControllerBase
                 From = new MailAddress(_smtpSettings.SmtpUser),
                 Subject = request.Asunto,
                 Body = request.Mensaje,
-                IsBodyHtml = false,
+                IsBodyHtml = true,
             };
 
             mailMessage.To.Add(request.Destinatario);

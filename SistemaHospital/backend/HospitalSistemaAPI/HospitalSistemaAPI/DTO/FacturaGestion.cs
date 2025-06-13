@@ -12,6 +12,7 @@ namespace HospitalSistemaAPI.DTOs
         // Datos del paciente
         public string NombrePaciente { get; set; }
         public string ApellidoPaciente { get; set; }
+        public string CorreoPaciente { get; set; }
 
         // Datos del usuario
         public string NombreUsuario { get; set; }

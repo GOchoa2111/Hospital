@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ModeloGestionFactura {
+
     private int idFactura;
     private Date fecha;
     private int idUsuario;
@@ -19,7 +20,6 @@ public class ModeloGestionFactura {
     private List<Detalle> detalles;
 
     // Getters y setters
-
     public int getIdFactura() {
         return idFactura;
     }
@@ -75,6 +75,15 @@ public class ModeloGestionFactura {
     public void setApellidoPaciente(String apellidoPaciente) {
         this.apellidoPaciente = apellidoPaciente;
     }
+    private String correoPaciente;
+
+    public String getCorreoPaciente() {
+        return correoPaciente;
+    }
+
+    public void setCorreoPaciente(String correoPaciente) {
+        this.correoPaciente = correoPaciente;
+    }
 
     public String getNombreUsuario() {
         return nombreUsuario;
@@ -126,6 +135,7 @@ public class ModeloGestionFactura {
 
     // Clase interna para Detalle
     public static class Detalle {
+
         private int idDetalle;
         private int idServicio;
         private int cantidad;
@@ -134,7 +144,6 @@ public class ModeloGestionFactura {
         private double precioServicio;
 
         // Getters y setters
-
         public int getIdDetalle() {
             return idDetalle;
         }

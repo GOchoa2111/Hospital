@@ -45,6 +45,7 @@ ViewFacturaGestion$2.class
 Main\LocalDateAdapter.class
 controllers\ControllerServicios$2.class
 views\ViewRoles.class
+util\EmailRequestDTO.class
 views\ViewDoctores.class
 controllers\ControllerFacturaDetalle.class
 models\ModelPaciente.class

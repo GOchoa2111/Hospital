@@ -11,4 +11,5 @@ public class EmailRequestDTO
 
     [Required]
     public string Mensaje { get; set; } = string.Empty;
+    
 }

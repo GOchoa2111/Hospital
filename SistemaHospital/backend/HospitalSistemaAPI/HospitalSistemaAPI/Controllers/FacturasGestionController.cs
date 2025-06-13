@@ -36,6 +36,7 @@ namespace HospitalSistemaAPI.Controllers
                                       Total = f.Total,
                                       NombrePaciente = p.Nombre,
                                       ApellidoPaciente = p.Apellido,
+                                      CorreoPaciente = p.Correo,
                                       NombreUsuario = u.Nombre,
                                       ApellidoUsuario = u.Apellido,
                                       Estado = f.Estado ? "Activo" : "Inactivo"
@@ -67,6 +68,7 @@ namespace HospitalSistemaAPI.Controllers
                                          ApellidoPaciente = p.Apellido,
                                          NombreUsuario = u.Nombre,
                                          ApellidoUsuario = u.Apellido,
+                                         CorreoPaciente = p.Correo,
                                          Estado = f.Estado ? "Activo" : "Inactivo" // Nuevo campo estado (bit)
                                      }).FirstOrDefaultAsync();
 
