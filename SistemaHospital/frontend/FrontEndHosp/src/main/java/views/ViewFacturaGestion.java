@@ -10,6 +10,21 @@ import models.ModeloGestionFactura;
 import services.ServiceFacturaGestion;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import com.itextpdf.kernel.colors.ColorConstants;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.UnitValue;
+
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+
 
 public class ViewFacturaGestion extends JInternalFrame {
 
@@ -195,14 +210,24 @@ public class ViewFacturaGestion extends JInternalFrame {
     }
 
     private void imprimirFactura() {
-        int fila = tablaFacturas.getSelectedRow();
-        if (fila == -1) {
-            JOptionPane.showMessageDialog(this, "Seleccione una factura para imprimir.");
-            return;
-        }
-        int idFactura = (int) modeloTabla.getValueAt(fila, 0);
-        JOptionPane.showMessageDialog(this, "Imprimiendo factura ID: " + idFactura);
+    int fila = tablaFacturas.getSelectedRow();
+    if (fila == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione una factura para imprimir.");
+        return;
     }
+    int idFactura = (int) modeloTabla.getValueAt(fila, 0);
+
+    try {
+        ModeloGestionFactura factura = serviceGestionFactura.getFacturaById(idFactura);
+        if (factura != null) {
+            generarPdfFactura(factura);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró la factura seleccionada.");
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al obtener factura: " + e.getMessage());
+    }
+}
 
     private void enviarCorreo() {
         int fila = tablaFacturas.getSelectedRow();
@@ -237,6 +262,94 @@ public class ViewFacturaGestion extends JInternalFrame {
             }
         }
     }
+    
+    //Metodo para generar pdf
+    private void generarPdfFactura(ModeloGestionFactura factura) {  
+    try {  
+        String dest = "factura_" + factura.getIdFactura() + ".pdf";  
+        PdfWriter writer = new PdfWriter(dest);  
+        PdfDocument pdf = new PdfDocument(writer);  
+        Document document = new Document(pdf);  
+  
+        // Fuente y formato de fecha  
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");  
+        String fechaFormateada = dateFormat.format(factura.getFecha());  
+  
+        // Título  
+        Paragraph titulo = new Paragraph("Factura ID: " + factura.getIdFactura())  
+                .setFontSize(18)  
+                .setBold()  
+                .setTextAlignment(TextAlignment.CENTER);  
+        document.add(titulo);  
+  
+        // Datos generales  
+        Table tablaDatos = new Table(UnitValue.createPercentArray(new float[]{1, 2}))  
+                .useAllAvailableWidth()  
+                .setMarginTop(20);  
+  
+        tablaDatos.addCell(new Cell().add(new Paragraph("Fecha:").setBold()));  
+        tablaDatos.addCell(new Cell().add(new Paragraph(fechaFormateada)));  
+  
+        tablaDatos.addCell(new Cell().add(new Paragraph("Paciente:").setBold()));  
+        tablaDatos.addCell(new Cell().add(new Paragraph(factura.getNombrePaciente() + " " + factura.getApellidoPaciente())));  
+  
+        tablaDatos.addCell(new Cell().add(new Paragraph("Usuario:").setBold()));  
+        tablaDatos.addCell(new Cell().add(new Paragraph(factura.getNombreUsuario() + " " + factura.getApellidoUsuario())));  
+  
+        tablaDatos.addCell(new Cell().add(new Paragraph("Estado:").setBold()));  
+        tablaDatos.addCell(new Cell().add(new Paragraph(factura.getEstado())));  
+  
+        document.add(tablaDatos);  
+  
+        // Espacio  
+        document.add(new Paragraph("\n"));  
+  
+        // Tabla de detalles  
+        Table tablaDetalles = new Table(UnitValue.createPercentArray(new float[]{3, 1, 2, 2}))  
+                .useAllAvailableWidth();  
+  
+        // Encabezados  
+        tablaDetalles.addHeaderCell(new Cell().add(new Paragraph("Servicio").setBold().setFontColor(ColorConstants.WHITE)).setBackgroundColor(ColorConstants.DARK_GRAY));  
+        tablaDetalles.addHeaderCell(new Cell().add(new Paragraph("Cantidad").setBold().setFontColor(ColorConstants.WHITE)).setBackgroundColor(ColorConstants.DARK_GRAY));  
+        tablaDetalles.addHeaderCell(new Cell().add(new Paragraph("Precio").setBold().setFontColor(ColorConstants.WHITE)).setBackgroundColor(ColorConstants.DARK_GRAY));  
+        tablaDetalles.addHeaderCell(new Cell().add(new Paragraph("Subtotal").setBold().setFontColor(ColorConstants.WHITE)).setBackgroundColor(ColorConstants.DARK_GRAY));  
+  
+        // Agregar filas de detalles  
+        for (ModeloGestionFactura.Detalle detalle : factura.getDetalles()) {  
+            tablaDetalles.addCell(new Cell().add(new Paragraph(detalle.getNombreServicio())));  
+            tablaDetalles.addCell(new Cell().add(new Paragraph(String.valueOf(detalle.getCantidad()))));  
+            tablaDetalles.addCell(new Cell().add(new Paragraph(String.format("$%.2f", detalle.getPrecioServicio()))));  
+            tablaDetalles.addCell(new Cell().add(new Paragraph(String.format("$%.2f", detalle.getSubtotal()))));  
+        }  
+  
+        document.add(tablaDetalles);  
+  
+        // Espacio  
+        document.add(new Paragraph("\n"));  
+  
+        // Totales  
+        Table tablaTotales = new Table(UnitValue.createPercentArray(new float[]{3, 1}))  
+                .useAllAvailableWidth();  
+  
+        tablaTotales.addCell(new Cell().add(new Paragraph("Subtotal:").setBold()).setBorder(null));  
+        tablaTotales.addCell(new Cell().add(new Paragraph(String.format("$%.2f", factura.getSubtotal()))).setTextAlignment(TextAlignment.RIGHT).setBorder(null));  
+  
+        tablaTotales.addCell(new Cell().add(new Paragraph("IVA:").setBold()).setBorder(null));  
+        tablaTotales.addCell(new Cell().add(new Paragraph(String.format("$%.2f", factura.getIva()))).setTextAlignment(TextAlignment.RIGHT).setBorder(null));  
+  
+        tablaTotales.addCell(new Cell().add(new Paragraph("Total:").setBold()).setBorder(null));  
+        tablaTotales.addCell(new Cell().add(new Paragraph(String.format("$%.2f", factura.getTotal()))).setTextAlignment(TextAlignment.RIGHT).setBorder(null));  
+  
+        document.add(tablaTotales);  
+  
+        document.close();  
+  
+        JOptionPane.showMessageDialog(this, "PDF generado: " + new File(dest).getAbsolutePath());  
+  
+    } catch (Exception e) {  
+        JOptionPane.showMessageDialog(this, "Error al generar PDF: " + e.getMessage());  
+    }  
+}
 
     // Método para ocultar columnas por índice
     private void ocultarColumnas(int[] columnas) {

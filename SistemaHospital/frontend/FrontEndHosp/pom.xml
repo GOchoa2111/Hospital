@@ -31,26 +31,45 @@
             <artifactId>jcalendar</artifactId>
             <version>1.4</version>
         </dependency> 
-        <!-- Dieseño Flatlaf -->
+
+        <!-- iText 7 Core -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>kernel</artifactId>
+            <version>7.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>layout</artifactId>
+            <version>7.2.5</version>
+        </dependency>
+
+        <!-- Diseño Flatlaf -->
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf</artifactId>
             <version>3.6</version>
-            <type>jar</type>
         </dependency>
-        <!-- Dependencia Jackson para objetos Mapper -->
+
+        <!-- Jackson para objetos Mapper -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.17.0</version> <!-- o la versión más reciente -->
+            <version>2.17.0</version>
         </dependency>
-
 
         <!-- Gson para manejo de JSON -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
+        </dependency>
+
+        <!-- PdfInvoiceCreator (opcional, si lo usas) -->
+        <dependency>
+            <groupId>io.github.bhaskarkh</groupId>
+            <artifactId>PdfInvoiceCreator</artifactId>
+            <version>1.0.1</version>
         </dependency>
     </dependencies>
 
