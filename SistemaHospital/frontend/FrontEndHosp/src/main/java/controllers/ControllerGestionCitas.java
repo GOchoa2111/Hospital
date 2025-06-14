@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Objects;
+import javax.swing.table.TableColumn; // Importar TableColumn
+import javax.swing.table.TableColumnModel; // Importar TableColumnModel
 
 public class ControllerGestionCitas {
 
@@ -67,15 +69,24 @@ public class ControllerGestionCitas {
         try {
             this.listaDeCitas = serviceCita.obtenerCitas(usuarioLogueado.getToken());
             
-            String[] columnas = {"ID", "Paciente", "Doctor", "Fecha y Hora", "Estado"};
+            String[] columnas = {"ID", "Paciente", "Doctor", "Fecha y Hora",};
             DefaultTableModel tableModel = new DefaultTableModel(columnas, 0) {
                  @Override
                  public boolean isCellEditable(int row, int column) { return false; }
             };
 
             for (ModelCita cita : this.listaDeCitas) {
-                String nombrePaciente = listaDePacientes.stream().filter(p -> p.getIdPaciente() == cita.getIdPaciente()).findFirst().map(Object::toString).orElse("N/A");
-                String nombreDoctor = listaDeDoctores.stream().filter(d -> d.getIdDoctor() == cita.getIdDoctor()).findFirst().map(Object::toString).orElse("N/A");
+                // Se asegura de que los Stream se resuelvan antes de usarlos
+                String nombrePaciente = listaDePacientes.stream()
+                                            .filter(p -> p.getIdPaciente() == cita.getIdPaciente())
+                                            .findFirst()
+                                            .map(Object::toString)
+                                            .orElse("N/A");
+                String nombreDoctor = listaDeDoctores.stream()
+                                            .filter(d -> d.getIdDoctor() == cita.getIdDoctor())
+                                            .findFirst()
+                                            .map(Object::toString)
+                                            .orElse("N/A");
                 
                 tableModel.addRow(new Object[]{
                     cita.getIdCita(),
@@ -83,9 +94,11 @@ public class ControllerGestionCitas {
                     nombreDoctor,
                     new SimpleDateFormat("dd/MM/yyyy HH:mm").format(cita.getFechaHora()),
                     cita.getEstado()
+                      
                 });
             }
             view.getTblCitas().setModel(tableModel);
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(view, "Error al cargar citas: " + e.getMessage(), "Error de Carga", JOptionPane.ERROR_MESSAGE);
         }
@@ -230,7 +243,7 @@ public class ControllerGestionCitas {
         ModelServicios servicio = (ModelServicios) view.getCmbServicio().getSelectedItem();
         Date fecha = view.getJdcFechaCita().getDate();
         Date hora = (Date) view.getSpnHoraCita().getValue();
-        String estado = (String) view.getCmbEstado().getSelectedItem();
+        String estado = (String) view.getCmbEstado().getSelectedItem(); // Asegúrate de que el estado se obtenga
 
         Calendar calFecha = Calendar.getInstance();
         calFecha.setTime(fecha);
@@ -245,16 +258,20 @@ public class ControllerGestionCitas {
         cita.setIdDoctor(doctor.getIdDoctor());
         cita.setIdServicio(servicio.getIdServicio());
         cita.setFechaHora(fechaHoraFinal);
-        cita.setEstado(estado);
+        cita.setEstado(estado); // Asegúrate de que el estado se setee en el modelo
         return cita;
     }
 
     private boolean validarFormulario() {
+        // Verifica si todos los combobox tienen un ítem seleccionado diferente de null
+        // y si la fecha de cita no es nula.
         if (view.getCmbPaciente().getSelectedItem() == null ||
             view.getCmbDoctor().getSelectedItem() == null ||
             view.getCmbServicio().getSelectedItem() == null ||
-            view.getJdcFechaCita().getDate() == null) {
-            JOptionPane.showMessageDialog(view, "Todos los campos (Paciente, Doctor, Servicio, Fecha) son obligatorios.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            view.getCmbEstado().getSelectedItem() == null || // Añadir validación para cmbEstado
+            view.getJdcFechaCita().getDate() == null ||
+            view.getSpnHoraCita().getValue() == null) { // Añadir validación para la hora
+            JOptionPane.showMessageDialog(view, "Todos los campos (Paciente, Doctor, Servicio, Fecha, Hora, Estado) son obligatorios.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         return true;
@@ -272,6 +289,17 @@ public class ControllerGestionCitas {
             if (item instanceof ModelServicios && ((ModelServicios) item).getIdServicio() == id) {
                 comboBox.setSelectedIndex(i); return;
             }
+        }
+    }
+    
+    // Método para ocultar una columna específica
+    private void ocultarColumna(JTable tabla, int indiceColumna) {
+        if (tabla != null && indiceColumna >= 0 && indiceColumna < tabla.getColumnModel().getColumnCount()) {
+            TableColumn column = tabla.getColumnModel().getColumn(indiceColumna);
+            column.setMinWidth(0);
+            column.setMaxWidth(0);
+            column.setWidth(0);
+            column.setPreferredWidth(0); // Asegura que no ocupe espacio
         }
     }
 }

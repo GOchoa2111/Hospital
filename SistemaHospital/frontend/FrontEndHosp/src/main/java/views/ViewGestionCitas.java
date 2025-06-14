@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
-
- package views;
+package views;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
@@ -31,20 +26,20 @@ public class ViewGestionCitas extends javax.swing.JInternalFrame {
     // --- Constructor ---
     public ViewGestionCitas() {
         initComponents();
-        
+
         setTitle("GESTION DE CITAS MEDICAS");
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setSize(950, 650);
-        
+
         // Deshabilitamos los botones que no deben usarse al inicio
         btnActualizar.setEnabled(false);
         btnEliminar.setEnabled(false);
         btnNotificar.setEnabled(false);
     }
-    
+
     // Estos son los "puentes" que le faltaban a nuestro controlador.
     public JComboBox<ModelPaciente> getCmbPaciente() { return cmbPaciente; }
     public JComboBox<ModelDoctores> getCmbDoctor() { return cmbDoctor; }
@@ -66,11 +61,14 @@ public class ViewGestionCitas extends javax.swing.JInternalFrame {
 
         panelFormulario = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        cmbPaciente = new javax.swing.JComboBox<>();
+        // CORRECCIÓN: Especificar el tipo genérico al inicializar el JComboBox
+        cmbPaciente = new javax.swing.JComboBox<models.ModelPaciente>(); 
         jLabel2 = new javax.swing.JLabel();
-        cmbDoctor = new javax.swing.JComboBox<>();
+        // CORRECCIÓN: Especificar el tipo genérico al inicializar el JComboBox
+        cmbDoctor = new javax.swing.JComboBox<models.ModelDoctores>(); 
         jLabel3 = new javax.swing.JLabel();
-        cmbServicio = new javax.swing.JComboBox<>();
+        // CORRECCIÓN: Especificar el tipo genérico al inicializar el JComboBox
+        cmbServicio = new javax.swing.JComboBox<models.ModelServicios>(); 
         jLabel4 = new javax.swing.JLabel();
         panelFechaHora = new javax.swing.JPanel();
         jdcFechaCita = new com.toedter.calendar.JDateChooser();
