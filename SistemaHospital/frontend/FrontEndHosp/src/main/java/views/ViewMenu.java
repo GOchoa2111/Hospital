@@ -179,8 +179,8 @@ public class ViewMenu extends JFrame {
 
             case "recepcionista":
                 // Solo facturación
-                menuPacientes.setEnabled(false);
-                menuCitas.setEnabled(false);
+                menuPacientes.setEnabled(true);
+                menuCitas.setEnabled(true);
                 menuDoctores.setEnabled(false);
                 menuServicios.setEnabled(false);
                 menuAdministrador.setEnabled(false);

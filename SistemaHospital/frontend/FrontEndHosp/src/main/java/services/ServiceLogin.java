@@ -12,27 +12,21 @@ import models.ModelLogin;
 
 public class ServiceLogin {
 
-    private String baseUrl; // ✅ Declaramos el atributo
+    private String baseUrl;
     private static final String LOGIN = "http://localhost:5132/api/Login/login";
     private final Gson gson = new Gson();
 
-    // ✅ Constructor que recibe la URL base
     public ServiceLogin(String baseUrl) {
         this.baseUrl = baseUrl;
     }
 
-    // ✅ Método getter para que otros puedan acceder a baseUrl
     public String getBaseUrl() {
         return baseUrl;
     }
 
-    /**
-     * Método que autentica y devuelve el usuario logueado con sus datos y token.
-     * Retorna null si falla la autenticación.
-     */
     public ModelLogin autenticar(ModelLogin modelLogin) {
         try {
-            URL url = new URL(LOGIN); // Puedes reemplazar con baseUrl + "/api/Login/login" si quieres usar baseUrl
+            URL url = new URL(LOGIN);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("POST");
@@ -59,18 +53,22 @@ public class ServiceLogin {
 
                     System.out.println("Respuesta login: " + response.toString());
 
-                    // Parsear JSON para extraer idUsuario, username y token
                     JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
 
                     int idUsuario = jsonObject.get("idUsuario").getAsInt();
                     String username = jsonObject.get("username").getAsString();
-                    String token = jsonObject.get("token").getAsString(); // Extraer el token
+                    String token = jsonObject.get("token").getAsString();
 
-                    // Crear y devolver objeto ModelLogin con datos completos
+                    // ✅ Extraer el nombre del rol desde el objeto anidado
+                    JsonObject roleObject = jsonObject.getAsJsonObject("role");
+                    String nombreRol = roleObject.get("nombreRol").getAsString();
+
+                    // ✅ Crear y devolver objeto ModelLogin con todos los datos
                     ModelLogin usuario = new ModelLogin();
                     usuario.setIdUsuario(idUsuario);
                     usuario.setNombreUsuario(username);
-                    usuario.setToken(token); // Asignar el token al usuario
+                    usuario.setToken(token);
+                    usuario.setRole(nombreRol); // ← Aquí se asigna "administrador", "medico", etc.
 
                     return usuario;
                 }
