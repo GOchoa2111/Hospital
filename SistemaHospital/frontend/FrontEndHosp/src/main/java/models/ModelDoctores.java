@@ -125,19 +125,8 @@ public class ModelDoctores {
         this.estado = estado;
     }
 
-    @Override
-    public String toString() {//representación del objeto
-        return "Doctor{"
-                + "idDoctor=" + idDoctor
-                + ", nombre='" + nombre + '\''
-                + ", apellido='" + apellido + '\''
-                + ", especialidad='" + especialidad + '\''
-                + ", telefono='" + telefono + '\''
-                + ", correo='" + correo + '\''
-                + ", idUsuario=" + idUsuario
-                + ", creadoPor=" + creadoPor
-                + ", fechaCreacion=" + fechaCreacion
-                + ", estado=" + estado
-                + '}';
-    }
+@Override
+public String toString() {
+    return nombre + " " + apellido;
+}
 }

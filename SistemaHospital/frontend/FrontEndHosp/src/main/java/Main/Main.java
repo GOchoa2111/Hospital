@@ -16,30 +16,27 @@ import util.Loading;
 public class Main {
 
     public static void main(String[] args) {
-
-        // Mostrar pantalla de carga
+        
+           //Llamar form Loadig
+        
         Loading cargando = new Loading();
         cargando.setVisible(true);
         cargando.setLocationRelativeTo(null);
-        cargando.dispose(); // cerrar el form al finalizar la carga
-
-        try {
-            // Cargar tema FlatLaf para los formularios
-            UIManager.setLookAndFeel(new FlatIntelliJLaf());
-        } catch (UnsupportedLookAndFeelException ex) {
-            ex.printStackTrace();
+        cargando.dispose();//cerrar el form al finalizar la carga
+        
+        try {  //cargar tema para los formularios
+            UIManager.setLookAndFeel(new FlatIntelliJLaf());  
+        } catch (UnsupportedLookAndFeelException ex) {  
+            ex.printStackTrace();  
         }
 
-        // URL base para el servicio (puedes moverla a un archivo .properties si deseas después)
-        String baseUrl = "http://localhost:5132";
-
-        // Crear instancias
+        // Crear instancia para cargar validación del login
         ViewLogin view = new ViewLogin();
         ModelLogin model = new ModelLogin();
-        ServiceLogin service = new ServiceLogin(baseUrl); //
+        ServiceLogin service = new ServiceLogin("http://localhost:5132/api");
 
         // Crear el controlador y pasarle las instancias
-        ControllerLogin controlador = new ControllerLogin(view, model, service);
+        ControllerLogin controlador = new ControllerLogin(view,model, service);
 
         // Mostrar la vista
         view.setLocationRelativeTo(null);
