@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controllers;
 
-/**
- *
- * @author Carlos Orozco
- */
 import views.ViewLogin;
 import models.ModelLogin;
 import services.ServiceLogin;
@@ -18,59 +10,54 @@ import views.ViewMenu;
 
 public class ControllerLogin {
 
-    private ViewLogin view; //referencia a la ventana/formulario login
-    private ModelLogin model; //referencia al modelo
-    private ServiceLogin service; //instancia para el servicio
+    private ViewLogin view;
+    private ModelLogin model;
+    private ServiceLogin service;
 
-    // Constructor que recibe la vista para conectar la lógica con la interfaz
     public ControllerLogin(ViewLogin view, ModelLogin model, ServiceLogin service) {
-
         this.view = view;
-        this.service = service;
         this.model = model;
+        this.service = service;
 
         this.view.setVisible(true);
 
-        // Agregamos un listener para manejar el evento del botón "Iniciar sesión"
         this.view.getBtnIniciarSesion().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                autenticarUsuario();  // Método que realiza la autenticación
+                autenticarUsuario();
             }
         });
     }
 
-    // Método privado para validar y autenticar al usuario cuando presiona el botón
     private void autenticarUsuario() {
-
-        // Obtener los valores ingresados por el usuario en los campos de texto
         String usuario = view.getTxtUsuario().getText().trim();
         String pass = String.valueOf(view.getTxtPassword().getPassword()).trim();
 
-        // Validación simple para asegurarse que no estén vacíos
         if (usuario.isEmpty() || pass.isEmpty()) {
             JOptionPane.showMessageDialog(view, "Debe ingresar usuario y contraseña", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Creamos el modelo con los datos ingresados para enviarlo al servicio
+        // Creamos el modelo con los datos ingresados
         ModelLogin login = new ModelLogin(usuario, pass);
 
-        // Llamamos al método que consume el API para verificar el login
+        // Autenticamos el usuario
         ModelLogin usuarioLogueado = service.autenticar(login);
 
-        // Verificamos si el login fue exitoso
         if (usuarioLogueado != null) {
             JOptionPane.showMessageDialog(view, "Bienvenido!!   " + usuarioLogueado.getNombreUsuario());
 
-            // Abrir ventana principal del sistema pasando el usuario logueado con token e id
-            ViewMenu menu = new ViewMenu(usuarioLogueado);
+            // Obtenemos la baseUrl y token
+            String baseUrl = service.getBaseUrl(); // ✅ Ya debe estar definido en ServiceLogin
+            String token = usuarioLogueado.getToken();
+
+            // Pasamos el modelo y baseUrl a la vista principal
+            ViewMenu menu = new ViewMenu(usuarioLogueado, baseUrl, token);
             menu.setLocationRelativeTo(null);
             menu.setVisible(true);
 
-            // Cerrar formulario login
+            // Cerramos el login
             view.dispose();
-
         } else {
             JOptionPane.showMessageDialog(view, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
         }

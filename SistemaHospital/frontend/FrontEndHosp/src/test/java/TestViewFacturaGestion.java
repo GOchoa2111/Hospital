@@ -10,7 +10,7 @@ import javax.swing.*;
 
 public class TestViewFacturaGestion {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Prueba de ViewFacturaGestion");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,7 +30,7 @@ public class TestViewFacturaGestion {
 
             frame.setVisible(true);
         });
-    }
+    }*/
 }
 
 

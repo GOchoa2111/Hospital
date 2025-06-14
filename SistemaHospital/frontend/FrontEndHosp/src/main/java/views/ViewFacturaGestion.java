@@ -1,3 +1,4 @@
+package views;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.swing.*;
@@ -145,7 +146,9 @@ public class ViewFacturaGestion extends JInternalFrame {
         panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
 
         // Eventos botones
-        btnEnviarCorreo.addActionListener(e -> {//se obtiene la variable factura del metodo enviar correo
+        btnImprimir.addActionListener(e -> imprimirFactura());
+
+        btnEnviarCorreo.addActionListener(e -> {
             int fila = tablaFacturas.getSelectedRow();
             if (fila == -1) {
                 JOptionPane.showMessageDialog(this, "Seleccione una factura.");
@@ -162,7 +165,7 @@ public class ViewFacturaGestion extends JInternalFrame {
                     return;
                 }
 
-                enviarCorreoFactura(factura); // Aquí ya tienes la factura cargada
+                enviarCorreoFactura(factura);
                 JOptionPane.showMessageDialog(this, "Correo enviado exitosamente.");
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Error al enviar correo: " + ex.getMessage());
@@ -265,7 +268,7 @@ public class ViewFacturaGestion extends JInternalFrame {
                                 + ", Subtotal: " + d.getSubtotal());
                     }
                 } else {
-                    System.out.println("⚠️ No se cargaron detalles (lista null).");
+                    System.out.println("No se cargaron detalles (lista null).");
                 }
                 if ("Inactivo".equalsIgnoreCase(factura.getEstado())) {
                     int opcion = JOptionPane.showConfirmDialog(this,
@@ -277,6 +280,7 @@ public class ViewFacturaGestion extends JInternalFrame {
                         generarPdfFactura(factura); // se imprime con sello
                     }
                 } else {
+                    System.out.println("Detalles" + factura.getDetalles());
                     generarPdfFactura(factura); // factura activa
                 }
             } else {
@@ -288,7 +292,7 @@ public class ViewFacturaGestion extends JInternalFrame {
     }
 
     public void enviarCorreoFactura(ModeloGestionFactura factura) throws Exception {
-        String url = baseUrl + "/Email/send";
+        String url = baseUrl + "/api/Email/send";
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 
         conn.setRequestMethod("POST");
@@ -378,7 +382,7 @@ public class ViewFacturaGestion extends JInternalFrame {
             document.setMargins(30, 20, 30, 20);
 
             // Encabezado de empresa
-            Paragraph encabezado = new Paragraph("CLÍNICA MEDI-SALUD\nRUC: 1234567890001\nTel: 1234-5678\nDirección: Calle Falsa 123, Ciudad")
+            Paragraph encabezado = new Paragraph("HOSPITAL SALUD\nRUC: 1234567890001\nTel: (502)1234-5678\nDirección: Calle Falsa 123, Ciudad")
                     .setTextAlignment(TextAlignment.CENTER)
                     .setFontSize(12)
                     .setBold();
@@ -446,8 +450,8 @@ public class ViewFacturaGestion extends JInternalFrame {
             for (ModeloGestionFactura.Detalle detalle : factura.getDetalles()) {
                 tablaDetalles.addCell(new Cell().add(new Paragraph(detalle.getNombreServicio())));
                 tablaDetalles.addCell(new Cell().add(new Paragraph(String.valueOf(detalle.getCantidad()))));
-                tablaDetalles.addCell(new Cell().add(new Paragraph(String.format("$%.2f", detalle.getPrecioServicio()))));
-                tablaDetalles.addCell(new Cell().add(new Paragraph(String.format("$%.2f", detalle.getSubtotal()))));
+                tablaDetalles.addCell(new Cell().add(new Paragraph(String.format("Q%.2f", detalle.getPrecioServicio()))));
+                tablaDetalles.addCell(new Cell().add(new Paragraph(String.format("Q%.2f", detalle.getSubtotal()))));
             }
 
             document.add(tablaDetalles);
@@ -458,13 +462,13 @@ public class ViewFacturaGestion extends JInternalFrame {
                     .setMarginTop(15);
 
             tablaTotales.addCell(new Cell().add(new Paragraph("Subtotal:").setBold()).setBorder(Border.NO_BORDER));
-            tablaTotales.addCell(new Cell().add(new Paragraph(String.format("$%.2f", factura.getSubtotal()))).setTextAlignment(TextAlignment.RIGHT).setBorder(Border.NO_BORDER));
+            tablaTotales.addCell(new Cell().add(new Paragraph(String.format("Q%.2f", factura.getSubtotal()))).setTextAlignment(TextAlignment.RIGHT).setBorder(Border.NO_BORDER));
 
             tablaTotales.addCell(new Cell().add(new Paragraph("IVA:").setBold()).setBorder(Border.NO_BORDER));
-            tablaTotales.addCell(new Cell().add(new Paragraph(String.format("$%.2f", factura.getIva()))).setTextAlignment(TextAlignment.RIGHT).setBorder(Border.NO_BORDER));
+            tablaTotales.addCell(new Cell().add(new Paragraph(String.format("Q%.2f", factura.getIva()))).setTextAlignment(TextAlignment.RIGHT).setBorder(Border.NO_BORDER));
 
             tablaTotales.addCell(new Cell().add(new Paragraph("TOTAL:").setBold()).setBorder(Border.NO_BORDER));
-            tablaTotales.addCell(new Cell().add(new Paragraph(String.format("$%.2f", factura.getTotal()))).setTextAlignment(TextAlignment.RIGHT).setBold().setBorder(Border.NO_BORDER));
+            tablaTotales.addCell(new Cell().add(new Paragraph(String.format("Q%.2f", factura.getTotal()))).setTextAlignment(TextAlignment.RIGHT).setBold().setBorder(Border.NO_BORDER));
 
             document.add(tablaTotales);
 
@@ -488,7 +492,7 @@ public class ViewFacturaGestion extends JInternalFrame {
         }
     }
 
-    /* private JDialog mostrarCarga(String mensaje) {
+    /*private JDialog mostrarCarga(String mensaje) {
     JDialog dialog = new JDialog(this, "Enviando...", true);
     JPanel panel = new JPanel();
     panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));

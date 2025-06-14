@@ -12,17 +12,27 @@ import models.ModelLogin;
 
 public class ServiceLogin {
 
+    private String baseUrl; // ✅ Declaramos el atributo
     private static final String LOGIN = "http://localhost:5132/api/Login/login";
-
     private final Gson gson = new Gson();
 
+    // ✅ Constructor que recibe la URL base
+    public ServiceLogin(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
+
+    // ✅ Método getter para que otros puedan acceder a baseUrl
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
     /**
-     * Método que autentica y devuelve el usuario logueado con sus datos y
-     * token. Retorna null si falla la autenticación.
+     * Método que autentica y devuelve el usuario logueado con sus datos y token.
+     * Retorna null si falla la autenticación.
      */
     public ModelLogin autenticar(ModelLogin modelLogin) {
         try {
-            URL url = new URL(LOGIN);
+            URL url = new URL(LOGIN); // Puedes reemplazar con baseUrl + "/api/Login/login" si quieres usar baseUrl
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("POST");
@@ -61,7 +71,6 @@ public class ServiceLogin {
                     usuario.setIdUsuario(idUsuario);
                     usuario.setNombreUsuario(username);
                     usuario.setToken(token); // Asignar el token al usuario
-                    // Puedes asignar más campos si los tienes en la respuesta
 
                     return usuario;
                 }

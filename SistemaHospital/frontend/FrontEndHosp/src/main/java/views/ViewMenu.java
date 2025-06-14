@@ -5,14 +5,20 @@ import java.awt.*;
 import javax.swing.*;
 import models.ModelLogin;
 import views.components.PanelInfoInstitucional;
+import controllers.ControllerServicios;
+import views.*;
 
 public class ViewMenu extends JFrame {
 
     private JDesktopPane desktopPane;
     private ModelLogin usuario;
+    private String baseUrl;
+    private String token;
 
-    public ViewMenu(ModelLogin usuario) {
+    public ViewMenu(ModelLogin usuario, String baseUrl, String token) {
         this.usuario = usuario;
+        this.baseUrl = baseUrl;
+        this.token = token;
         initComponents();
         setTitle("Sistema Hospitalario - Menú Principal");
         setSize(1280, 720);
@@ -24,7 +30,7 @@ public class ViewMenu extends JFrame {
         desktopPane = new JDesktopPane();
         setContentPane(desktopPane);
 
-        // Panel con información institucional (usuario, objetivo, misión, visión)
+        // Panel con información institucional
         PanelInfoInstitucional panelInfo = new PanelInfoInstitucional(usuario.getNombreUsuario());
         panelInfo.setBounds(20, 20, 1220, 620);
         desktopPane.add(panelInfo);
@@ -61,10 +67,10 @@ public class ViewMenu extends JFrame {
         JMenu menuServicios = new JMenu("Servicios");
         JMenuItem itemServicios = new JMenuItem("Gestión de Servicios");
         itemServicios.addActionListener(e -> {
-            if (!estaFormularioAbierto(views.ViewServicios.class)) {
+            if (!estaFormularioAbierto(ViewServicios.class)) {
                 try {
-                    views.ViewServicios view = new views.ViewServicios();
-                    controllers.ControllerServicios controlador = new controllers.ControllerServicios(view);
+                    ViewServicios view = new ViewServicios();
+                    ControllerServicios controlador = new ControllerServicios(view);
                     controlador.obtenerServicios();
                     agregarFormulario(view);
                 } catch (Exception ex) {
@@ -74,16 +80,28 @@ public class ViewMenu extends JFrame {
         });
         menuServicios.add(itemServicios);
 
-        // === NUEVO MENÚ: Facturación ===
+        // === Facturación ===
         JMenu menuFacturacion = new JMenu("Facturación");
+
+        // Opción 1: Generar Factura
         JMenuItem itemGenerarFactura = new JMenuItem("Generar Factura");
         itemGenerarFactura.addActionListener(e -> {
             if (!estaFormularioAbierto(ViewFactura.class)) {
-                ViewFactura viewFactura = new ViewFactura(usuario); // <- Aquí se pasa el usuario logueado
+                ViewFactura viewFactura = new ViewFactura(usuario);
                 agregarFormulario(viewFactura);
             }
         });
         menuFacturacion.add(itemGenerarFactura);
+
+        // Opción 2: Gestión de Facturas
+        JMenuItem itemGestionFacturas = new JMenuItem("Gestión de Facturas");
+        itemGestionFacturas.addActionListener(e -> {
+            if (!estaFormularioAbierto(ViewFacturaGestion.class)) {
+                ViewFacturaGestion viewGestion = new ViewFacturaGestion(baseUrl, token, usuario.getIdUsuario());
+                agregarFormulario(viewGestion);
+            }
+        });
+        menuFacturacion.add(itemGestionFacturas);
 
         // Reportes
         JMenu menuReportes = new JMenu("Reportes");
@@ -108,19 +126,19 @@ public class ViewMenu extends JFrame {
         });
         menuSalir.add(itemSalir);
 
-        // Agregar todos los menús a la barra
+        // Agregar todos los menús
         menuBar.add(menuPacientes);
         menuBar.add(menuCitas);
         menuBar.add(menuDoctores);
         menuBar.add(menuServicios);
-        menuBar.add(menuFacturacion); // <- Agregado nuevo menú aquí
+        menuBar.add(menuFacturacion);
         menuBar.add(menuReportes);
         menuBar.add(menuRoles);
         menuBar.add(menuSalir);
+
         setJMenuBar(menuBar);
     }
 
-    // Verifica si un formulario ya está abierto
     private boolean estaFormularioAbierto(Class<?> claseFormulario) {
         for (JInternalFrame frame : desktopPane.getAllFrames()) {
             if (claseFormulario.isInstance(frame)) {
@@ -136,20 +154,19 @@ public class ViewMenu extends JFrame {
         return false;
     }
 
-    // Método genérico para abrir formularios únicos
     private void abrirFormulario(Class<?> clase, JInternalFrame formulario) {
         if (!estaFormularioAbierto(clase)) {
             agregarFormulario(formulario);
         }
     }
 
-    // Agrega el formulario al escritorio
     private void agregarFormulario(JInternalFrame formulario) {
         desktopPane.add(formulario);
         formulario.setVisible(true);
         try {
             formulario.setSelected(true);
             formulario.toFront();
+            formulario.setMaximum(true);
         } catch (java.beans.PropertyVetoException ex) {
             ex.printStackTrace();
         }

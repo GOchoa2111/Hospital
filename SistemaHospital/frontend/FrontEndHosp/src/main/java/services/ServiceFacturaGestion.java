@@ -28,7 +28,7 @@ public class ServiceFacturaGestion {
 
     // Obtener factura por id
     public ModeloGestionFactura getFacturaById(int id) throws Exception {
-        String urlString = baseUrl + "/FacturasGestion/" + id;
+        String urlString = baseUrl + "/api/FacturasGestion/" + id;
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -58,7 +58,7 @@ public class ServiceFacturaGestion {
 
     // Obtener todas las facturas
     public List<ModeloGestionFactura> getAllFacturas() throws Exception {
-        String urlString = baseUrl + "/FacturasGestion"; // Endpoint correcto
+        String urlString = baseUrl + "/api/FacturasGestion"; // Endpoint correcto
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -87,7 +87,7 @@ public class ServiceFacturaGestion {
 
     // Anular factura (cambiar estado)
     public void anularFactura(int id) throws Exception {
-        String urlString = baseUrl + "/FacturasGestion/Anular/" + id; // Endpoint correcto
+        String urlString = baseUrl + "/api/FacturasGestion/Anular/" + id; // Endpoint correcto
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
