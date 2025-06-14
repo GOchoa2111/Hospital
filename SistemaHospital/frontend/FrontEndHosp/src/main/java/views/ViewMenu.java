@@ -1,6 +1,7 @@
 package views;
 
 import controllers.ControllerGestionCitas;
+import controllers.ControllerHistorialPaciente;
 import controllers.ControllerRepoCitas;
 import java.awt.*;
 import javax.swing.*;
@@ -86,10 +87,21 @@ public class ViewMenu extends JFrame {
         menuFacturacion.add(itemGenerarFactura);
 
         // Reportes
-        JMenu menuReportes = new JMenu("Reportes");
-        JMenuItem itemReportes = new JMenuItem("Generar Reportes");
-        itemReportes.addActionListener(e -> JOptionPane.showMessageDialog(this, "Abrir módulo Reportes"));
-        menuReportes.add(itemReportes);
+    JMenu menuReportes = new JMenu("Reportes");
+    JMenuItem itemReportes = new JMenuItem("Historial Clínico de Paciente");
+
+    itemReportes.addActionListener(e -> {
+    if (!estaFormularioAbierto(ViewHistorialPaciente.class)) {
+        ViewHistorialPaciente vistaReporte = new ViewHistorialPaciente();
+        // Creamos su controlador, pasándole la vista y el usuario logueado
+        new ControllerHistorialPaciente(vistaReporte, usuario); 
+        agregarFormulario(vistaReporte); // Lo añadimos al escritorio principal
+    }
+});
+
+menuReportes.add(itemReportes);
+
+menuReportes.add(itemReportes);
 
         // Roles
         JMenu menuRoles = new JMenu("Roles");

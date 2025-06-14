@@ -26,6 +26,7 @@ controllers\ControllerPaciente.class
 views\ViewConsulta$2.class
 models\ModelLogin.class
 util\MapperRepoCitas.class
+models\ModelHistorialReporte.class
 services\ServiceRepoCitas.class
 controllers\ControllerLogin.class
 controllers\ControllerServicios$1.class
@@ -34,12 +35,15 @@ services\ServiceCitas.class
 services\ServiceRoles.class
 views\ViewConsulta.class
 views\ViewFactura$4.class
+controllers\ControllerHistorialPaciente.class
 util\Loading.class
 views\ViewFacturaGestion$2.class
+services\ServiceReportes$1.class
 views\ViewFactura.class
 controllers\ControllerFacturaDetalle$1.class
 controllers\ControllerGestionCitas.class
 views\ViewFactura$5.class
+services\ServiceReportes.class
 views\ViewCitas.class
 views\ViewDoctores$2.class
 Main\LocalDateAdapter.class
@@ -65,6 +69,7 @@ services\ServicePaciente$1.class
 views\ViewDoctores$DoctorTableRenderer.class
 views\ViewLogin$7.class
 models\ModelRoles.class
+controllers\ControllerHistorialPaciente$1.class
 views\ViewFacturaGestion.class
 services\ServiceServicios.class
 views\ViewLogin$1.class
@@ -83,6 +88,7 @@ views\ViewGestionCitas.class
 views\ViewMenu.class
 controllers\ControllerGestionCitas$1.class
 controllers\RolesController.class
+views\ViewHistorialPaciente.class
 controllers\ControllerServicios$4.class
 GeneradorPass.class
 util\MapperServicios$1.class

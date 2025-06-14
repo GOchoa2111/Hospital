@@ -12,8 +12,10 @@ C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\fron
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\controllers\ControllerLogin.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\models\ModeloGestionFactura.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\services\ServiceCitas.java
+C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\views\ViewHistorialPaciente.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\Main\Main.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\services\ServiceFacturaDetalle.java
+C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\services\ServiceReportes.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\Main\LocalDateTimeAdapter.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\util\GeneradorPass.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\services\ServiceLogin.java
@@ -31,6 +33,7 @@ C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\fron
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\services\ServiceRepoCitas.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\services\ServicePaciente.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\models\ModelRepoCitas.java
+C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\models\ModelHistorialReporte.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\models\ModelFactura.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\services\ServiceFacturaGestion.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\views\ViewFacturaGestion.java
@@ -48,4 +51,5 @@ C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\fron
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\views\ViewMenu.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\models\ModelLogin.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\controllers\ControllerGestionCitas.java
+C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\controllers\ControllerHistorialPaciente.java
 C:\Users\leonn\OneDrive\Desktop\hospital terminado\Hospital\SistemaHospital\frontend\FrontEndHosp\src\main\java\models\ModelServicios.java
