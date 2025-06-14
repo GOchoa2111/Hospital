@@ -1,9 +1,5 @@
 package models;
 
-
-
-import java.time.LocalDateTime;
-
 public class ModelUsuario {
     private int idUsuario;
     private String nombre;
@@ -11,25 +7,11 @@ public class ModelUsuario {
     private String nombreUsuario;
     private String contrasena;
     private String correo;
+    private int rolId;
     private String tokenRecuperacion;
-    private LocalDateTime fechaExpiracionToken;
-    private ModelRoles rol; // objeto anidado
+    private String fechaExpiracionToken; // formato ISO 8601
 
-    public ModelUsuario() {}
-
-    public ModelUsuario(int idUsuario, String nombre, String apellido, String nombreUsuario, String contrasena,
-                   String correo, String tokenRecuperacion, LocalDateTime fechaExpiracionToken, ModelRoles rol) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.nombreUsuario = nombreUsuario;
-        this.contrasena = contrasena;
-        this.correo = correo;
-        this.tokenRecuperacion = tokenRecuperacion;
-        this.fechaExpiracionToken = fechaExpiracionToken;
-        this.rol = rol;
-    }
-
+    // Getters y Setters
     public int getIdUsuario() { return idUsuario; }
     public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
 
@@ -48,19 +30,12 @@ public class ModelUsuario {
     public String getCorreo() { return correo; }
     public void setCorreo(String correo) { this.correo = correo; }
 
+    public int getRolId() { return rolId; }
+    public void setRolId(int rolId) { this.rolId = rolId; }
+
     public String getTokenRecuperacion() { return tokenRecuperacion; }
     public void setTokenRecuperacion(String tokenRecuperacion) { this.tokenRecuperacion = tokenRecuperacion; }
 
-    public LocalDateTime getFechaExpiracionToken() { return fechaExpiracionToken; }
-    public void setFechaExpiracionToken(LocalDateTime fechaExpiracionToken) {
-        this.fechaExpiracionToken = fechaExpiracionToken;
-    }
-
-    public ModelRoles getRol() { return rol; }
-    public void setRol(ModelRoles rol) { this.rol = rol; }
-
-    @Override
-    public String toString() {
-        return nombre + " " + apellido;
-    }
+    public String getFechaExpiracionToken() { return fechaExpiracionToken; }
+    public void setFechaExpiracionToken(String fechaExpiracionToken) { this.fechaExpiracionToken = fechaExpiracionToken; }
 }

@@ -6,7 +6,7 @@ import javax.swing.*;
 import models.ModelLogin;
 import views.components.PanelInfoInstitucional;
 import controllers.ControllerServicios;
-import views.*;
+import controllers.ControllerUsuario;
 
 public class ViewMenu extends JFrame {
 
@@ -14,6 +14,16 @@ public class ViewMenu extends JFrame {
     private ModelLogin usuario;
     private String baseUrl;
     private String token;
+
+    // Declaración global de menús
+    private JMenuBar menuBar;
+    private JMenu menuPacientes;
+    private JMenu menuCitas;
+    private JMenu menuDoctores;
+    private JMenu menuServicios;
+    private JMenu menuFacturacion;
+    private JMenu menuAdministrador;
+    private JMenu menuSalir;
 
     public ViewMenu(ModelLogin usuario, String baseUrl, String token) {
         this.usuario = usuario;
@@ -30,22 +40,21 @@ public class ViewMenu extends JFrame {
         desktopPane = new JDesktopPane();
         setContentPane(desktopPane);
 
-        // Panel con información institucional
         PanelInfoInstitucional panelInfo = new PanelInfoInstitucional(usuario.getNombreUsuario());
         panelInfo.setBounds(20, 20, 1220, 620);
         desktopPane.add(panelInfo);
 
-        // === MENÚ ===
-        JMenuBar menuBar = new JMenuBar();
+        // Inicialización del menú
+        menuBar = new JMenuBar();
 
-        // Pacientes
-        JMenu menuPacientes = new JMenu("Pacientes");
+        // ======== MENÚ PACIENTES ========
+        menuPacientes = new JMenu("Pacientes");
         JMenuItem itemPacientes = new JMenuItem("Gestión de Pacientes");
         itemPacientes.addActionListener(e -> abrirFormulario(ViewPacientes.class, new ViewPacientes(usuario)));
         menuPacientes.add(itemPacientes);
 
-        // Citas
-        JMenu menuCitas = new JMenu("Citas");
+        // ======== MENÚ CITAS ========
+        menuCitas = new JMenu("Citas");
         JMenuItem itemCitas = new JMenuItem("Gestión de Citas");
         itemCitas.addActionListener(e -> {
             if (!estaFormularioAbierto(ViewRepoCitas.class)) {
@@ -57,14 +66,14 @@ public class ViewMenu extends JFrame {
         });
         menuCitas.add(itemCitas);
 
-        // Doctores
-        JMenu menuDoctores = new JMenu("Doctores");
+        // ======== MENÚ DOCTORES ========
+        menuDoctores = new JMenu("Doctores");
         JMenuItem itemDoctores = new JMenuItem("Gestión de Doctores");
         itemDoctores.addActionListener(e -> abrirFormulario(ViewDoctores.class, new ViewDoctores(usuario)));
         menuDoctores.add(itemDoctores);
 
-        // Servicios
-        JMenu menuServicios = new JMenu("Servicios");
+        // ======== MENÚ SERVICIOS ========
+        menuServicios = new JMenu("Servicios");
         JMenuItem itemServicios = new JMenuItem("Gestión de Servicios");
         itemServicios.addActionListener(e -> {
             if (!estaFormularioAbierto(ViewServicios.class)) {
@@ -80,10 +89,8 @@ public class ViewMenu extends JFrame {
         });
         menuServicios.add(itemServicios);
 
-        // === Facturación ===
-        JMenu menuFacturacion = new JMenu("Facturación");
-
-        // Opción 1: Generar Factura
+        // ======== MENÚ FACTURACIÓN ========
+        menuFacturacion = new JMenu("Facturación");
         JMenuItem itemGenerarFactura = new JMenuItem("Generar Factura");
         itemGenerarFactura.addActionListener(e -> {
             if (!estaFormularioAbierto(ViewFactura.class)) {
@@ -91,9 +98,7 @@ public class ViewMenu extends JFrame {
                 agregarFormulario(viewFactura);
             }
         });
-        menuFacturacion.add(itemGenerarFactura);
 
-        // Opción 2: Gestión de Facturas
         JMenuItem itemGestionFacturas = new JMenuItem("Gestión de Facturas");
         itemGestionFacturas.addActionListener(e -> {
             if (!estaFormularioAbierto(ViewFacturaGestion.class)) {
@@ -101,22 +106,31 @@ public class ViewMenu extends JFrame {
                 agregarFormulario(viewGestion);
             }
         });
+
+        menuFacturacion.add(itemGenerarFactura);
         menuFacturacion.add(itemGestionFacturas);
 
-        // Reportes
-        JMenu menuReportes = new JMenu("Reportes");
-        JMenuItem itemReportes = new JMenuItem("Generar Reportes");
-        itemReportes.addActionListener(e -> JOptionPane.showMessageDialog(this, "Abrir módulo Reportes"));
-        menuReportes.add(itemReportes);
+        // ======== MENÚ ADMINISTRADOR ========
+        menuAdministrador = new JMenu("Administrador");
+        JMenuItem itemUsuarios = new JMenuItem("Gestión de Usuarios");
+        itemUsuarios.addActionListener(e -> {
+            if (!estaFormularioAbierto(ViewUsuarios.class)) {
+                ViewUsuarios viewUsuarios = new ViewUsuarios();
+                new ControllerUsuario(viewUsuarios);
+                agregarFormulario(viewUsuarios);
+            }
+        });
 
-        // Roles
-        JMenu menuRoles = new JMenu("Roles");
         JMenuItem itemRoles = new JMenuItem("Gestión de Roles");
-        itemRoles.addActionListener(e -> abrirFormulario(ViewRoles.class, new ViewRoles()));
-        menuRoles.add(itemRoles);
+        itemRoles.addActionListener(e -> {
+            JOptionPane.showMessageDialog(this, "Abrir módulo Roles (próximamente)");
+        });
 
-        // Salir
-        JMenu menuSalir = new JMenu("Salir");
+        menuAdministrador.add(itemUsuarios);
+        menuAdministrador.add(itemRoles);
+
+        // ======== MENÚ SALIR ========
+        menuSalir = new JMenu("Salir");
         JMenuItem itemSalir = new JMenuItem("Cerrar sesión");
         itemSalir.addActionListener(e -> {
             int resp = JOptionPane.showConfirmDialog(this, "¿Seguro que desea salir?", "Confirmar", JOptionPane.YES_NO_OPTION);
@@ -126,17 +140,56 @@ public class ViewMenu extends JFrame {
         });
         menuSalir.add(itemSalir);
 
-        // Agregar todos los menús
+        // ======== AGREGAR MENÚS AL MENUBAR ========
         menuBar.add(menuPacientes);
         menuBar.add(menuCitas);
         menuBar.add(menuDoctores);
         menuBar.add(menuServicios);
         menuBar.add(menuFacturacion);
-        menuBar.add(menuReportes);
-        menuBar.add(menuRoles);
+        menuBar.add(menuAdministrador);
         menuBar.add(menuSalir);
 
+        // Aplicar permisos antes de establecer el menú
+        configurarPermisos(usuario.getRole());
         setJMenuBar(menuBar);
+    }
+
+    private void configurarPermisos(String rol) {
+        rol = rol.toLowerCase();
+
+        switch (rol) {
+            case "administrador":
+                // Acceso completo
+                break;
+
+            case "gestor":
+                // Todo menos administrador
+                menuAdministrador.setEnabled(false);
+                break;
+
+            case "medico":
+                // Solo historial médico (a futuro)
+                menuPacientes.setEnabled(false);
+                menuCitas.setEnabled(false);
+                menuDoctores.setEnabled(false);
+                menuServicios.setEnabled(false);
+                menuFacturacion.setEnabled(false);
+                menuAdministrador.setEnabled(false);
+                break;
+
+            case "recepcionista":
+                // Solo facturación
+                menuPacientes.setEnabled(false);
+                menuCitas.setEnabled(false);
+                menuDoctores.setEnabled(false);
+                menuServicios.setEnabled(false);
+                menuAdministrador.setEnabled(false);
+                break;
+
+            default:
+                JOptionPane.showMessageDialog(this, "Rol no reconocido: " + rol);
+                System.exit(1);
+        }
     }
 
     private boolean estaFormularioAbierto(Class<?> claseFormulario) {

@@ -32,7 +32,7 @@ namespace HospitalSistemaAPI.Models
         [StringLength(255)]
         public string Contrasena { get; set; } = string.Empty;
 
-        // Clave foránea al rol
+        //Clave foránea al rol
         [Required]
         [Column("id_rol")]
         public int RolId { get; set; }
