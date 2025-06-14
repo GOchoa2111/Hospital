@@ -52,7 +52,7 @@ public class ControllerLogin {
             String token = usuarioLogueado.getToken();
 
             // Pasamos el modelo y baseUrl a la vista principal
-            ViewMenu menu = new ViewMenu(usuarioLogueado);
+            ViewMenu menu = new ViewMenu(usuarioLogueado, baseUrl, token);
             menu.setLocationRelativeTo(null);
             menu.setVisible(true);
 

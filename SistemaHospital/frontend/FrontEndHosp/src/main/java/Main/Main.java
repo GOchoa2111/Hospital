@@ -33,7 +33,7 @@ public class Main {
         // Crear instancia para cargar validación del login
         ViewLogin view = new ViewLogin();
         ModelLogin model = new ModelLogin();
-        ServiceLogin service = new ServiceLogin("http://localhost:5132/api");
+        ServiceLogin service = new ServiceLogin("http://localhost:5132");
 
         // Crear el controlador y pasarle las instancias
         ControllerLogin controlador = new ControllerLogin(view,model, service);

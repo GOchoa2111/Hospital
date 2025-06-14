@@ -1,3 +1,4 @@
+// SistemaHospital/frontend/FrontEndHosp/src/main/java/views/ViewHistorialPaciente.java
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
@@ -15,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import models.ModelPaciente; // Aseg�rate de que la clase ModelPaciente exista en el paquete models
+import javax.swing.DefaultComboBoxModel; // Necesario para DefaultComboBoxModel
 
 /**
  *
@@ -22,13 +24,22 @@ import models.ModelPaciente; // Aseg�rate de que la clase ModelPaciente exista
  */
 public class ViewHistorialPaciente extends javax.swing.JInternalFrame {
 
+    // --- Variables de componentes ---
+    // Aseg�rate de que esta declaraci�n sea correcta
+    private javax.swing.JComboBox<models.ModelPaciente> cmbPaciente; 
+    private javax.swing.JButton btnExportarPDF;
+    private javax.swing.JButton btnGenerar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblHistorial;
+
     /**
      * Creates new form ViewHistorialPaciente
      */
     public ViewHistorialPaciente() {
         // Esta llamada es esencial para que el GUI Builder de NetBeans funcione
         initComponents();
-        
+
         // Establecer las propiedades del frame
         setTitle("Reporte de Historial Cl�nico por Paciente");
         setClosable(true);
@@ -36,6 +47,11 @@ public class ViewHistorialPaciente extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setSize(800, 600); // Puedes ajustar este tama�o seg�n sea necesario
+
+        // --- INICIALIZACI�N MANUAL DEL MODELO DEL COMBOBOX ---
+        // Esto es crucial para forzar el tipo gen�rico correcto
+        // y evitar que el GUI builder lo sobrescriba o lo infiera incorrectamente.
+        cmbPaciente.setModel(new DefaultComboBoxModel<models.ModelPaciente>());
     }
 
     /**
@@ -48,7 +64,7 @@ public class ViewHistorialPaciente extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        cmbPaciente = new javax.swing.JComboBox<>();
+        cmbPaciente = new javax.swing.JComboBox(); // �NetBeans genera esto sin <ModelPaciente> a veces!
         btnGenerar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHistorial = new javax.swing.JTable();
@@ -56,19 +72,23 @@ public class ViewHistorialPaciente extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Paciente:");
 
-        cmbPaciente.setModel(new javax.swing.DefaultComboBoxModel<models.ModelPaciente>());
+        // La siguiente l�nea es la que a veces causa conflicto con el generador de NetBeans.
+        // Si NetBeans la vuelve a poner como JComboBox<String> o sin tipo,
+        // la soluci�n en el constructor (arriba) la corregir�.
+        // cmbPaciente.setModel(new javax.swing.DefaultComboBoxModel<models.ModelPaciente>()); // �Comenta o elimina si te da problemas con el dise�ador!
+
 
         btnGenerar.setText("Historial");
 
         tblHistorial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(tblHistorial);
@@ -116,25 +136,16 @@ public class ViewHistorialPaciente extends javax.swing.JInternalFrame {
     public JComboBox<ModelPaciente> getCmbPaciente() { 
         return cmbPaciente; 
     }
-    
+
     public JButton getBtnGenerar() { 
         return btnGenerar; 
     }
-    
+
     public JButton getBtnExportarPDF() { 
         return btnExportarPDF; 
     }
-    
+
     public JTable getTblHistorial() { 
         return tblHistorial; 
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnExportarPDF;
-    private javax.swing.JButton btnGenerar;
-    private javax.swing.JComboBox<ModelPaciente> cmbPaciente;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblHistorial;
-    // End of variables declaration//GEN-END:variables
 }

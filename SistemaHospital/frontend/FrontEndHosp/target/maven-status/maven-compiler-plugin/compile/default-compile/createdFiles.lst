@@ -8,6 +8,7 @@ controllers\ControllerRepoCitas$1.class
 views\ViewCitas$2.class
 views\ViewLogin.class
 views\ViewServicios.class
+views\ViewUsuarios$2.class
 Main\LocalDateTimeAdapter.class
 models\ModelUsuario.class
 util\MapperRoles$1.class
@@ -39,10 +40,7 @@ views\ViewFactura$4.class
 controllers\ControllerHistorialPaciente.class
 util\Loading.class
 views\ViewFacturaGestion$2.class
-<<<<<<< HEAD
-=======
 services\ServiceReportes$1.class
->>>>>>> d60e8469d1f4113ebf4daa89c6bf61111779973a
 views\ViewFactura.class
 controllers\ControllerFacturaDetalle$1.class
 controllers\ControllerGestionCitas.class
@@ -85,10 +83,7 @@ views\ViewRepoCitas.class
 views\ViewServicios$1.class
 views\ViewFactura$3.class
 services\ServiceFacturaGestion$1.class
-<<<<<<< HEAD
 views\ViewUsuarios$1.class
-=======
->>>>>>> d60e8469d1f4113ebf4daa89c6bf61111779973a
 views\ViewPacientes$2.class
 Main\Main.class
 services\ServiceFacturaGestion.class
@@ -96,13 +91,11 @@ controllers\ControllerLogin$1.class
 views\ViewLogin$2.class
 views\ViewGestionCitas.class
 views\ViewMenu.class
+views\ViewUsuarios.class
 controllers\ControllerGestionCitas$1.class
 controllers\RolesController.class
-<<<<<<< HEAD
-services\ServiceUsuario.class
-=======
 views\ViewHistorialPaciente.class
->>>>>>> d60e8469d1f4113ebf4daa89c6bf61111779973a
+services\ServiceUsuario.class
 controllers\ControllerServicios$4.class
 GeneradorPass.class
 util\MapperServicios$1.class

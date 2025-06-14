@@ -9,7 +9,7 @@ namespace HospitalSistemaAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize] // Asegúrate de que el token de autenticación sea válido y se esté enviando
     public class FacturaDetalleController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -44,7 +44,28 @@ namespace HospitalSistemaAPI.Controllers
 
             // Agregar la factura a la base de datos
             _context.Facturas.Add(factura);
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                await _context.SaveChangesAsync(); // Primera llamada a SaveChanges: guarda la factura principal
+            }
+            catch (DbUpdateException ex) // Captura excepciones relacionadas con la base de datos
+            {
+                // Este bloque capturará el error exacto de la base de datos
+                Console.WriteLine($"DbUpdateException durante el primer guardado de factura: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
+                    // Puedes devolver el mensaje de la InnerException que a menudo es más específico
+                    return StatusCode(500, $"Error al guardar la factura principal: {ex.InnerException.Message}");
+                }
+                return StatusCode(500, $"Error desconocido al guardar la factura principal: {ex.Message}");
+            }
+            catch (Exception ex) // Captura otras excepciones inesperadas
+            {
+                Console.WriteLine($"Excepción inesperada durante el primer guardado de factura: {ex.Message}");
+                return StatusCode(500, $"Error inesperado al guardar la factura principal: {ex.Message}");
+            }
 
             // Recorrer los detalles y agregarlos con el ID de la factura recién guardada
             foreach (var detalleDto in facturaDto.Detalles)
@@ -53,12 +74,14 @@ namespace HospitalSistemaAPI.Controllers
                 var servicioExiste = await _context.Servicios.AnyAsync(s => s.IdServicio == detalleDto.IdServicio);
                 if (!servicioExiste)
                 {
+                    // Si el servicio no existe, se revierte la transacción implícita si ya se guardó la factura principal
+                    // o se limpia el contexto si es necesario. Para una API simple, un BadRequest puede ser suficiente.
                     return BadRequest($"El servicio con ID {detalleDto.IdServicio} no existe.");
                 }
 
                 var detalle = new DetalleFactura
                 {
-                    IdFactura = factura.IdFactura,
+                    IdFactura = factura.IdFactura, // Usa el ID de la factura que acaba de ser guardada
                     IdServicio = detalleDto.IdServicio,
                     Cantidad = detalleDto.Cantidad,
                     Subtotal = detalleDto.Subtotal
@@ -67,8 +90,25 @@ namespace HospitalSistemaAPI.Controllers
                 _context.DetallesFactura.Add(detalle);
             }
 
-            // Guardar los detalles
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync(); // Segunda llamada a SaveChanges: guarda los detalles
+            }
+            catch (DbUpdateException ex)
+            {
+                Console.WriteLine($"DbUpdateException durante el guardado de detalles: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
+                    return StatusCode(500, $"Error al guardar los detalles de la factura: {ex.InnerException.Message}");
+                }
+                return StatusCode(500, $"Error desconocido al guardar los detalles: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Excepción inesperada durante el guardado de detalles: {ex.Message}");
+                return StatusCode(500, $"Error inesperado al guardar los detalles: {ex.Message}");
+            }
 
             // Retornar la factura creada
             return Ok(new
