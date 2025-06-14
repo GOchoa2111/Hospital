@@ -303,7 +303,7 @@ public class ViewFacturaGestion extends JInternalFrame {
         // Construir mensaje
         String mensaje = "<div style='font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ccc; max-width: 600px;'>"
                 + "<div style='text-align: center; padding-bottom: 10px; border-bottom: 2px solid #3498db;'>"
-                + "<h1 style='margin: 0; color: #2c3e50;'>Hospital Salud</h1>"
+                + "<h1 style='margin: 0; color: #2c3e50;'>Hospital Confianza Médica</h1>"
                 + "<p style='margin: 0; font-size: 14px; color: #7f8c8d;'>Tel. (502) 1234-5678</p>"
                 + "</div>"
                 + "<h2 style='color: #2980b9; margin-top: 20px;'>Factura #" + factura.getIdFactura() + "</h2>"
@@ -313,9 +313,9 @@ public class ViewFacturaGestion extends JInternalFrame {
                 + "</table>"
                 + "<hr style='margin: 20px 0;'>"
                 + "<table style='width: 100%; font-size: 14px;'>"
-                + "<tr><td><strong>Subtotal:</strong></td><td>$" + factura.getSubtotal() + "</td></tr>"
-                + "<tr><td><strong>IVA:</strong></td><td>$" + factura.getIva() + "</td></tr>"
-                + "<tr><td><strong>Total:</strong></td><td><strong style='color: #27ae60;'>$" + factura.getTotal() + "</strong></td></tr>"
+                + "<tr><td><strong>Subtotal:</strong></td><td>Q" + factura.getSubtotal() + "</td></tr>"
+                + "<tr><td><strong>IVA:</strong></td><td>Q" + factura.getIva() + "</td></tr>"
+                + "<tr><td><strong>Total:</strong></td><td><strong style='color: #27ae60;'>Q" + factura.getTotal() + "</strong></td></tr>"
                 + "</table>"
                 + "<hr style='margin: 20px 0;'>"
                 + "<p style='font-size: 12px; color: #7f8c8d;'>Este correo fue generado automáticamente. Si tiene preguntas, por favor contáctenos.</p>"
@@ -324,7 +324,7 @@ public class ViewFacturaGestion extends JInternalFrame {
 
         EmailRequestDTO email = new EmailRequestDTO();
         email.setDestinatario(factura.getCorreoPaciente());
-        email.setAsunto("Factura del Hospital");
+        email.setAsunto("Comprobante Hospital Confianza Médica");
         email.setMensaje(mensaje);
 
         String json = new ObjectMapper().writeValueAsString(email);
@@ -382,7 +382,7 @@ public class ViewFacturaGestion extends JInternalFrame {
             document.setMargins(30, 20, 30, 20);
 
             // Encabezado de empresa
-            Paragraph encabezado = new Paragraph("HOSPITAL SALUD\nRUC: 1234567890001\nTel: (502)1234-5678\nDirección: Calle Falsa 123, Ciudad")
+            Paragraph encabezado = new Paragraph("HOSPITAL CONFIANZA MEDICA\nRUC: 1234567890001\nTel: (502)1234-5678\nDirección: Calle Falsa 123, Ciudad")
                     .setTextAlignment(TextAlignment.CENTER)
                     .setFontSize(12)
                     .setBold();

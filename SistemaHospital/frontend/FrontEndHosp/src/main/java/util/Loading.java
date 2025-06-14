@@ -17,7 +17,7 @@ public class Loading extends JWindow {
         content.add(logoLabel, BorderLayout.CENTER);
 
         // Título
-        JLabel titulo = new JLabel("Hospital La Salud", JLabel.CENTER);
+        JLabel titulo = new JLabel("Hospital Confianza Médica", JLabel.CENTER);
         titulo.setFont(new Font("Arial", Font.BOLD, 20));
         titulo.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         content.add(titulo, BorderLayout.NORTH);

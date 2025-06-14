@@ -1,45 +1,34 @@
-
 package models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class ModelDetalleFactura {
-
-    private int idDetalle;
-    private int idFactura;
+    
+    @Expose
+    @SerializedName("IdServicio")
     private int idServicio;
+    
+    @Expose
+    @SerializedName("Cantidad")
     private int cantidad;
+    
+    @Expose
+    @SerializedName("Subtotal")
     private double subtotal;
 
     // Constructor vacío
     public ModelDetalleFactura() {
     }
 
-    // Constructor con atributos
-    public ModelDetalleFactura(int idDetalle, int idFactura, int idServicio, int cantidad, double subtotal) {
-        this.idDetalle = idDetalle;
-        this.idFactura = idFactura;
+    // Constructor con parámetros
+    public ModelDetalleFactura(int idServicio, int cantidad, double subtotal) {
         this.idServicio = idServicio;
         this.cantidad = cantidad;
         this.subtotal = subtotal;
     }
 
-    // Getters y Setters
-    public int getIdDetalle() {
-        return idDetalle;
-    }
-
-    public void setIdDetalle(int idDetalle) {
-        this.idDetalle = idDetalle;
-    }
-
-    public int getIdFactura() {
-        return idFactura;
-    }
-
-    public void setIdFactura(int idFactura) {
-        this.idFactura = idFactura;
-    }
-
+    // Getters y setters
     public int getIdServicio() {
         return idServicio;
     }
@@ -64,4 +53,3 @@ public class ModelDetalleFactura {
         this.subtotal = subtotal;
     }
 }
-

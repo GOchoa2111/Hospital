@@ -36,7 +36,7 @@ public class PanelInfoInstitucional extends JPanel {
 
         JLabel objetivoLabel = new JLabel("<html>"
                 + "<h2 style='text-align:center;'>Objetivo</h2>"
-                + "<p style='text-align: justify;'>Hospital La Salud tiene como objetivo el desarrollo de un centro de atención médica integral "
+                + "<p style='text-align: justify;'>Hospital Confianza Médica tiene como objetivo el desarrollo de un centro de atención médica integral "
                 + "que brinde servicios de salud de alta calidad, accesibles y humanizados a la comunidad. Diseñado para responder a las necesidades "
                 + "actuales del sistema sanitario, el hospital combinará tecnología de vanguardia, un equipo médico altamente calificado y una "
                 + "infraestructura moderna orientada al bienestar del paciente.</p></html>");
@@ -65,7 +65,7 @@ public class PanelInfoInstitucional extends JPanel {
         add(panelCentro, BorderLayout.CENTER);
 
         // Pie de página
-        JLabel piePagina = new JLabel("<html><center>Hospital Salud - Cuidando tu salud con compromiso y excelencia.<br>"
+        JLabel piePagina = new JLabel("<html><center>Hospital Confinza Médica - Cuidando tu salud con compromiso y excelencia.<br>"
                 + "Dirección: Calle Principal #123, Ciudad &nbsp;&nbsp;&nbsp; Teléfono: (502) 1234-5678</center></html>");
         piePagina.setFont(new Font("Arial", Font.ITALIC, 14));
         piePagina.setForeground(Color.DARK_GRAY);

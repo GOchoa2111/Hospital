@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class ServiceFacturaDetalle {
 
-    private final String FACTURA_API = "http://localhost:5132/api/Facturas"; // Endpoint
+    private final String FACTURA_API = "http://localhost:5132/api/FacturaDetalle/RegistrarCompleta"; // Endpoint
 
     // Obtener lista de facturas
     public ArrayList<ModelFactura> obtenerFacturas(String token) {
@@ -45,6 +45,7 @@ public class ServiceFacturaDetalle {
                 conn.disconnect();
 
                 Gson gson = new GsonBuilder()
+                        .excludeFieldsWithoutExposeAnnotation()
                         .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
                         .create();
 
@@ -75,11 +76,12 @@ public class ServiceFacturaDetalle {
             conn.setDoOutput(true);
 
             Gson gson = new GsonBuilder()
+                    .excludeFieldsWithoutExposeAnnotation()
                     .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
                     .create();
 
             String json = gson.toJson(factura);
-            // Imprimir JSON para depuración  
+            // Imprimir JSON para depuración 
             System.out.println("JSON a enviar:");
             System.out.println(json);
             try (OutputStream os = conn.getOutputStream()) {
@@ -109,6 +111,7 @@ public class ServiceFacturaDetalle {
             conn.setDoOutput(true);
 
             Gson gson = new GsonBuilder()
+                    .excludeFieldsWithoutExposeAnnotation()
                     .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
                     .create();
 
