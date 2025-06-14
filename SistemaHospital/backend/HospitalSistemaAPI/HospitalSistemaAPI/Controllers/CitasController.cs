@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HospitalSistemaAPI.Data;
 using HospitalSistemaAPI.Models;
 using Microsoft.AspNetCore.Authorization;
+using HospitalSistemaAPI.Services;
 
 namespace HospitalSistemaAPI.Controllers
 {
@@ -17,10 +18,12 @@ namespace HospitalSistemaAPI.Controllers
     public class CitasController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly EmailService _emailService;
 
-        public CitasController(AppDbContext context)
+        public CitasController(AppDbContext context, EmailService emailService)
         {
             _context = context;
+            _emailService = emailService;
         }
 
         // GET: api/Citas
@@ -45,7 +48,6 @@ namespace HospitalSistemaAPI.Controllers
         }
 
         // PUT: api/Citas/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCita(int id, Cita cita)
         {
@@ -76,7 +78,6 @@ namespace HospitalSistemaAPI.Controllers
         }
 
         // POST: api/Citas
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Cita>> PostCita(Cita cita)
         {
@@ -100,6 +101,40 @@ namespace HospitalSistemaAPI.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+        // POST: api/Citas/5/notificar
+        [HttpPost("{id}/notificar")]
+        public async Task<IActionResult> NotificarCita(int id)
+        {
+            // Buscamos la cita, pero también incluimos los datos del Paciente asociado.
+            var cita = await _context.Citas
+                                     .Include(c => c.Paciente)
+                                     .FirstOrDefaultAsync(c => c.IdCita == id);
+
+            if (cita == null)
+            {
+                return NotFound(new { message = "La cita no fue encontrada." });
+            }
+
+            if (string.IsNullOrEmpty(cita.Paciente.Correo))
+            {
+                return BadRequest(new { message = "El paciente no tiene un correo electrónico registrado." });
+            }
+
+            //Contenido del correo.
+            string asunto = $"Recordatorio de Cita Médica - {cita.FechaHora:dd/MM/yyyy}";
+            string mensaje = $"Hola {cita.Paciente.Nombre},<br><br> este correo es para recordarle su cita programada para el día <strong>{cita.FechaHora:dd/MM/yyyy}</strong> a las <strong>{cita.FechaHora:hh:mm tt}</strong>.<br><br>Gracias por su preferencia,<br>Hospital La Salud.";
+
+            try
+            {
+                _emailService.SendEmail(cita.Paciente.Correo, asunto, mensaje);
+
+                return Ok(new { message = "Notificación enviada exitosamente." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error al enviar el correo.", error = ex.Message });
+            }
         }
 
         private bool CitaExists(int id)
